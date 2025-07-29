@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Période 8 : L'Hégire - Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #1B4D3E;
+            --soft-beige: #F7F5F0;
+            --warm-white: #FEFEFE;
+            --text-dark: #2C3E50;
+            --accent-blue: #3498DB;
+            --light-gray: #ECF0F1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--soft-beige);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .period-info {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background: var(--light-gray);
+            color: var(--text-dark);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+
+        .content-area {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .historical-fact {
+            background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+            border-left: 5px solid var(--primary-gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .historical-fact .fact-title {
+            font-weight: 600;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: var(--deep-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            font-family: 'Amiri', serif;
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            opacity: 0.3;
+        }
+
+        .quote-source {
+            text-align: right;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-card h4 {
+            font-family: 'Amiri', serif;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .timeline-nav a {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .timeline-nav a:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        .timeline-nav a.current {
+            background: var(--deep-green);
+            color: white;
+        }
+
+        .key-facts {
+            list-style: none;
+        }
+
+        .key-facts li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .key-facts li:last-child {
+            border-bottom: none;
+        }
+
+        .key-facts strong {
+            color: var(--deep-green);
+        }
+
+        .sources {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+
+        .sources h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--deep-green);
+        }
+
+        .sources ul {
+            list-style: none;
+        }
+
+        .sources li {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .reflection-box {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #E6C062 100%);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .reflection-box h4 {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--deep-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+        }
+
+        .miracle-box {
+            background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 100%);
+            border-left: 5px solid var(--accent-blue);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .miracle-box .miracle-title {
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            
+            .content-area {
+                padding: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .page-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>L'Hégire</h1>
+        <div class="period-info">Période 8 • 622 EC • De La Mecque à Médine • "Le voyage qui changea l'histoire"</div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="../index_v2.html">Accueil</a>
+                <a href="index_v2.html">Toutes les périodes</a>
+                <a href="#sources">Sources</a>
+            </div>
+            <div class="nav-controls">
+                <a href="../en/periode8.html" class="btn btn-secondary">EN</a>
+                <a href="../ar/periode8.html" class="btn btn-secondary">عربي</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <article class="content-area">
+            <section class="content-section">
+                <h2>La Grande Migration</h2>
+                
+                <p>L'Hégire représente un tournant décisif dans l'histoire de l'Islam. Face à l'intensification des persécutions mecquoises, Allah ordonne à Son Messager ﷺ d'émigrer vers Yathrib (future Médine), marquant le début du calendrier musulman.</p>
+
+                <div class="quote-box">
+                    إِلَّا تَنصُرُوهُ فَقَدْ نَصَرَهُ اللَّهُ إِذْ أَخْرَجَهُ الَّذِينَ كَفَرُوا ثَانِيَ اثْنَيْنِ إِذْ هُمَا فِي الْغَارِ
+                    <br><br>
+                    "Si vous ne lui portez pas secours... Allah l'a déjà secouru, lorsque ceux qui avaient mécru l'avaient banni, deuxième de deux, quand ils étaient dans la grotte."
+                    <div class="quote-source">Coran, Sourate At-Tawba (9:40)</div>
+                </div>
+
+                <h3>Les Prémices : L'Invitation des Ansâr</h3>
+                <p>Lors du pèlerinage de l'année 620, douze hommes de Yathrib rencontrent secrètement le Prophète ﷺ à Al-Aqaba et embrassent l'Islam. Cette première allégeance (Bay'at al-Aqaba al-Ula) ouvre la voie à l'émigration.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Le Terrain Favorable</div>
+                    Yathrib, déchirée par les guerres tribales entre Aws et Khazraj, aspire à la paix. La réputation de sagesse du Prophète ﷺ et son message d'unité séduisent ces tribus fatiguées des conflits.
+                </div>
+
+                <h3>La Seconde Allégeance d'Al-Aqaba</h3>
+                <p>L'année suivante (621), soixante-treize hommes et deux femmes de Médine prêtent serment au Prophète ﷺ, s'engageant à le protéger comme leurs propres enfants.</p>
+
+                <div class="quote-box">
+                    "Nous te jurons allégeance sur l'écoute et l'obéissance, dans la difficulté comme dans l'aisance, dans ce que nous aimons comme dans ce que nous détestons."
+                    <div class="quote-source">Serment des Ansâr - Rapporté par Ibn Hichâm</div>
+                </div>
+
+                <h3>Le Complot de Quraych</h3>
+                <p>Alarmés par l'émigration progressive des musulmans vers Médine, les chefs mecquois décident d'assassiner le Prophète ﷺ. Ils choisissent un homme de chaque tribu pour partager la responsabilité du sang.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">La Stratégie Diabolique</div>
+                    En impliquant toutes les tribus dans le meurtre, Quraych espère empêcher Banu Hashim de demander le prix du sang, car ils ne pourraient combattre toute La Mecque.
+                </div>
+
+                <h3>La Révélation et l'Ordre de Partir</h3>
+                <p>Allah informe Son Messager ﷺ du complot et lui ordonne d'émigrer immédiatement.</p>
+
+                <div class="quote-box">
+                    "Et quand les mécréants complotaient contre toi pour t'emprisonner ou t'assassiner ou te bannir. Ils complotaient, mais Allah a comploté, et Allah est le meilleur des stratèges."
+                    <div class="quote-source">Coran, Sourate Al-Anfal (8:30)</div>
+                </div>
+
+                <h3>Le Compagnon Fidèle</h3>
+                <p>Le Prophète ﷺ choisit Abu Bakr As-Siddiq comme compagnon de voyage. Ce choix révèle la confiance totale qu'il place en son ami le plus proche.</p>
+
+                <div class="quote-box">
+                    "Ô Abu Bakr, qu'en penses-tu de deux personnes dont Allah est le troisième ?"
+                    <div class="quote-source">Paroles du Prophète ﷺ dans la grotte - Sahih al-Bukhari</div>
+                </div>
+
+                <h3>La Nuit du Départ</h3>
+                <p>Dans la nuit du 27 Safar (12 septembre 622), les assassins encerclent la maison du Prophète ﷺ. Grâce à un plan divin parfait, il s'échappe sous leurs yeux.</p>
+
+                <div class="miracle-box">
+                    <div class="miracle-title">Le Miracle de l'Invisibilité</div>
+                    Le Prophète ﷺ sort de sa maison en récitant les premiers versets de Sourate Yasîn. Allah voile leur vue, et il passe entre eux sans être vu, jetant de la poussière sur leurs têtes.
+                </div>
+
+                <h3>Ali et le Sacrifice</h3>
+                <p>Ali ibn Abi Talib accepte de dormir dans le lit du Prophète ﷺ, risquant sa vie pour protéger son cousin. Ce sacrifice témoigne de sa bravoure exceptionnelle.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">La Mission de Confiance</div>
+                    Ali doit aussi rendre les dépôts (amanât) confiés au Prophète ﷺ par les Mecquois, même ses ennemis. Cette honnêteté exemplaire impressionne profondément Quraych.
+                </div>
+
+                <h3>Dans la Grotte de Thawr</h3>
+                <p>Le Prophète ﷺ et Abu Bakr se cachent trois jours dans la grotte de Thawr, au sud de La Mecque, direction opposée à Médine pour dérouter les poursuivants.</p>
+
+                <div class="miracle-box">
+                    <div class="miracle-title">Les Signes Divins</div>
+                    Une araignée tisse sa toile à l'entrée de la grotte, et deux pigeons y construisent leur nid. Les poursuivants, voyant ces signes de non-passage récent, abandonnent leurs recherches.
+                </div>
+
+                <div class="quote-box">
+                    "Ne t'afflige pas, car Allah est avec nous."
+                    <div class="quote-source">Paroles du Prophète ﷺ à Abu Bakr - Coran 9:40</div>
+                </div>
+
+                <h3>La Servante Fidèle</h3>
+                <p>Asma bint Abi Bakr, fille d'Abu Bakr, joue un rôle crucial en apportant quotidiennement nouvelles et provisions aux fugitifs, risquant sa vie avec un courage admirable.</p>
+
+                <h3>Le Voyage vers Médine</h3>
+                <p>Guidés par Abdullah ibn Urayqit, un guide expert non-musulman mais digne de confiance, ils empruntent des chemins détournés vers Médine.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">La Confiance Universelle</div>
+                    Choisir un guide non-musulman montre que l'Islam reconnaît l'honnêteté et la compétence indépendamment de la foi, principe révolutionnaire pour l'époque.
+                </div>
+
+                <h3>L'Incident de Suraqa</h3>
+                <p>Suraqa ibn Malik tente de capturer le Prophète ﷺ pour obtenir la récompense. Son cheval s'enfonce miraculeusement dans le sable, et il demande pardon.</p>
+
+                <div class="quote-box">
+                    "Que diras-tu, ô Suraqa, quand tu porteras les bracelets de Chosroês ?"
+                    <div class="quote-source">Prophétie du Prophète ﷺ à Suraqa - Sahih al-Bukhari</div>
+                </div>
+
+                <h3>L'Arrivée Triomphale à Quba</h3>
+                <p>Le 12 Rabi' al-Awwal (23 septembre 622), le Prophète ﷺ arrive à Quba, dans la banlieue de Médine. Il y construit la première mosquée de l'Islam.</p>
+
+                <div class="reflection-box">
+                    <h4>Réflexion : La Sagesse Divine du Changement</h4>
+                    <p>L'Hégire enseigne que parfois, changer de lieu ne signifie pas fuir, mais obéir à la sagesse divine. Ce qui semblait être une défaite - l'exil forcé - devient le fondement d'une civilisation. Allah transforme l'épreuve en triomphe, la faiblesse en force, l'exil en nouveau départ.</p>
+                </div>
+
+                <h3>L'Entrée à Médine</h3>
+                <p>Après quatre jours à Quba, le Prophète ﷺ entre à Médine le vendredi. Toute la ville l'accueille avec des chants de joie :</p>
+
+                <div class="quote-box">
+                    طلع البدر علينا من ثنيات الوداع<br>
+                    وجب الشكر علينا ما دعا لله داع
+                    <br><br>
+                    "La pleine lune s'est levée sur nous depuis les hauteurs d'adieu<br>
+                    La gratitude nous incombe tant qu'un appelant invoquera Allah"
+                    <div class="quote-source">Chant d'accueil des Ansâr</div>
+                </div>
+
+                <h3>Le Nouveau Calendrier</h3>
+                <p>Plus tard, sous le califat d'Umar ibn al-Khattab, l'Hégire marque le début du calendrier musulman, reconnaissant son importance historique capitale.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Signification Profonde</div>
+                    L'Hégire ne représente pas seulement un déplacement géographique, mais une transformation spirituelle et sociale qui établira les fondements de la civilisation islamique.
+                </div>
+            </section>
+
+            <div class="sources" id="sources">
+                <h3>Sources Authentiques Consultées</h3>
+                <ul>
+                    <li><strong>Sahih al-Bukhari</strong> - Livre de l'Hégire</li>
+                    <li><strong>Sahih Muslim</strong> - Livre de l'Hégire</li>
+                    <li><strong>Ibn Hichâm</strong> - As-Sîra an-Nabawiyya</li>
+                    <li><strong>At-Tabari</strong> - Histoire des Prophètes et des Rois</li>
+                    <li><strong>Ibn Kathir</strong> - Al-Bidaya wa an-Nihaya</li>
+                    <li><strong>Al-Waqidi</strong> - Kitab al-Maghazi</li>
+                </ul>
+            </div>
+
+            <nav class="page-navigation">
+                <a href="periode7_v2.html" class="nav-btn">
+                    ← Période 7 : Les Premières Épreuves
+                </a>
+                <a href="periode9_v2.html" class="nav-btn">
+                    Période 9 : Médine la Radieuse →
+                </a>
+            </nav>
+        </article>
+
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h4>Navigation des Périodes</h4>
+                <nav class="timeline-nav">
+                    <a href="periode1_v2.html">1. La Lumière Promise</a>
+                    <a href="periode2_v2.html">2. L'Orphelin Béni</a>
+                    <a href="periode3_v2.html">3. L'Homme de Confiance</a>
+                    <a href="periode4_v2.html">4. La Première Révélation</a>
+                    <a href="periode5_v2.html">5. L'Appel Silencieux</a>
+                    <a href="periode6_v2.html">6. La Proclamation</a>
+                    <a href="periode7_v2.html">7. Les Premières Épreuves</a>
+                    <a href="periode8_v2.html" class="current">8. L'Hégire</a>
+                    <a href="periode9_v2.html">9. Médine la Radieuse</a>
+                    <a href="periode10_v2.html">10. Les Grandes Batailles</a>
+                    <a href="periode11_v2.html">11. Hudaybiya</a>
+                    <a href="periode12_v2.html">12. La Conquête</a>
+                    <a href="periode13_v2.html">13. L'Unification</a>
+                    <a href="periode14_v2.html">14. Le Pèlerinage d'Adieu</a>
+                    <a href="periode15_v2.html">15. L'Héritage Éternel</a>
+                </nav>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Faits Clés</h4>
+                <ul class="key-facts">
+                    <li><strong>Date :</strong> 12 Rabi' al-Awwal 1 H / 622 EC</li>
+                    <li><strong>Compagnon :</strong> Abu Bakr As-Siddiq</li>
+                    <li><strong>Refuge :</strong> Grotte de Thawr</li>
+                    <li><strong>Durée du voyage :</strong> 8 jours</li>
+                    <li><strong>Distance :</strong> ~450 km</li>
+                    <li><strong>Guide :</strong> Abdullah ibn Urayqit</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Miracle Divin</h4>
+                <p>L'Hégire témoigne de la protection divine constante. Chaque détail - de l'évasion nocturne aux signes dans la grotte - révèle la main d'Allah guidant Son Messager ﷺ.</p>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

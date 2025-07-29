@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Période 6 : La Proclamation Publique - Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* [CSS identique aux autres périodes - omis pour la brièveté] */
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #1B4D3E;
+            --soft-beige: #F7F5F0;
+            --warm-white: #FEFEFE;
+            --text-dark: #2C3E50;
+            --accent-blue: #3498DB;
+            --light-gray: #ECF0F1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--soft-beige);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .period-info {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background: var(--light-gray);
+            color: var(--text-dark);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+
+        .content-area {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .historical-fact {
+            background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+            border-left: 5px solid var(--primary-gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .historical-fact .fact-title {
+            font-weight: 600;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: var(--deep-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            font-family: 'Amiri', serif;
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            opacity: 0.3;
+        }
+
+        .quote-source {
+            text-align: right;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-card h4 {
+            font-family: 'Amiri', serif;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .timeline-nav a {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .timeline-nav a:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        .timeline-nav a.current {
+            background: var(--deep-green);
+            color: white;
+        }
+
+        .key-facts {
+            list-style: none;
+        }
+
+        .key-facts li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .key-facts li:last-child {
+            border-bottom: none;
+        }
+
+        .key-facts strong {
+            color: var(--deep-green);
+        }
+
+        .sources {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+
+        .sources h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--deep-green);
+        }
+
+        .sources ul {
+            list-style: none;
+        }
+
+        .sources li {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .reflection-box {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #E6C062 100%);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .reflection-box h4 {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--deep-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            
+            .content-area {
+                padding: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .page-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>La Proclamation Publique</h1>
+        <div class="period-info">Période 6 • 613-616 EC • La Mecque • "Avertis tes proches !"</div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="../index_v2.html">Accueil</a>
+                <a href="index_v2.html">Toutes les périodes</a>
+                <a href="#sources">Sources</a>
+            </div>
+            <div class="nav-controls">
+                <a href="../en/periode6.html" class="btn btn-secondary">EN</a>
+                <a href="../ar/periode6.html" class="btn btn-secondary">عربي</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <article class="content-area">
+            <section class="content-section">
+                <h2>L'Ordre Divin de Proclamer</h2>
+                
+                <p>Après trois années de prédication secrète, Allah ordonne à Son Messager ﷺ de rendre publique sa mission. Ce tournant décisif marque le début d'une nouvelle phase, plus difficile mais nécessaire pour la propagation universelle de l'Islam.</p>
+
+                <div class="quote-box">
+                    وَأَنذِرْ عَشِيرَتَكَ الْأَقْرَبِينَ ۝ وَاخْفِضْ جَنَاحَكَ لِمَنِ اتَّبَعَكَ مِنَ الْمُؤْمِنِينَ
+                    <br><br>
+                    "Et avertis tes proches parents. Et abaisse ton aile [sois bienveillant] pour ceux des croyants qui te suivent."
+                    <div class="quote-source">Coran, Sourate Ash-Shu'ara (26:214-215)</div>
+                </div>
+
+                <h3>L'Appel du Mont As-Safa</h3>
+                <p>Obéissant à l'ordre divin, le Prophète ﷺ monte sur le mont As-Safa et appelle les tribus de La Mecque. Cette première proclamation publique restera dans l'histoire comme un moment charnière.</p>
+
+                <div class="quote-box">
+                    "Ô Banu Abd Shams ! Ô Banu Abd Manaf ! Ô Banu Hashim ! Si je vous disais qu'une armée ennemie se trouve derrière cette montagne et s'apprête à vous attaquer, me croiriez-vous ?" Ils répondirent : "Oui, car nous ne t'avons jamais connu menteur." Il dit alors : "Je suis un avertisseur qui vous met en garde contre un châtiment sévère."
+                    <div class="quote-source">Sahih al-Bukhari</div>
+                </div>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Stratégie Rhétorique</div>
+                    Le Prophète ﷺ commence par rappeler sa réputation de véracité, établissant ainsi sa crédibilité avant de délivrer son message. Cette méthode pédagogique révèle sa sagesse dans l'art de la communication.
+                </div>
+
+                <h3>La Réaction d'Abu Lahab</h3>
+                <p>La première opposition publique vient paradoxalement de sa propre famille. Abu Lahab, son oncle, l'interrompt violemment, marquant le début des hostilités ouvertes.</p>
+
+                <div class="quote-box">
+                    "Que tu périsses ! Est-ce pour cela que tu nous as rassemblés ?"
+                    <div class="quote-source">Paroles d'Abu Lahab - Rapportées par Al-Bukhari</div>
+                </div>
+
+                <p>Cette réaction hostile inspirera la révélation de la sourate Al-Masad (Les Fibres), condamnant Abu Lahab et sa femme pour leur opposition acharnée.</p>
+
+                <h3>Les Premières Conversions Publiques</h3>
+                <p>Malgré l'hostilité croissante, certaines personnalités éminentes embrassent courageusement l'Islam :</p>
+
+                <ul style="margin: 1.5rem 0; padding-left: 2rem;">
+                    <li><strong>Arqam ibn Abi al-Arqam</strong> - Met sa demeure à disposition</li>
+                    <li><strong>Sa'id ibn Zayd</strong> - Jeune noble influent</li>
+                    <li><strong>Khabbab ibn al-Arat</strong> - Forgeron respecté</li>
+                    <li><strong>Abdullah ibn Mas'ud</strong> - Berger devenu érudit</li>
+                    <li><strong>Mus'ab ibn Umayr</strong> - Jeune aristocrate</li>
+                </ul>
+
+                <h3>L'Intensification de l'Opposition</h3>
+                <p>Les dirigeants de Quraych organisent une résistance systématique. Ils utilisent plusieurs stratégies pour contrer la nouvelle religion :</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Tactiques d'Opposition</div>
+                    Les Mecquois emploient la moquerie, la diffamation, les pressions économiques et sociales. Ils accusent Muhammad ﷺ d'être poète, devin, magicien ou fou, cherchant à discréditer son message.
+                </div>
+
+                <h3>Les Débats et Confrontations</h3>
+                <p>Cette période voit naître de nombreux débats théologiques. Les polythéistes questionnent les fondements de l'Islam, donnant lieu à des révélations coraniques profondes sur l'unicité divine.</p>
+
+                <div class="quote-box">
+                    قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ
+                    <br><br>
+                    "Dis : Il est Allah, Unique ! Allah, Le Seul à être imploré pour ce que nous désirons. Il n'a jamais engendré, n'a pas été engendré non plus. Et nul n'est égal à Lui."
+                    <div class="quote-source">Coran, Sourate Al-Ikhlas (112:1-4)</div>
+                </div>
+
+                <h3>La Persévérance malgré les Épreuves</h3>
+                <p>Face aux moqueries et aux insultes, le Prophète ﷺ fait preuve d'une patience remarquable. Son attitude digne et sa persévérance impressionnent même certains opposants.</p>
+
+                <div class="reflection-box">
+                    <h4>Réflexion : Le Courage de la Vérité</h4>
+                    <p>Passer de la sécurité de la discrétion à l'exposition publique demande un courage extraordinaire. Muhammad ﷺ sacrifie sa tranquillité personnelle pour obéir à l'ordre divin. Cette transition illustre que la vérité, même difficile à entendre, doit être proclamée ouvertement.</p>
+                </div>
+
+                <h3>L'Expansion Progressive</h3>
+                <p>Malgré l'opposition, l'Islam continue de gagner des adeptes. La clarté du message et l'exemplarité du messager attirent les cœurs sincères, préparant la phase suivante de persécutions intenses.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Bilan de la Période</div>
+                    À la fin de cette période, environ 70 personnes ont embrassé l'Islam. Ce nombre, bien que modeste, constitue une base solide pour affronter les épreuves qui suivront.
+                </div>
+            </section>
+
+            <div class="sources" id="sources">
+                <h3>Sources Authentiques Consultées</h3>
+                <ul>
+                    <li><strong>Sahih al-Bukhari</strong> - Livre de l'exégèse coranique</li>
+                    <li><strong>Sahih Muslim</strong> - Livre des vertus du Prophète</li>
+                    <li><strong>Ibn Hichâm</strong> - As-Sîra an-Nabawiyya</li>
+                    <li><strong>At-Tabari</strong> - Histoire des Prophètes et des Rois</li>
+                    <li><strong>Ibn Kathir</strong> - Al-Bidaya wa an-Nihaya</li>
+                    <li><strong>Ibn Sa'd</strong> - Tabaqat al-Kubra</li>
+                </ul>
+            </div>
+
+            <nav class="page-navigation">
+                <a href="periode5_v2.html" class="nav-btn">
+                    ← Période 5 : L'Appel Silencieux
+                </a>
+                <a href="periode7_v2.html" class="nav-btn">
+                    Période 7 : Les Premières Épreuves →
+                </a>
+            </nav>
+        </article>
+
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h4>Navigation des Périodes</h4>
+                <nav class="timeline-nav">
+                    <a href="periode1_v2.html">1. La Lumière Promise</a>
+                    <a href="periode2_v2.html">2. L'Orphelin Béni</a>
+                    <a href="periode3_v2.html">3. L'Homme de Confiance</a>
+                    <a href="periode4_v2.html">4. La Première Révélation</a>
+                    <a href="periode5_v2.html">5. L'Appel Silencieux</a>
+                    <a href="periode6_v2.html" class="current">6. La Proclamation</a>
+                    <a href="periode7_v2.html">7. Les Premières Épreuves</a>
+                    <a href="periode8_v2.html">8. L'Hégire</a>
+                    <a href="periode9_v2.html">9. Médine la Radieuse</a>
+                    <a href="periode10_v2.html">10. Les Grandes Batailles</a>
+                    <a href="periode11_v2.html">11. Hudaybiya</a>
+                    <a href="periode12_v2.html">12. La Conquête</a>
+                    <a href="periode13_v2.html">13. L'Unification</a>
+                    <a href="periode14_v2.html">14. Le Pèlerinage d'Adieu</a>
+                    <a href="periode15_v2.html">15. L'Héritage Éternel</a>
+                </nav>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Faits Clés</h4>
+                <ul class="key-facts">
+                    <li><strong>Ordre divin :</strong> "Avertis tes proches"</li>
+                    <li><strong>Lieu :</strong> Mont As-Safa</li>
+                    <li><strong>Première opposition :</strong> Abu Lahab</li>
+                    <li><strong>Durée :</strong> 613-616 EC</li>
+                    <li><strong>Nouveaux musulmans :</strong> ~70 personnes</li>
+                    <li><strong>Révélation clé :</strong> Sourate Al-Ikhlas</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Leçon de Communication</h4>
+                <p>La transition du privé au public nécessite courage et stratégie. Le Prophète ﷺ établit d'abord sa crédibilité avant de délivrer son message, principe fondamental de toute communication efficace.</p>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie Visuelle - Vie du Prophète Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #0F4C3A;
+            --soft-cream: #F8F6F0;
+            --warm-brown: #8B4513;
+            --text-dark: #2C1810;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .gallery-header {
+            background: linear-gradient(rgba(15, 76, 58, 0.9), rgba(139, 69, 19, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><defs><pattern id="islamic" patternUnits="userSpaceOnUse" width="50" height="50"><path d="M25,25 L35,15 L25,5 L15,15 Z" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/></pattern></defs><rect width="1000" height="300" fill="url(%23islamic)"/></svg>');
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .gallery-title {
+            font-family: 'Amiri', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .gallery-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .navigation {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--primary-gold);
+            color: var(--deep-green);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--deep-green), var(--warm-brown));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="islamic-pattern" patternUnits="userSpaceOnUse" width="20" height="20"><path d="M10,10 L15,5 L10,0 L5,5 Z" fill="none" stroke="rgba(212,175,55,0.2)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23islamic-pattern)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .gallery-content {
+            padding: 1.5rem;
+        }
+
+        .gallery-item-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-item-period {
+            color: var(--primary-gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-item-description {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--warm-brown);
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-gold);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--deep-green), var(--warm-brown));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="modal-pattern" patternUnits="userSpaceOnUse" width="15" height="15"><path d="M7.5,7.5 L11,3.5 L7.5,0 L4,3.5 Z" fill="none" stroke="rgba(212,175,55,0.3)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23modal-pattern)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .modal-title {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .modal-period {
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .modal-description {
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .modal-content {
+                margin: 2% auto;
+                padding: 1.5rem;
+                max-height: 90vh;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="nav-logo">Galerie ﷺ</div>
+            <ul class="nav-links">
+                <li><a href="index_v2.html">Accueil</a></li>
+                <li><a href="fr/index_v2.html">Périodes</a></li>
+                <li><a href="carte_interactive.html">Carte</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="gallery-header">
+        <h1 class="gallery-title">Galerie Visuelle</h1>
+        <p class="gallery-subtitle">Illustrations artistiques de la vie du bien-aimé Prophète Muhammad ﷺ</p>
+    </header>
+
+    <div class="gallery-container">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Tout</button>
+            <button class="filter-btn" data-filter="mecque">Période Mecquoise</button>
+            <button class="filter-btn" data-filter="medine">Période Médinoise</button>
+            <button class="filter-btn" data-filter="batailles">Batailles</button>
+            <button class="filter-btn" data-filter="spirituel">Spirituel</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Les éléments de la galerie seront générés par JavaScript -->
+        </div>
+    </div>
+
+    <!-- Modal pour affichage détaillé -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-image" id="modalImage"></div>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <p class="modal-period" id="modalPeriod"></p>
+            <p class="modal-description" id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        const galleryData = [
+            {
+                id: 1,
+                title: "La Naissance Bénie",
+                period: "570 EC - L'Année de l'Éléphant",
+                category: "spirituel",
+                icon: "🌟",
+                description: "Illustration de la naissance du Prophète Muhammad ﷺ dans l'année de l'Éléphant, marquée par des signes célestes et des prodiges. Cette naissance illumina le monde et annonça l'arrivée du dernier des messagers d'Allah."
+            },
+            {
+                id: 2,
+                title: "La Première Révélation",
+                period: "610 EC - Grotte de Hira",
+                category: "spirituel",
+                icon: "📖",
+                description: "Représentation artistique de la première révélation dans la grotte de Hira, lorsque l'ange Gabriel (Jibril) apparut au Prophète ﷺ avec les premières paroles du Coran : 'Lis au nom de ton Seigneur qui a créé'."
+            },
+            {
+                id: 3,
+                title: "La Kaaba Sacrée",
+                period: "Époque Pré-islamique",
+                category: "mecque",
+                icon: "🕋",
+                description: "Vue artistique de la Kaaba à La Mecque, centre spirituel de l'Islam et direction de la prière (Qibla). Le Prophète ﷺ grandit dans cette ville sainte et y commença sa mission prophétique."
+            },
+            {
+                id: 4,
+                title: "L'Hégire - La Grande Migration",
+                period: "622 EC - De La Mecque à Médine",
+                category: "medine",
+                icon: "🐪",
+                description: "Illustration de l'Hégire, la migration historique du Prophète ﷺ et des premiers musulmans de La Mecque vers Médine. Ce voyage marque le début du calendrier islamique et l'établissement de la première communauté musulmane."
+            },
+            {
+                id: 5,
+                title: "La Construction du Masjid an-Nabawi",
+                period: "622 EC - Médine",
+                category: "medine",
+                icon: "🕌",
+                description: "Représentation de la construction de la première mosquée par le Prophète ﷺ à Médine. Ce lieu devint le centre de la communauté musulmane, servant à la fois de lieu de culte, d'enseignement et de gouvernance."
+            },
+            {
+                id: 6,
+                title: "La Bataille de Badr",
+                period: "624 EC - Première Grande Victoire",
+                category: "batailles",
+                icon: "⚔️",
+                description: "Illustration artistique de la bataille de Badr, première grande victoire militaire des musulmans. Malgré leur infériorité numérique, les musulmans furent victorieux grâce à l'aide divine et à la stratégie du Prophète ﷺ."
+            },
+            {
+                id: 7,
+                title: "Le Voyage Nocturne (Isra et Mi'raj)",
+                period: "621 EC - Jérusalem et les Cieux",
+                category: "spirituel",
+                icon: "🌙",
+                description: "Représentation du voyage nocturne miraculeux du Prophète ﷺ de La Mecque à Jérusalem (Isra) puis son ascension vers les cieux (Mi'raj), où il rencontra les prophètes précédents et reçu l'ordonnance de la prière."
+            },
+            {
+                id: 8,
+                title: "Le Traité de Hudaybiya",
+                period: "628 EC - Diplomatie Prophétique",
+                category: "medine",
+                icon: "🤝",
+                description: "Illustration du traité de Hudaybiya, démonstration de la sagesse diplomatique du Prophète ﷺ. Ce traité, initialement perçu comme défavorable, permit la propagation pacifique de l'Islam."
+            },
+            {
+                id: 9,
+                title: "La Conquête de La Mecque",
+                period: "630 EC - Le Grand Pardon",
+                category: "mecque",
+                icon: "🏴",
+                description: "Représentation de la conquête pacifique de La Mecque, marquée par la magnanimité et le pardon du Prophète ﷺ envers ses anciens ennemis. Ce fut un tournant décisif dans l'expansion de l'Islam."
+            },
+            {
+                id: 10,
+                title: "La Purification de la Kaaba",
+                period: "630 EC - Retour aux Sources",
+                category: "mecque",
+                icon: "✨",
+                description: "Illustration de la purification de la Kaaba par le Prophète ﷺ, détruisant les idoles et restaurant le culte monothéiste pur d'Abraham. Ce moment marque le retour de La Mecque à sa vocation originelle."
+            },
+            {
+                id: 11,
+                title: "Le Pèlerinage d'Adieu",
+                period: "632 EC - Derniers Enseignements",
+                category: "spirituel",
+                icon: "🕋",
+                description: "Représentation du dernier pèlerinage du Prophète ﷺ, occasion de son célèbre sermon d'adieu où il résuma les principes fondamentaux de l'Islam et annonça l'achèvement de sa mission."
+            },
+            {
+                id: 12,
+                title: "La Bataille d'Uhud",
+                period: "625 EC - Leçon de Persévérance",
+                category: "batailles",
+                icon: "🛡️",
+                description: "Illustration de la bataille d'Uhud, qui enseigna aux musulmans l'importance de l'obéissance et de la discipline. Malgré les difficultés, cette bataille renforça la détermination de la communauté musulmane."
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        function renderGallery(filter = 'all') {
+            const grid = document.getElementById('galleryGrid');
+            const filteredData = filter === 'all' ? galleryData : galleryData.filter(item => item.category === filter);
+            
+            grid.innerHTML = filteredData.map(item => `
+                <div class="gallery-item" onclick="openModal(${item.id})">
+                    <div class="gallery-image">
+                        <span style="position: relative; z-index: 2;">${item.icon}</span>
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-item-title">${item.title}</h3>
+                        <p class="gallery-item-period">${item.period}</p>
+                        <p class="gallery-item-description">${item.description.substring(0, 120)}...</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openModal(itemId) {
+            const item = galleryData.find(i => i.id === itemId);
+            if (!item) return;
+
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalPeriod = document.getElementById('modalPeriod');
+            const modalDescription = document.getElementById('modalDescription');
+
+            modalImage.innerHTML = `<span style="position: relative; z-index: 2;">${item.icon}</span>`;
+            modalTitle.textContent = item.title;
+            modalPeriod.textContent = item.period;
+            modalDescription.textContent = item.description;
+
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            renderGallery();
+
+            // Filtres
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    currentFilter = filter;
+                    renderGallery(filter);
+                });
+            });
+
+            // Modal
+            document.querySelector('.modal-close').addEventListener('click', closeModal);
+            
+            window.addEventListener('click', function(event) {
+                const modal = document.getElementById('imageModal');
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Animation des cartes au scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Ajouter l'animation aux cartes quand elles sont créées
+            setTimeout(() => {
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px)';
+                    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    observer.observe(item);
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>

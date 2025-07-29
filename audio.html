@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecteur Audio - Récitations et Enseignements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #0F4C3A;
+            --soft-cream: #F8F6F0;
+            --warm-brown: #8B4513;
+            --text-dark: #2C1810;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .navigation {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .audio-header {
+            background: linear-gradient(rgba(15, 76, 58, 0.9), rgba(139, 69, 19, 0.8));
+            color: white;
+            text-align: center;
+            padding: 120px 0 80px;
+            margin-top: 80px;
+        }
+
+        .audio-title {
+            font-family: 'Amiri', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .audio-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .audio-container {
+            max-width: 1000px;
+            margin: -40px auto 2rem;
+            padding: 0 2rem;
+        }
+
+        .player-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .current-track {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #F0F0F0;
+        }
+
+        .track-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .track-reciter {
+            color: var(--warm-brown);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .track-description {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .audio-player {
+            background: linear-gradient(135deg, var(--deep-green), var(--warm-brown));
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .control-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        .control-btn.play-pause {
+            width: 70px;
+            height: 70px;
+            font-size: 1.8rem;
+            background: var(--primary-gold);
+        }
+
+        .control-btn.play-pause:hover {
+            background: rgba(212, 175, 55, 0.8);
+        }
+
+        .progress-container {
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-gold);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .volume-slider {
+            width: 100px;
+            height: 5px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .playlist-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .playlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #F0F0F0;
+        }
+
+        .playlist-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: var(--deep-green);
+        }
+
+        .playlist-filter {
+            padding: 0.8rem 1rem;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .track-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .track-item {
+            background: linear-gradient(135deg, var(--soft-cream), #F0EDE6);
+            padding: 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .track-item:hover {
+            transform: translateX(5px);
+            border-left-color: var(--primary-gold);
+        }
+
+        .track-item.active {
+            border-left-color: var(--deep-green);
+            background: linear-gradient(135deg, #E8F5E8, #F0FFF4);
+        }
+
+        .track-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .track-main {
+            flex-grow: 1;
+        }
+
+        .track-item-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--deep-green);
+            margin-bottom: 0.3rem;
+        }
+
+        .track-item-reciter {
+            color: var(--warm-brown);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .track-item-type {
+            background: var(--primary-gold);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .track-duration {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .lyrics-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .lyrics-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .lyrics-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .lyrics-content {
+            background: #FAFAFA;
+            padding: 2rem;
+            border-radius: 10px;
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+            line-height: 2;
+            text-align: center;
+            border-right: 4px solid var(--primary-gold);
+        }
+
+        .arabic-text {
+            font-size: 1.3rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+            direction: rtl;
+        }
+
+        .translation {
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .reference {
+            color: var(--warm-brown);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .audio-title {
+                font-size: 2rem;
+            }
+            
+            .player-controls {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .track-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .playlist-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        .playing-indicator {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+        }
+
+        .playing-indicator::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23D4AF37" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>') no-repeat center;
+            background-size: contain;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.95); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="nav-logo">Audio ﷺ</div>
+            <ul class="nav-links">
+                <li><a href="index_v2.html">Accueil</a></li>
+                <li><a href="fr/index_v2.html">Périodes</a></li>
+                <li><a href="recherche.html">Recherche</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="audio-header">
+        <h1 class="audio-title">Lecteur Audio</h1>
+        <p class="audio-subtitle">Récitations du Coran et Enseignements Prophétiques</p>
+    </header>
+
+    <div class="audio-container">
+        <div class="player-container">
+            <div class="current-track" id="currentTrack">
+                <h2 class="track-title">Sélectionnez un audio</h2>
+                <p class="track-reciter">Choisissez une récitation dans la liste ci-dessous</p>
+                <p class="track-description">Découvrez les récitations du Coran et les enseignements du Prophète Muhammad ﷺ</p>
+            </div>
+
+            <div class="audio-player">
+                <div class="player-controls">
+                    <button class="control-btn" onclick="previousTrack()">⏮</button>
+                    <button class="control-btn" onclick="rewind()">⏪</button>
+                    <button class="control-btn play-pause" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
+                    <button class="control-btn" onclick="fastForward()">⏩</button>
+                    <button class="control-btn" onclick="nextTrack()">⏭</button>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar" onclick="setProgress(event)">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="time-info">
+                        <span id="currentTime">0:00</span>
+                        <span id="totalTime">0:00</span>
+                    </div>
+                </div>
+
+                <div class="volume-container">
+                    <span>🔊</span>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70" onchange="setVolume()">
+                    <span id="volumeValue">70%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="playlist-container">
+            <div class="playlist-header">
+                <h2 class="playlist-title">Liste de Lecture</h2>
+                <select class="playlist-filter" id="playlistFilter" onchange="filterPlaylist()">
+                    <option value="all">Tout</option>
+                    <option value="coran">Récitations du Coran</option>
+                    <option value="hadith">Hadiths</option>
+                    <option value="dua">Invocations</option>
+                    <option value="sirah">Biographie</option>
+                </select>
+            </div>
+
+            <div class="track-list" id="trackList">
+                <!-- Les pistes seront générées par JavaScript -->
+            </div>
+        </div>
+
+        <div class="lyrics-container" id="lyricsContainer">
+            <div class="lyrics-header">
+                <h3 class="lyrics-title">Texte et Traduction</h3>
+            </div>
+            <div class="lyrics-content" id="lyricsContent">
+                <!-- Le contenu sera généré par JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio element (caché) -->
+    <audio id="audioPlayer" preload="metadata">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+
+    <script>
+        // Base de données des pistes audio (simulée)
+        const audioTracks = [
+            {
+                id: 1,
+                title: "Sourate Al-Fatiha",
+                reciter: "Cheikh Abdur Rahman As-Sudais",
+                type: "coran",
+                duration: "1:30",
+                audioUrl: "audio/al-fatiha.mp3", // URL simulée
+                lyrics: {
+                    arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾",
+                    translation: "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux. Louange à Allah, Seigneur de l'univers. Le Tout Miséricordieux, le Très Miséricordieux, Maître du Jour de la rétribution. C'est Toi [Seul] que nous adorons, et c'est Toi [Seul] dont nous implorons secours. Guide-nous dans le droit chemin, le chemin de ceux que Tu as comblés de faveurs, non pas de ceux qui ont encouru Ta colère, ni des égarés.",
+                    reference: "Coran, Sourate 1 : Al-Fatiha"
+                },
+                description: "L'ouverture du Coran, récitée dans chaque prière quotidienne."
+            },
+            {
+                id: 2,
+                title: "Hadith sur l'intention",
+                reciter: "Cheikh Nasser Al-Qatami",
+                type: "hadith",
+                duration: "2:15",
+                audioUrl: "audio/hadith-intention.mp3",
+                lyrics: {
+                    arabic: "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى",
+                    translation: "Les actions ne valent que par leurs intentions, et chacun n'obtient que ce qu'il a eu l'intention de faire.",
+                    reference: "Rapporté par al-Bukhari et Muslim"
+                },
+                description: "Premier hadith des 40 hadiths de An-Nawawi sur l'importance de l'intention."
+            },
+            {
+                id: 3,
+                title: "Invocation du matin",
+                reciter: "Cheikh Mishary Rashid",
+                type: "dua",
+                duration: "3:00",
+                audioUrl: "audio/dua-matin.mp3",
+                lyrics: {
+                    arabic: "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ",
+                    translation: "Ô Allah ! C'est par Toi que nous entrons dans la matinée, par Toi que nous entrons dans la soirée, par Toi que nous vivons, par Toi que nous mourons, et vers Toi est la résurrection.",
+                    reference: "Rapporté par at-Tirmidhi"
+                },
+                description: "Invocation à réciter le matin pour commencer la journée sous la protection d'Allah."
+            },
+            {
+                id: 4,
+                title: "La naissance du Prophète ﷺ",
+                reciter: "Cheikh Ali Jaber",
+                type: "sirah",
+                duration: "8:30",
+                audioUrl: "audio/naissance-prophete.mp3",
+                lyrics: {
+                    arabic: "وُلِدَ النَّبِيُّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ فِي عَامِ الْفِيلِ",
+                    translation: "Le Prophète (paix et bénédictions sur lui) est né dans l'année de l'Éléphant.",
+                    reference: "Ibn Hisham, As-Sirah an-Nabawiyyah"
+                },
+                description: "Récit de la naissance bénie du Prophète Muhammad ﷺ et des signes qui l'accompagnèrent."
+            },
+            {
+                id: 5,
+                title: "Sourate Al-Ikhlas",
+                reciter: "Cheikh Saad Al-Ghamidi",
+                type: "coran",
+                duration: "0:45",
+                audioUrl: "audio/al-ikhlas.mp3",
+                lyrics: {
+                    arabic: "قُلْ هُوَ اللَّهُ أَحَدٌ ﴿١﴾ اللَّهُ الصَّمَدُ ﴿٢﴾ لَمْ يَلِدْ وَلَمْ يُولَدْ ﴿٣﴾ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ ﴿٤﴾",
+                    translation: "Dis : Il est Allah, Unique ! Allah, Le Seul à être imploré pour ce que nous désirons. Il n'a jamais engendré, n'a pas été engendré non plus. Et nul n'est égal à Lui.",
+                    reference: "Coran, Sourate 112 : Al-Ikhlas"
+                },
+                description: "Sourate sur l'unicité d'Allah, équivalant au tiers du Coran selon le hadith."
+            },
+            {
+                id: 6,
+                title: "Hadith sur la foi",
+                reciter: "Cheikh Abdullah Basfar",
+                type: "hadith",
+                duration: "3:45",
+                audioUrl: "audio/hadith-foi.mp3",
+                lyrics: {
+                    arabic: "الْإِيمَانُ بِضْعٌ وَسَبْعُونَ شُعْبَةً، فَأَفْضَلُهَا قَوْلُ: لَا إِلَهَ إِلَّا اللَّهُ، وَأَدْنَاهَا إِمَاطَةُ الْأَذَى عَنِ الطَّرِيقِ",
+                    translation: "La foi comporte soixante-dix et quelques branches. La plus élevée consiste à dire : 'Il n'y a de divinité qu'Allah', et la plus modeste consiste à écarter ce qui nuit du chemin.",
+                    reference: "Rapporté par Muslim"
+                },
+                description: "Hadith expliquant les différents aspects et niveaux de la foi en Islam."
+            }
+        ];
+
+        let currentTrackIndex = -1;
+        let isPlaying = false;
+        let currentFilter = 'all';
+        const audioPlayer = document.getElementById('audioPlayer');
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPlaylist();
+            setupAudioListeners();
+        });
+
+        function renderPlaylist() {
+            const trackList = document.getElementById('trackList');
+            const filteredTracks = currentFilter === 'all' ? 
+                audioTracks : 
+                audioTracks.filter(track => track.type === currentFilter);
+
+            trackList.innerHTML = filteredTracks.map((track, index) => `
+                <div class="track-item ${currentTrackIndex === audioTracks.indexOf(track) ? 'active' : ''}" 
+                     onclick="selectTrack(${audioTracks.indexOf(track)})">
+                    <div class="track-info">
+                        <div class="track-main">
+                            <h3 class="track-item-title">
+                                ${track.title}
+                                ${currentTrackIndex === audioTracks.indexOf(track) && isPlaying ? '<span class="playing-indicator"></span>' : ''}
+                            </h3>
+                            <p class="track-item-reciter">${track.reciter}</p>
+                            <span class="track-item-type">${getTypeLabel(track.type)}</span>
+                        </div>
+                        <div class="track-duration">${track.duration}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getTypeLabel(type) {
+            const labels = {
+                'coran': 'Coran',
+                'hadith': 'Hadith',
+                'dua': 'Invocation',
+                'sirah': 'Biographie'
+            };
+            return labels[type] || type;
+        }
+
+        function selectTrack(index) {
+            currentTrackIndex = index;
+            const track = audioTracks[index];
+            
+            // Mettre à jour l'affichage de la piste courante
+            updateCurrentTrackDisplay(track);
+            
+            // Simuler le chargement de l'audio (car nous n'avons pas de vrais fichiers audio)
+            simulateAudioLoading(track);
+            
+            // Mettre à jour la playlist
+            renderPlaylist();
+            
+            // Afficher les paroles
+            showLyrics(track);
+        }
+
+        function updateCurrentTrackDisplay(track) {
+            document.querySelector('.track-title').textContent = track.title;
+            document.querySelector('.track-reciter').textContent = track.reciter;
+            document.querySelector('.track-description').textContent = track.description;
+        }
+
+        function simulateAudioLoading(track) {
+            // Simuler le chargement et la durée de l'audio
+            const [minutes, seconds] = track.duration.split(':').map(Number);
+            const totalSeconds = minutes * 60 + seconds;
+            
+            // Simuler les métadonnées
+            document.getElementById('totalTime').textContent = track.duration;
+            document.getElementById('currentTime').textContent = '0:00';
+            document.getElementById('progressFill').style.width = '0%';
+            
+            // Arrêter la lecture actuelle
+            isPlaying = false;
+            document.getElementById('playPauseBtn').textContent = '▶';
+        }
+
+        function togglePlayPause() {
+            if (currentTrackIndex === -1) {
+                alert('Veuillez sélectionner une piste audio');
+                return;
+            }
+
+            isPlaying = !isPlaying;
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            
+            if (isPlaying) {
+                playPauseBtn.textContent = '⏸';
+                startPlaybackSimulation();
+            } else {
+                playPauseBtn.textContent = '▶';
+                stopPlaybackSimulation();
+            }
+            
+            renderPlaylist(); // Mettre à jour l'indicateur de lecture
+        }
+
+        let playbackInterval;
+        let currentSeconds = 0;
+
+        function startPlaybackSimulation() {
+            const track = audioTracks[currentTrackIndex];
+            const [minutes, seconds] = track.duration.split(':').map(Number);
+            const totalSeconds = minutes * 60 + seconds;
+            
+            playbackInterval = setInterval(() => {
+                if (currentSeconds >= totalSeconds) {
+                    nextTrack();
+                    return;
+                }
+                
+                currentSeconds++;
+                updateProgress(currentSeconds, totalSeconds);
+            }, 1000);
+        }
+
+        function stopPlaybackSimulation() {
+            if (playbackInterval) {
+                clearInterval(playbackInterval);
+            }
+        }
+
+        function updateProgress(current, total) {
+            const percentage = (current / total) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            
+            const minutes = Math.floor(current / 60);
+            const seconds = current % 60;
+            document.getElementById('currentTime').textContent = 
+                `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function setProgress(event) {
+            if (currentTrackIndex === -1) return;
+            
+            const progressBar = event.currentTarget;
+            const rect = progressBar.getBoundingClientRect();
+            const percentage = (event.clientX - rect.left) / rect.width;
+            
+            const track = audioTracks[currentTrackIndex];
+            const [minutes, seconds] = track.duration.split(':').map(Number);
+            const totalSeconds = minutes * 60 + seconds;
+            
+            currentSeconds = Math.floor(totalSeconds * percentage);
+            updateProgress(currentSeconds, totalSeconds);
+        }
+
+        function setVolume() {
+            const volumeSlider = document.getElementById('volumeSlider');
+            const volumeValue = document.getElementById('volumeValue');
+            volumeValue.textContent = volumeSlider.value + '%';
+        }
+
+        function previousTrack() {
+            if (currentTrackIndex > 0) {
+                selectTrack(currentTrackIndex - 1);
+            }
+        }
+
+        function nextTrack() {
+            if (currentTrackIndex < audioTracks.length - 1) {
+                selectTrack(currentTrackIndex + 1);
+            } else {
+                // Arrêter la lecture à la fin
+                isPlaying = false;
+                document.getElementById('playPauseBtn').textContent = '▶';
+                stopPlaybackSimulation();
+                currentSeconds = 0;
+                renderPlaylist();
+            }
+        }
+
+        function rewind() {
+            currentSeconds = Math.max(0, currentSeconds - 10);
+            if (currentTrackIndex !== -1) {
+                const track = audioTracks[currentTrackIndex];
+                const [minutes, seconds] = track.duration.split(':').map(Number);
+                const totalSeconds = minutes * 60 + seconds;
+                updateProgress(currentSeconds, totalSeconds);
+            }
+        }
+
+        function fastForward() {
+            if (currentTrackIndex !== -1) {
+                const track = audioTracks[currentTrackIndex];
+                const [minutes, seconds] = track.duration.split(':').map(Number);
+                const totalSeconds = minutes * 60 + seconds;
+                currentSeconds = Math.min(totalSeconds, currentSeconds + 10);
+                updateProgress(currentSeconds, totalSeconds);
+            }
+        }
+
+        function filterPlaylist() {
+            const filter = document.getElementById('playlistFilter').value;
+            currentFilter = filter;
+            renderPlaylist();
+        }
+
+        function showLyrics(track) {
+            const lyricsContainer = document.getElementById('lyricsContainer');
+            const lyricsContent = document.getElementById('lyricsContent');
+            
+            if (track.lyrics) {
+                lyricsContent.innerHTML = `
+                    <div class="arabic-text">${track.lyrics.arabic}</div>
+                    <div class="translation">${track.lyrics.translation}</div>
+                    <div class="reference">${track.lyrics.reference}</div>
+                `;
+                lyricsContainer.style.display = 'block';
+            } else {
+                lyricsContainer.style.display = 'none';
+            }
+        }
+
+        function setupAudioListeners() {
+            // Listeners pour les raccourcis clavier
+            document.addEventListener('keydown', function(e) {
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        togglePlayPause();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        rewind();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        fastForward();
+                        break;
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        previousTrack();
+                        break;
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        nextTrack();
+                        break;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

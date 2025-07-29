@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Période 3 : L'Homme de Confiance - Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #1B4D3E;
+            --soft-beige: #F7F5F0;
+            --warm-white: #FEFEFE;
+            --text-dark: #2C3E50;
+            --accent-blue: #3498DB;
+            --light-gray: #ECF0F1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--soft-beige);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .period-info {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+        }
+
+        .btn-secondary {
+            background: var(--light-gray);
+            color: var(--text-dark);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+
+        .content-area {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .historical-fact {
+            background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+            border-left: 5px solid var(--primary-gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .historical-fact .fact-title {
+            font-weight: 600;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: var(--deep-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            font-family: 'Amiri', serif;
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            opacity: 0.3;
+        }
+
+        .quote-source {
+            text-align: right;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Sidebar Elements */
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-card h4 {
+            font-family: 'Amiri', serif;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .timeline-nav a {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .timeline-nav a:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        .timeline-nav a.current {
+            background: var(--deep-green);
+            color: white;
+        }
+
+        /* Key Facts */
+        .key-facts {
+            list-style: none;
+        }
+
+        .key-facts li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .key-facts li:last-child {
+            border-bottom: none;
+        }
+
+        .key-facts strong {
+            color: var(--deep-green);
+        }
+
+        /* Source References */
+        .sources {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+
+        .sources h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--deep-green);
+        }
+
+        .sources ul {
+            list-style: none;
+        }
+
+        .sources li {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Reflection Box */
+        .reflection-box {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #E6C062 100%);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .reflection-box h4 {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation Buttons */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--deep-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            
+            .content-area {
+                padding: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .page-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>L'Homme de Confiance</h1>
+        <div class="period-info">Période 3 • 578-610 EC • La Mecque • "As-Sadiq al-Amin"</div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="../index_v2.html">Accueil</a>
+                <a href="index_v2.html">Toutes les périodes</a>
+                <a href="#sources">Sources</a>
+            </div>
+            <div class="nav-controls">
+                <a href="../en/periode3.html" class="btn btn-secondary">EN</a>
+                <a href="../ar/periode3.html" class="btn btn-secondary">عربي</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <article class="content-area">
+            <section class="content-section">
+                <h2>As-Sadiq al-Amin : Le Véridique et le Digne de Confiance</h2>
+                
+                <p>Avant même de recevoir sa mission prophétique, Muhammad ﷺ jouissait déjà d'une réputation exceptionnelle à La Mecque. Surnommé "As-Sadiq" (le Véridique) et "Al-Amin" (le Digne de confiance), il incarnait les plus nobles qualités humaines, préparant ainsi les cœurs à accepter son message divin.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Témoignage Historique</div>
+                    Même après avoir proclamé l'Islam, ses ennemis les plus acharnés ne purent jamais l'accuser de mensonge concernant les affaires mondaines. Abu Jahl lui-même déclara : "Nous ne te traitons pas de menteur, mais nous renions ce que tu apportes."
+                </div>
+
+                <h3>L'Arbitre de la Pierre Noire</h3>
+                <p>Un incident célèbre illustre parfaitement la sagesse et le respect dont jouissait Muhammad ﷺ. Lors de la reconstruction de la Kaaba, les tribus de La Mecque se disputèrent l'honneur de replacer la Pierre Noire. La tension était si forte qu'une guerre tribale menaçait d'éclater.</p>
+
+                <div class="quote-box">
+                    "Lorsque les Quraychites furent sur le point de se battre pour savoir qui aurait l'honneur de remettre la Pierre Noire à sa place, ils convinrent que le premier homme qui entrerait par la porte des Banu Shayba arbitrerait leur différend. Ce fut Muhammad ﷺ."
+                    <div class="quote-source">Ibn Hichâm - As-Sîra an-Nabawiyya</div>
+                </div>
+
+                <p>Sa solution fut d'une sagesse remarquable : il étendit un manteau, y plaça la Pierre Noire, et demanda à un représentant de chaque tribu de tenir un coin du tissu pour la soulever ensemble. Puis il remit lui-même la pierre à sa place. Cette solution diplomatique évita un bain de sang et renforça sa réputation de sagesse.</p>
+
+                <h3>Le Mariage avec Khadija bint Khuwaylid</h3>
+                <p>L'union avec Khadija, femme d'affaires respectée et veuve fortunée, témoigne de la haute estime dont jouissait Muhammad ﷺ dans la société mecquoise. Cette relation, basée sur l'amour et le respect mutuel, durera 25 ans jusqu'à la mort de Khadija.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Statut Social Élevé</div>
+                    Khadija était l'une des femmes les plus influentes de La Mecque, dirigeant ses propres caravanes commerciales. Son choix d'épouser Muhammad ﷺ, alors qu'elle avait 40 ans et lui 25, témoigne de sa reconnaissance de ses qualités exceptionnelles.
+                </div>
+
+                <div class="quote-box">
+                    "Khadija dit à Muhammad : 'Ô fils de mon oncle ! Je t'aime pour ta parenté avec moi, ta position au milieu de ton peuple, ta droiture, la beauté de ton caractère et la véracité de tes paroles.'"
+                    <div class="quote-source">At-Tabari - Histoire des Prophètes et des Rois</div>
+                </div>
+
+                <h3>L'Excellence dans le Commerce</h3>
+                <p>Muhammad ﷺ excellait dans le commerce, activité principale de La Mecque. Sa probité était si reconnue que Khadija lui confia ses affaires commerciales après avoir entendu parler de son honnêteté par son serviteur Maysara.</p>
+
+                <div class="quote-box">
+                    "Maysara rapporta à Khadija : 'J'ai vu deux anges faire de l'ombre au-dessus de Muhammad pendant tout le voyage. Je n'ai jamais vu quelqu'un d'aussi honnête dans ses transactions et d'aussi généreux avec les pauvres.'"
+                    <div class="quote-source">Rapporté par Ibn Sa'd</div>
+                </div>
+
+                <h3>La Générosité et la Justice Sociale</h3>
+                <p>Avant sa mission prophétique, Muhammad ﷺ était déjà connu pour sa générosité envers les démunis et sa défense des opprimés. Il participait au "Hilf al-Fudul" (Pacte des Vertueux), une alliance pour la justice sociale à La Mecque.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Engagement Social Précoce</div>
+                    Le Hilf al-Fudul était une alliance tribale visant à protéger les droits des faibles et des étrangers à La Mecque. La participation de Muhammad ﷺ à cette initiative témoigne de sa sensibilité sociale précoce.
+                </div>
+
+                <h3>Les Retraites Spirituelles à Hira</h3>
+                <p>Dès avant sa quarantaine, Muhammad ﷺ avait l'habitude de se retirer dans la grotte de Hira pour méditer et adorer Allah. Cette pratique, appelée "Tahannuth", était courante chez certains Arabes monothéistes.</p>
+
+                <div class="quote-box">
+                    "Il avait l'habitude de se retirer dans la grotte de Hira où il adorait (Allah) durant plusieurs nuits d'affilée. Il emportait des provisions pour ce séjour, puis revenait vers Khadija pour prendre des provisions semblables, jusqu'à ce que la Vérité lui vienne..."
+                    <div class="quote-source">Sahih al-Bukhari</div>
+                </div>
+
+                <div class="reflection-box">
+                    <h4>Réflexion : La Préparation Divine</h4>
+                    <p>Cette période de la vie de Muhammad ﷺ révèle comment Allah prépare Ses messagers. La réputation irréprochable, la sagesse dans les relations humaines, et la quête spirituelle créent les conditions idéales pour l'acceptation du message divin. Sa crédibilité établie rend son témoignage prophétique d'autant plus convaincant.</p>
+                </div>
+
+                <h3>La Famille et les Enfants</h3>
+                <p>De son union avec Khadija naissent plusieurs enfants : Qasim, Abdullah (surnommé "at-Tayyib" et "at-Tahir"), et quatre filles : Zaynab, Ruqayya, Umm Kulthum et Fatima. Ces liens familiaux renforcent son intégration dans la société mecquoise.</p>
+
+                <h3>Les Signes Précurseurs de la Prophétie</h3>
+                <p>Plusieurs signes annonçaient la mission prophétique à venir. Les rêves véridiques se multipliaient, et certains événements extraordinaires marquaient sa vie quotidienne.</p>
+
+                <div class="quote-box">
+                    "Les rêves véridiques du Messager d'Allah ﷺ furent le commencement de la révélation. Il ne voyait aucun rêve qui ne se réalisait comme l'éclat de l'aurore."
+                    <div class="quote-source">Sahih al-Bukhari</div>
+                </div>
+
+                <h3>Le Respect Universel</h3>
+                <p>Même les tribus rivales reconnaissaient ses qualités. Cette réputation dépassait La Mecque et s'étendait à toute la région, créant un terreau favorable à l'acceptation de son futur message.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Préparation Psychologique</div>
+                    Les historiens notent que cette période d'estime universelle était essentielle : quand Muhammad ﷺ annonça sa mission prophétique, personne ne put l'accuser d'être un menteur invétéré ou un homme sans moralité.
+                </div>
+
+            </section>
+
+            <div class="sources" id="sources">
+                <h3>Sources Authentiques Consultées</h3>
+                <ul>
+                    <li><strong>Sahih al-Bukhari</strong> - Livre du commencement de la révélation</li>
+                    <li><strong>Ibn Hichâm</strong> - As-Sîra an-Nabawiyya</li>
+                    <li><strong>At-Tabari</strong> - Histoire des Prophètes et des Rois</li>
+                    <li><strong>Ibn Sa'd</strong> - Tabaqat al-Kubra</li>
+                    <li><strong>Al-Waqidi</strong> - Kitab al-Maghazi</li>
+                    <li><strong>Ibn Kathir</strong> - Al-Bidaya wa an-Nihaya</li>
+                    <li><strong>Montgomery Watt</strong> - "Muhammad at Mecca"</li>
+                </ul>
+            </div>
+
+            <nav class="page-navigation">
+                <a href="periode2_v2.html" class="nav-btn">
+                    ← Période 2 : L'Orphelin Béni
+                </a>
+                <a href="periode4_v2.html" class="nav-btn">
+                    Période 4 : La Première Révélation →
+                </a>
+            </nav>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h4>Navigation des Périodes</h4>
+                <nav class="timeline-nav">
+                    <a href="periode1_v2.html">1. La Lumière Promise</a>
+                    <a href="periode2_v2.html">2. L'Orphelin Béni</a>
+                    <a href="periode3_v2.html" class="current">3. L'Homme de Confiance</a>
+                    <a href="periode4_v2.html">4. La Première Révélation</a>
+                    <a href="periode5_v2.html">5. L'Appel Silencieux</a>
+                    <a href="periode6_v2.html">6. La Proclamation</a>
+                    <a href="periode7_v2.html">7. Les Premières Épreuves</a>
+                    <a href="periode8_v2.html">8. L'Hégire</a>
+                    <a href="periode9_v2.html">9. Médine la Radieuse</a>
+                    <a href="periode10_v2.html">10. Les Grandes Batailles</a>
+                    <a href="periode11_v2.html">11. Hudaybiya</a>
+                    <a href="periode12_v2.html">12. La Conquête</a>
+                    <a href="periode13_v2.html">13. L'Unification</a>
+                    <a href="periode14_v2.html">14. Le Pèlerinage d'Adieu</a>
+                    <a href="periode15_v2.html">15. L'Héritage Éternel</a>
+                </nav>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Faits Clés</h4>
+                <ul class="key-facts">
+                    <li><strong>Surnom :</strong> As-Sadiq al-Amin</li>
+                    <li><strong>Mariage :</strong> Khadija (595 EC)</li>
+                    <li><strong>Âge au mariage :</strong> 25 ans</li>
+                    <li><strong>Enfants :</strong> 3 fils, 4 filles</li>
+                    <li><strong>Activité :</strong> Commerce</li>
+                    <li><strong>Réputation :</strong> Universellement respecté</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Leçon de Leadership</h4>
+                <p>La crédibilité se construit jour après jour par la cohérence entre les paroles et les actes. Muhammad ﷺ montre qu'un leader authentique gagne d'abord la confiance avant de demander l'adhésion.</p>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

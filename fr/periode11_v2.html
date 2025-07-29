@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Période 11 : Hudaybiya - Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-gold: #D4AF37; --deep-green: #1B4D3E; --soft-beige: #F7F5F0; --warm-white: #FEFEFE; --text-dark: #2C3E50; --accent-blue: #3498DB; --light-gray: #ECF0F1; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--soft-beige); color: var(--text-dark); line-height: 1.6; }
+        .header { background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%); color: white; padding: 2rem 0; text-align: center; }
+        .header h1 { font-family: 'Amiri', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .header .period-info { font-size: 1.1rem; opacity: 0.9; }
+        .nav { background: white; padding: 1rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--primary-gold); }
+        .nav-controls { display: flex; gap: 1rem; }
+        .btn { padding: 0.5rem 1rem; border: none; border-radius: 25px; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
+        .btn-secondary { background: var(--light-gray); color: var(--text-dark); }
+        .main-content { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 1fr 300px; gap: 3rem; }
+        .content-area { background: white; border-radius: 15px; padding: 3rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .sidebar { display: flex; flex-direction: column; gap: 2rem; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-family: 'Amiri', serif; font-size: 2rem; color: var(--deep-green); margin-bottom: 1.5rem; border-bottom: 3px solid var(--primary-gold); padding-bottom: 0.5rem; }
+        .content-section h3 { font-family: 'Amiri', serif; font-size: 1.5rem; color: var(--deep-green); margin: 2rem 0 1rem 0; }
+        .historical-fact { background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%); border-left: 5px solid var(--primary-gold); padding: 1.5rem; margin: 2rem 0; border-radius: 0 10px 10px 0; }
+        .historical-fact .fact-title { font-weight: 600; color: var(--deep-green); margin-bottom: 0.5rem; }
+        .quote-box { background: var(--deep-green); color: white; padding: 2rem; border-radius: 15px; margin: 2rem 0; font-style: italic; position: relative; }
+        .quote-box::before { content: '"'; font-size: 4rem; font-family: 'Amiri', serif; position: absolute; top: -0.5rem; left: 1rem; opacity: 0.3; }
+        .quote-source { text-align: right; margin-top: 1rem; font-size: 0.9rem; opacity: 0.8; }
+        .sidebar-card { background: white; border-radius: 15px; padding: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .sidebar-card h4 { font-family: 'Amiri', serif; color: var(--deep-green); margin-bottom: 1rem; }
+        .timeline-nav { display: flex; flex-direction: column; gap: 0.5rem; }
+        .timeline-nav a { padding: 0.5rem 1rem; text-decoration: none; color: var(--text-dark); border-radius: 8px; transition: all 0.3s ease; font-size: 0.9rem; }
+        .timeline-nav a:hover { background: var(--primary-gold); color: white; }
+        .timeline-nav a.current { background: var(--deep-green); color: white; }
+        .key-facts { list-style: none; }
+        .key-facts li { padding: 0.5rem 0; border-bottom: 1px solid var(--light-gray); }
+        .key-facts li:last-child { border-bottom: none; }
+        .key-facts strong { color: var(--deep-green); }
+        .sources { background: var(--light-gray); padding: 2rem; border-radius: 10px; margin-top: 3rem; }
+        .sources h3 { font-size: 1.2rem; margin-bottom: 1rem; color: var(--deep-green); }
+        .sources ul { list-style: none; }
+        .sources li { padding: 0.5rem 0; font-size: 0.9rem; }
+        .reflection-box { background: linear-gradient(135deg, var(--primary-gold) 0%, #E6C062 100%); color: var(--text-dark); padding: 2rem; border-radius: 15px; margin: 2rem 0; }
+        .reflection-box h4 { font-family: 'Amiri', serif; font-size: 1.3rem; margin-bottom: 1rem; }
+        .page-navigation { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--light-gray); }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--deep-green); color: white; text-decoration: none; border-radius: 10px; transition: all 0.3s ease; }
+        .nav-btn:hover { background: var(--primary-gold); color: var(--text-dark); }
+        @media (max-width: 768px) { .main-content { grid-template-columns: 1fr; padding: 2rem 1rem; } .content-area { padding: 2rem; } .nav-container { flex-direction: column; gap: 1rem; padding: 0 1rem; } .page-navigation { flex-direction: column; gap: 1rem; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Hudaybiya</h1>
+        <div class="period-info">Période 11 • 6 H / 628 EC • "La victoire évidente par la paix"</div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="../index_v2.html">Accueil</a>
+                <a href="index_v2.html">Toutes les périodes</a>
+                <a href="#sources">Sources</a>
+            </div>
+            <div class="nav-controls">
+                <a href="../en/periode11.html" class="btn btn-secondary">EN</a>
+                <a href="../ar/periode11.html" class="btn btn-secondary">عربي</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <article class="content-area">
+            <section class="content-section">
+                <h2>Le Traité qui Changea l'Histoire</h2>
+                
+                <p>En l'an 6 de l'Hégire, le Prophète ﷺ voit en rêve qu'il accomplit le pèlerinage à La Mecque. Interprétant cela comme un ordre divin, il part avec 1400 Compagnons, déclenchant une crise qui aboutira au traité le plus bénéfique de l'histoire islamique.</p>
+
+                <div class="quote-box">
+                    "Certes Nous t'avons accordé une victoire éclatante, afin qu'Allah te pardonne tes péchés, passés et futurs."
+                    <div class="quote-source">Coran, Sourate Al-Fath (48:1-2)</div>
+                </div>
+
+                <h3>Le Voyage vers La Mecque</h3>
+                <p>Partis en tenue de pèlerinage (ihram) et sans armes lourdes, les musulmans montrent leurs intentions pacifiques. Mais Quraych mobilise ses forces, craignant un piège.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Le Miracle de la Chamelle</div>
+                    À Hudaybiya, la chamelle du Prophète ﷺ s'arrête et refuse d'avancer. Il explique : "Elle s'est arrêtée sur ordre de Celui qui arrêta l'éléphant [d'Abraha] loin de La Mecque."
+                </div>
+
+                <h3>L'Émissaire Courageux</h3>
+                <p>Uthman ibn Affan est envoyé négocier avec Quraych. Sa longue absence fait craindre sa mort, déclenchant l'épisode célèbre de "Bay'at ar-Ridwan" (Serment de Satisfaction).</p>
+
+                <div class="quote-box">
+                    "Allah a très certainement agréé les croyants quand ils t'ont prêté le serment d'allégeance sous l'arbre."
+                    <div class="quote-source">Coran, Sourate Al-Fath (48:18)</div>
+                </div>
+
+                <h3>Les Négociations Tendues</h3>
+                <p>Suhayl ibn Amr mène la délégation mecquoise. Les négociations sont âpres, certains Compagnons s'insurgent contre les conditions jugées humiliantes.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">La Sagesse Prophétique</div>
+                    Quand Suhayl refuse l'expression "Muhammad Messager d'Allah", le Prophète ﷺ accepte d'écrire seulement "Muhammad ibn Abdullah", privilégiant la paix aux symboles.
+                </div>
+
+                <h3>Les Termes du Traité</h3>
+                <p>Le traité d'Hudaybiya comprend plusieurs clauses révolutionnaires :</p>
+
+                <ul style="margin: 1.5rem 0; padding-left: 2rem;">
+                    <li><strong>Trêve de 10 ans</strong> entre musulmans et Quraych</li>
+                    <li><strong>Report du pèlerinage</strong> - les musulmans reviendront l'année suivante</li>
+                    <li><strong>Liberté d'alliance</strong> pour les tribus arabes</li>
+                    <li><strong>Retour des fugitifs</strong> mecquois vers Médine (mais pas l'inverse)</li>
+                </ul>
+
+                <h3>La Réaction d'Umar ibn al-Khattab</h3>
+                <p>Umar, indigné par les conditions, questionne ouvertement le Prophète ﷺ. Cette réaction humaine montre la difficulté de comprendre parfois la sagesse divine.</p>
+
+                <div class="quote-box">
+                    "Ô Messager d'Allah ! N'es-tu pas vraiment le Prophète d'Allah ?" - "Si, certes." - "Ne sommes-nous pas sur la vérité et nos ennemis dans l'erreur ?" - "Si, certes." - "Alors pourquoi accepter cette humiliation pour notre religion ?"
+                    <div class="quote-source">Dialog Umar-Prophète ﷺ - Sahih al-Bukhari</div>
+                </div>
+
+                <h3>Abu Jandal : Le Sacrifice Douloureux</h3>
+                <p>Abu Jandal, fils de Suhayl, arrive enchaîné, implorant la protection musulmane. Le Prophète ﷺ doit l'abandonner pour respecter le traité, moment déchirant qui teste la foi des Compagnons.</p>
+
+                <div class="reflection-box">
+                    <h4>Réflexion : La Vision à Long Terme</h4>
+                    <p>Hudaybiya illustre parfaitement la différence entre sagesse humaine et sagesse divine. Ce qui semble être une défaite diplomatique se révèle être la plus grande victoire stratégique de l'Islam. La paix ouvre des horizons inimaginables.</p>
+                </div>
+
+                <h3>Les Fruits Immédiats</h3>
+                <p>Dès la signature, le traité révèle sa sagesse :</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Reconnaissance Implicite</div>
+                    En négociant d'égal à égal, Quraych reconnaît de facto l'État islamique comme puissance légitime, abandonnant sa position de simple tribu rebelle.
+                </div>
+
+                <h3>Khalid ibn al-Walid Embrasse l'Islam</h3>
+                <p>Quelques mois après Hudaybiya, Khalid ibn al-Walid, le "Saif Allah al-Maslul" (Épée dégainée d'Allah), se convertit, transformant le plus grand stratège ennemi en champion de l'Islam.</p>
+
+                <h3>L'Expansion Pacifique</h3>
+                <p>La trêve permet aux musulmans de concentrer leurs efforts sur l'expansion vers le nord (Syrie) et le sud (Yémen), multipliant les conversions.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Statistiques Parlantes</div>
+                    Selon Ibn Hichâm, plus de gens embrassent l'Islam durant les deux années suivant Hudaybiya que durant les dix-huit années précédentes. La paix est plus efficace que la guerre.
+                </div>
+
+                <h3>Les Lettres aux Rois</h3>
+                <p>Fort de sa légitimité renforcée, le Prophète ﷺ envoie des émissaires aux grands empires (Byzance, Perse, Éthiopie) les invitant à l'Islam.</p>
+
+                <div class="quote-box">
+                    "De Muhammad ibn Abdullah, Messager d'Allah, à Héraclius, chef des Roums. Paix sur quiconque suit la guidance. J'appelle à l'Islam. Embrasse l'Islam, tu seras sauvé."
+                    <div class="quote-source">Lettre à l'Empereur byzantin - Sahih al-Bukhari</div>
+                </div>
+
+                <h3>Le Pèlerinage de l'Année Suivante</h3>
+                <p>En 7 H, conformément au traité, les musulmans accomplissent la 'Umra al-Qada (pèlerinage de compensation). La Mecque découvre la noblesse et la piété des musulmans.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Impact Psychologique</div>
+                    Voir les musulmans en prière autour de la Kaaba impressionne profondément les Mecquois. Beaucoup réalisent que l'Islam n'est pas l'ennemi de leurs traditions, mais leur accomplissement.
+                </div>
+
+                <h3>La Violation du Traité</h3>
+                <p>En 8 H, Quraych viole le traité en attaquant Khuza'a, alliée des musulmans. Cette rupture donne au Prophète ﷺ le casus belli pour la conquête pacifique de La Mecque.</p>
+            </section>
+
+            <div class="sources" id="sources">
+                <h3>Sources Authentiques Consultées</h3>
+                <ul>
+                    <li><strong>Sahih al-Bukhari</strong> - Livre des Conditions et du Pèlerinage</li>
+                    <li><strong>Sahih Muslim</strong> - Livre du Pèlerinage</li>
+                    <li><strong>Ibn Hichâm</strong> - As-Sîra an-Nabawiyya</li>
+                    <li><strong>At-Tabari</strong> - Histoire des Prophètes et des Rois</li>
+                </ul>
+            </div>
+
+            <nav class="page-navigation">
+                <a href="periode10_v2.html" class="nav-btn">← Période 10 : Les Grandes Batailles</a>
+                <a href="periode12_v2.html" class="nav-btn">Période 12 : La Conquête →</a>
+            </nav>
+        </article>
+
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h4>Navigation des Périodes</h4>
+                <nav class="timeline-nav">
+                    <a href="periode1_v2.html">1. La Lumière Promise</a>
+                    <a href="periode2_v2.html">2. L'Orphelin Béni</a>
+                    <a href="periode3_v2.html">3. L'Homme de Confiance</a>
+                    <a href="periode4_v2.html">4. La Première Révélation</a>
+                    <a href="periode5_v2.html">5. L'Appel Silencieux</a>
+                    <a href="periode6_v2.html">6. La Proclamation</a>
+                    <a href="periode7_v2.html">7. Les Premières Épreuves</a>
+                    <a href="periode8_v2.html">8. L'Hégire</a>
+                    <a href="periode9_v2.html">9. Médine la Radieuse</a>
+                    <a href="periode10_v2.html">10. Les Grandes Batailles</a>
+                    <a href="periode11_v2.html" class="current">11. Hudaybiya</a>
+                    <a href="periode12_v2.html">12. La Conquête</a>
+                    <a href="periode13_v2.html">13. L'Unification</a>
+                    <a href="periode14_v2.html">14. Le Pèlerinage d'Adieu</a>
+                    <a href="periode15_v2.html">15. L'Héritage Éternel</a>
+                </nav>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Faits Clés</h4>
+                <ul class="key-facts">
+                    <li><strong>Date :</strong> Dhu al-Qi'da 6H / 628 EC</li>
+                    <li><strong>Participants :</strong> 1400 musulmans</li>
+                    <li><strong>Trêve :</strong> 10 ans</li>
+                    <li><strong>Négociateur :</strong> Suhayl ibn Amr</li>
+                    <li><strong>Serment :</strong> Bay'at ar-Ridwan</li>
+                    <li><strong>Révélation :</strong> Sourate Al-Fath</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Leçon Diplomatique</h4>
+                <p>Hudaybiya enseigne que la vraie victoire n'est pas toujours militaire. Parfois, la paix ouvre plus de portes que la guerre.</p>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

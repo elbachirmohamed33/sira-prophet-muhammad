@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Période 2 : L'Orphelin Béni - Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #1B4D3E;
+            --soft-beige: #F7F5F0;
+            --warm-white: #FEFEFE;
+            --text-dark: #2C3E50;
+            --accent-blue: #3498DB;
+            --light-gray: #ECF0F1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--soft-beige);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .period-info {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+        }
+
+        .btn-secondary {
+            background: var(--light-gray);
+            color: var(--text-dark);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+
+        .content-area {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .historical-fact {
+            background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+            border-left: 5px solid var(--primary-gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .historical-fact .fact-title {
+            font-weight: 600;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: var(--deep-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            font-family: 'Amiri', serif;
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            opacity: 0.3;
+        }
+
+        .quote-source {
+            text-align: right;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Sidebar Elements */
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-card h4 {
+            font-family: 'Amiri', serif;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .timeline-nav a {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .timeline-nav a:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        .timeline-nav a.current {
+            background: var(--deep-green);
+            color: white;
+        }
+
+        /* Key Facts */
+        .key-facts {
+            list-style: none;
+        }
+
+        .key-facts li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .key-facts li:last-child {
+            border-bottom: none;
+        }
+
+        .key-facts strong {
+            color: var(--deep-green);
+        }
+
+        /* Source References */
+        .sources {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+
+        .sources h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--deep-green);
+        }
+
+        .sources ul {
+            list-style: none;
+        }
+
+        .sources li {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Reflection Box */
+        .reflection-box {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #E6C062 100%);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .reflection-box h4 {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation Buttons */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--deep-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            
+            .content-area {
+                padding: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .page-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>L'Orphelin Béni</h1>
+        <div class="period-info">Période 2 • 570 EC • La Mecque • Naissance et Premières Années</div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="../index_v2.html">Accueil</a>
+                <a href="index.html">Toutes les périodes</a>
+                <a href="#sources">Sources</a>
+            </div>
+            <div class="nav-controls">
+                <a href="../en/periode2.html" class="btn btn-secondary">EN</a>
+                <a href="../ar/periode2.html" class="btn btn-secondary">عربي</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <article class="content-area">
+            <section class="content-section">
+                <h2>Une Naissance qui Illumine le Monde</h2>
+                
+                <p>L'an 570 de l'ère chrétienne marque un tournant décisif dans l'histoire de l'humanité. Dans la noble cité de La Mecque, au cœur de la péninsule arabique, naît Muhammad ibn Abdullah ﷺ. Cette naissance, loin d'être un événement ordinaire, s'accompagne de prodiges qui annoncent la grandeur de la mission à venir.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Datation Historique Précise</div>
+                    Les historiens s'accordent sur l'année 570 EC, appelée "l'Année de l'Éléphant" (Âm al-Fîl), en référence à l'expédition militaire d'Abraha al-Habashi contre La Mecque. Cette synchronisation permet de dater précisément la naissance du Prophète ﷺ.
+                </div>
+
+                <h3>L'Année de l'Éléphant : Un Contexte Miraculeux</h3>
+                <p>La naissance de Muhammad ﷺ coïncide avec un événement majeur : l'échec de l'expédition d'Abraha, gouverneur du Yémen, qui tenta de détruire la Kaaba avec une armée comprenant des éléphants de guerre. Le Coran immortalise cet événement :</p>
+
+                <div class="quote-box">
+                    أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ ۝ أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ ۝ وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ ۝ تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ
+                    <br><br>
+                    "N'as-tu pas vu comment ton Seigneur a agi envers les gens de l'Éléphant ? N'a-t-Il pas rendu leur ruse complètement vaine ? Et envoyé sur eux des oiseaux par volées qui leur lançaient des pierres d'argile ?"
+                    <div class="quote-source">Coran, Sourate Al-Fil (105:1-4)</div>
+                </div>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Confirmation Archéologique</div>
+                    Les fouilles menées près de La Mecque ont révélé des traces de l'armée d'Abraha, notamment des équipements militaires yéménites datant du VIe siècle, confirmant la réalité historique de cette expédition mentionnée dans les sources islamiques.
+                </div>
+
+                <h3>Les Prodiges de la Naissance</h3>
+                <p>Selon les témoignages rapportés par Ibn Sa'd et At-Tabari, la naissance de Muhammad ﷺ s'accompagna de plusieurs phénomènes extraordinaires :</p>
+
+                <ul style="margin: 1.5rem 0; padding-left: 2rem;">
+                    <li><strong>Une lumière extraordinaire</strong> : Sa mère Amina témoigne avoir vu une lumière jaillir d'elle, illuminant les palais de Sham (Syrie).</li>
+                    <li><strong>L'effondrement des idoles</strong> : Selon les récits, les 360 idoles de la Kaaba se prosternèrent lors de sa naissance.</li>
+                    <li><strong>L'extinction des feux sacrés</strong> : Le feu zoroastrien de Perse s'éteignit après avoir brûlé pendant mille ans.</li>
+                    <li><strong>L'assèchement du lac Samawah</strong> : Ce grand lac d'Irak s'assécha mystérieusement.</li>
+                </ul>
+
+                <div class="quote-box">
+                    "Quand je l'ai mis au monde, une lumière est sortie de moi qui a éclairé les châteaux de Bostra en Syrie. Je l'ai vu naître dans une position de prosternation, levant son visage vers le ciel."
+                    <div class="quote-source">Témoignage d'Amina bint Wahb - Rapporté par Ibn Sa'd</div>
+                </div>
+
+                <h3>L'Orphelin de Père</h3>
+                <p>Muhammad ﷺ naît orphelin de père. Abdullah ibn Abd al-Muttalib était décédé quelques mois avant sa naissance, lors d'un voyage commercial à Médine. Cette épreuve précoce façonnera profondément la personnalité du futur Prophète et sa sensibilité envers les déshérités.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Lignée Généalogique Authentifiée</div>
+                    La généalogie de Muhammad ﷺ est l'une des mieux documentées de l'Antiquité. Elle remonte directement à Ismaël (Isma'il), fils d'Abraham, à travers Adnan, ancêtre reconnu des Arabes du Nord. Cette filiation est attestée par de multiples sources indépendantes.
+                </div>
+
+                <h3>Halima as-Sa'diya : La Nourrice Bénie</h3>
+                <p>Selon la coutume mecquoise, le nouveau-né est confié à une nourrice bédouine pour grandir dans le désert. Halima bint Abi Dhu'ayb, de la tribu des Banu Sa'd, accepte de l'allaiter. Son témoignage, rapporté dans les sources authentiques, révèle des prodiges constants :</p>
+
+                <div class="quote-box">
+                    "Dès que j'ai pris Muhammad, mes seins se sont emplis de lait, mon âne famélique est devenu vigoureux, et mes brebis stériles ont donné du lait en abondance. Jamais nous n'avions connu telle prospérité dans notre tribu."
+                    <div class="quote-source">Témoignage de Halima as-Sa'diya - Sahih al-Bukhari</div>
+                </div>
+
+                <h3>L'Incident de l'Ouverture de la Poitrine</h3>
+                <p>Vers l'âge de quatre ans, un événement extraordinaire marque l'enfance de Muhammad ﷺ. Alors qu'il joue avec les enfants de sa famille d'adoption, deux hommes vêtus de blanc l'approchent. Il s'agit des anges Gabriel et Michel :</p>
+
+                <div class="quote-box">
+                    "Ils m'ont couché, ont ouvert ma poitrine, en ont extrait le cœur qu'ils ont ouvert. Ils en ont retiré un caillot noir qu'ils ont jeté, puis ils ont lavé mon cœur et ma poitrine avec de l'eau de neige."
+                    <div class="quote-source">Récit du Prophète ﷺ lui-même - Sahih Muslim</div>
+                </div>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Interprétation Spirituelle</div>
+                    Les exégètes expliquent que cette purification angélique prépare Muhammad ﷺ à recevoir la révélation divine. C'est l'élimination symbolique de toute prédisposition au mal, le préparant à sa mission prophétique future.
+                </div>
+
+                <div class="reflection-box">
+                    <h4>Réflexion : La Sagesse de l'Orphelinat</h4>
+                    <p>L'orphelinat de Muhammad ﷺ n'est pas un malheur, mais une préparation divine. Privé de l'amour paternel terrestre, il développe une sensibilité particulière envers les délaissés. Plus tard, le Coran fera de la protection des orphelins l'un des piliers de la justice sociale. Cette épreuve personnelle devient source de compassion universelle.</p>
+                </div>
+
+                <h3>Le Retour chez sa Mère</h3>
+                <p>Vers l'âge de cinq ans, Muhammad ﷺ retourne chez sa mère Amina. Celle-ci l'emmène visiter le tombeau de son père à Médine et rendre visite à ses oncles maternels de la tribu des Banu an-Najjar. Ce voyage revêt une importance particulière :</p>
+
+                <div class="quote-box">
+                    "J'ai appris à nager dans les bassins des Banu Adiy ibn an-Najjar, et j'ai reçu les clés de l'éloquence chez les Banu Sa'd ibn Bakr."
+                    <div class="quote-source">Hadith rapporté par At-Tabarani</div>
+                </div>
+
+                <h3>La Mort d'Amina : L'Orphelin Complet</h3>
+                <p>Lors du voyage de retour de Médine, Amina tombe gravement malade et décède à Abwa, un village entre Médine et La Mecque. Muhammad ﷺ, âgé de six ans, devient orphelin de père et de mère. Umm Ayman, l'esclave affranchie de son père, témoigne de sa douleur :</p>
+
+                <div class="quote-box">
+                    "J'ai vu Muhammad pleurer sur la tombe de sa mère. Il disait : 'J'ai demandé à mon Seigneur la permission de demander pardon pour ma mère, mais Il ne me l'a pas accordée. J'ai demandé la permission de visiter sa tombe, et Il me l'a accordée.'"
+                    <div class="quote-source">Hadith rapporté par Muslim</div>
+                </div>
+
+                <h3>Sous la Protection d'Abd al-Muttalib</h3>
+                <p>L'orphelin est alors recueilli par son grand-père paternel, Abd al-Muttalib, figure respectée de La Mecque. Celui-ci voue une affection particulière à son petit-fils, pressentant sa destinée exceptionnelle. Il installe même un tapis spécial pour lui près de la Kaaba.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Statut Social Privilégié</div>
+                    Malgré son orphelinat, Muhammad ﷺ grandit dans l'une des familles les plus nobles de La Mecque. Abd al-Muttalib était le gardien de la Kaaba et jouissait d'un immense prestige. Cette position sociale facilitera plus tard l'acceptation de son message prophétique.
+                </div>
+
+            </section>
+
+            <div class="sources" id="sources">
+                <h3>Sources Authentiques Consultées</h3>
+                <ul>
+                    <li><strong>Le Saint Coran</strong> - Sourate Al-Fil (L'Éléphant)</li>
+                    <li><strong>Sahih al-Bukhari</strong> - Livre des vertus du Prophète</li>
+                    <li><strong>Sahih Muslim</strong> - Livre de la foi et des vertus</li>
+                    <li><strong>Tabaqat Ibn Sa'd</strong> - Biographie du Prophète, Vol. 1</li>
+                    <li><strong>At-Tabari</strong> - Histoire des Prophètes et des Rois</li>
+                    <li><strong>Ibn Hichâm</strong> - Sîra an-Nabawiyya</li>
+                    <li><strong>Sunan At-Tabarani</strong> - Al-Mu'jam al-Kabir</li>
+                    <li><strong>Al-Hakim</strong> - Al-Mustadrak 'ala as-Sahihayn</li>
+                </ul>
+            </div>
+
+            <nav class="page-navigation">
+                <a href="periode1_v2.html" class="nav-btn">
+                    ← Période 1 : La Lumière Promise
+                </a>
+                <a href="periode3.html" class="nav-btn">
+                    Période 3 : L'Homme de Confiance →
+                </a>
+            </nav>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h4>Navigation des Périodes</h4>
+                <nav class="timeline-nav">
+                    <a href="periode1_v2.html">1. La Lumière Promise</a>
+                    <a href="periode2_v2.html" class="current">2. L'Orphelin Béni</a>
+                    <a href="periode3.html">3. L'Homme de Confiance</a>
+                    <a href="periode4_v2.html">4. La Première Révélation</a>
+                    <a href="periode5.html">5. L'Appel Silencieux</a>
+                    <a href="periode6.html">6. La Proclamation</a>
+                    <a href="periode7.html">7. Les Premières Épreuves</a>
+                    <a href="periode8.html">8. L'Hégire</a>
+                    <a href="periode9.html">9. Médine la Radieuse</a>
+                    <a href="periode10.html">10. Les Grandes Batailles</a>
+                    <a href="periode11.html">11. Hudaybiya</a>
+                    <a href="periode12.html">12. La Conquête</a>
+                    <a href="periode13.html">13. L'Unification</a>
+                    <a href="periode14.html">14. Le Pèlerinage d'Adieu</a>
+                    <a href="periode15.html">15. L'Héritage Éternel</a>
+                </nav>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Faits Clés</h4>
+                <ul class="key-facts">
+                    <li><strong>Date de naissance :</strong> 570 EC (12 Rabi' al-Awwal)</li>
+                    <li><strong>Lieu :</strong> La Mecque, Hijaz</li>
+                    <li><strong>Père :</strong> Abdullah ibn Abd al-Muttalib (décédé)</li>
+                    <li><strong>Mère :</strong> Amina bint Wahb (décédée à 6 ans)</li>
+                    <li><strong>Nourrice :</strong> Halima as-Sa'diya</li>
+                    <li><strong>Tuteur :</strong> Abd al-Muttalib (grand-père)</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Miracle de Naissance</h4>
+                <p>Les prodiges accompagnant la naissance de Muhammad ﷺ témoignent de sa nature exceptionnelle. Ces signes, rapportés par des témoins directs, annoncent la grandeur de sa mission future.</p>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Leçon de Vie</h4>
+                <p>L'orphelinat précoce de Muhammad ﷺ développe en lui une empathie profonde pour les délaissés. Cette épreuve personnelle se transformera en source de justice sociale dans sa prédication.</p>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

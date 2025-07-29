@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Période 5 : L'Appel Silencieux - Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #1B4D3E;
+            --soft-beige: #F7F5F0;
+            --warm-white: #FEFEFE;
+            --text-dark: #2C3E50;
+            --accent-blue: #3498DB;
+            --light-gray: #ECF0F1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--soft-beige);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .period-info {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+        }
+
+        .btn-secondary {
+            background: var(--light-gray);
+            color: var(--text-dark);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+
+        .content-area {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .historical-fact {
+            background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+            border-left: 5px solid var(--primary-gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .historical-fact .fact-title {
+            font-weight: 600;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: var(--deep-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            font-family: 'Amiri', serif;
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            opacity: 0.3;
+        }
+
+        .quote-source {
+            text-align: right;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Sidebar Elements */
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-card h4 {
+            font-family: 'Amiri', serif;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .timeline-nav a {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .timeline-nav a:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        .timeline-nav a.current {
+            background: var(--deep-green);
+            color: white;
+        }
+
+        /* Key Facts */
+        .key-facts {
+            list-style: none;
+        }
+
+        .key-facts li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .key-facts li:last-child {
+            border-bottom: none;
+        }
+
+        .key-facts strong {
+            color: var(--deep-green);
+        }
+
+        /* Source References */
+        .sources {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+
+        .sources h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--deep-green);
+        }
+
+        .sources ul {
+            list-style: none;
+        }
+
+        .sources li {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Reflection Box */
+        .reflection-box {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #E6C062 100%);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .reflection-box h4 {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation Buttons */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--deep-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            
+            .content-area {
+                padding: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .page-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>L'Appel Silencieux</h1>
+        <div class="period-info">Période 5 • 610-613 EC • La Mecque • Dawa Secrète</div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="../index_v2.html">Accueil</a>
+                <a href="index_v2.html">Toutes les périodes</a>
+                <a href="#sources">Sources</a>
+            </div>
+            <div class="nav-controls">
+                <a href="../en/periode5.html" class="btn btn-secondary">EN</a>
+                <a href="../ar/periode5.html" class="btn btn-secondary">عربي</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <article class="content-area">
+            <section class="content-section">
+                <h2>Les Premiers Pas de l'Islam</h2>
+                
+                <p>Après la première révélation dans la grotte de Hira, Muhammad ﷺ entame une période de prédication discrète qui durera trois années. Cette phase délicate voit naître les premiers musulmans, formant le noyau d'une communauté appelée à transformer le monde.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Stratégie Divine</div>
+                    Cette période de discrétion correspond à la sagesse divine : permettre à la nouvelle foi de prendre racine solidement avant d'affronter l'hostilité généralisée. Chaque conversion comptait alors doublement.
+                </div>
+
+                <h3>Khadija : La Première Musulmane</h3>
+                <p>Sans hésitation, Khadija bint Khuwaylid devient la première personne à embrasser l'Islam. Son soutien immédiat et inconditionnel révèle la force de sa foi et l'authenticité du message prophétique.</p>
+
+                <div class="quote-box">
+                    "Khadija fut la première à croire en Allah et en Son Messager, et elle a confirmé sa parole. Par elle, Allah allégea le fardeau de Son Prophète ﷺ. Il ne rencontrait pas de contradiction de sa part quand il l'informait des révélations d'Allah."
+                    <div class="quote-source">Ibn Hichâm - As-Sîra an-Nabawiyya</div>
+                </div>
+
+                <h3>Ali ibn Abi Talib : Le Premier Enfant Musulman</h3>
+                <p>Ali, cousin du Prophète ﷺ et élevé dans sa maison, devient le premier enfant à embrasser l'Islam. Âgé d'environ dix ans, sa conversion témoigne de la pureté de cœur des jeunes face à la vérité.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Témoignage d'Ali</div>
+                    Ali dira plus tard : "J'ai adoré Allah sept ans avant que quiconque de cette communauté ne L'adore." Cette précocité dans la foi marquera toute sa vie d'un dévouement exceptionnel.
+                </div>
+
+                <h3>Abu Bakr as-Siddiq : L'Ami Sincère</h3>
+                <p>Abu Bakr, ami intime du Prophète ﷺ, devient le premier homme libre adulte à embrasser l'Islam. Sa conversion immédiate, sans hésitation ni questionnement, lui vaut le surnom d'"As-Siddiq" (le Véridique).</p>
+
+                <div class="quote-box">
+                    "Quand j'ai appelé Abu Bakr à l'Islam, il n'a pas hésité, contrairement aux autres. Il a embrassé l'Islam immédiatement."
+                    <div class="quote-source">Témoignage du Prophète ﷺ - Rapporté par At-Tabari</div>
+                </div>
+
+                <h3>Zayd ibn Haritha : L'Affranchi Fidèle</h3>
+                <p>Zayd, ancien esclave affranchi et adopté par le Prophète ﷺ, fait partie des tout premiers convertis. Sa fidélité exemplaire illustre comment l'Islam transcende les barrières sociales.</p>
+
+                <h3>Les Conversions Influentes</h3>
+                <p>Abu Bakr, grâce à son influence et son réseau, contribue significativement aux premières conversions. Parmi ceux qu'il guide vers l'Islam :</p>
+
+                <ul style="margin: 1.5rem 0; padding-left: 2rem;">
+                    <li><strong>Uthman ibn Affan</strong> - Noble de Quraych, futur troisième calife</li>
+                    <li><strong>Abdurrahman ibn Awf</strong> - Riche marchand, futur Compagnon promis au Paradis</li>
+                    <li><strong>Sa'd ibn Abi Waqqas</strong> - Jeune guerrier valeureux</li>
+                    <li><strong>Zubayr ibn al-Awwam</strong> - Cousin du Prophète ﷺ</li>
+                    <li><strong>Talha ibn Ubaydullah</strong> - Marchand respecté</li>
+                </ul>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Les Huit Premiers</div>
+                    Selon Ibn Sa'd, les huit premiers musulmans furent : Khadija, Ali, Zayd, Abu Bakr, Uthman, Abdurrahman ibn Awf, Sa'd ibn Abi Waqqas, et Zubayr ibn al-Awwam. Ensemble, ils forment le noyau de la future communauté islamique.
+                </div>
+
+                <h3>Dar al-Arqam : Le Premier Centre Islamique</h3>
+                <p>Al-Arqam ibn Abi al-Arqam met sa demeure à disposition du Prophète ﷺ et des premiers musulmans. Cette maison, située près de la Kaaba, devient le premier centre de rassemblement islamique.</p>
+
+                <div class="quote-box">
+                    "Le Messager d'Allah ﷺ se cachait dans la maison d'al-Arqam ibn Abi al-Arqam al-Makhzumi. Elle se trouvait sur la colline de Safa. Là, il appelait à l'Islam quiconque il espérait accepterait son appel."
+                    <div class="quote-source">Ibn Sa'd - Tabaqat al-Kubra</div>
+                </div>
+
+                <h3>Les Femmes Pionnières</h3>
+                <p>Plusieurs femmes font partie des premiers convertis, témoignant de l'égalité spirituelle prônée par l'Islam :</p>
+
+                <ul style="margin: 1.5rem 0; padding-left: 2rem;">
+                    <li><strong>Umm Ayman</strong> - Nourrice du Prophète ﷺ</li>
+                    <li><strong>Fatima bint al-Khattab</strong> - Sœur du futur Omar ibn al-Khattab</li>
+                    <li><strong>Asma bint Abu Bakr</strong> - Fille d'Abu Bakr</li>
+                    <li><strong>Umm Salama al-Makhzumiyya</strong> - Noble dame de Quraych</li>
+                </ul>
+
+                <div class="reflection-box">
+                    <h4>Réflexion : La Force de la Conviction Intime</h4>
+                    <p>Cette période révèle que la foi authentique naît dans l'intimité du cœur avant de se manifester publiquement. Les premiers musulmans n'avaient ni prestige social ni avantage matériel à gagner - seule la vérité du message les motivait. Cette sincerité primordiale devient le fondement inébranlable de l'Islam.</p>
+                </div>
+
+                <h3>L'Apprentissage et la Formation</h3>
+                <p>Durant cette période, les premiers musulmans reçoivent une formation spirituelle intensive. Les révélations coraniques de cette époque insistent sur les fondements de la foi :</p>
+
+                <div class="quote-box">
+                    يَا أَيُّهَا الْمُدَّثِّرُ ۝ قُمْ فَأَنذِرْ ۝ وَرَبَّكَ فَكَبِّرْ ۝ وَثِيَابَكَ فَطَهِّرْ ۝ وَالرُّجْزَ فَاهْجُرْ
+                    <br><br>
+                    "Ô toi qui es revêtu d'un manteau ! Lève-toi et avertis. Et magnifie ton Seigneur. Et purifie tes vêtements. Et écarte-toi du péché."
+                    <div class="quote-source">Coran, Sourate Al-Muddathir (74:1-5)</div>
+                </div>
+
+                <h3>Les Défis de la Discrétion</h3>
+                <p>Maintenir le secret dans une société tribale où tout se sait rapidement constitue un défi majeur. Les premiers musulmans développent des codes et des signes de reconnaissance discrets.</p>
+
+                <h3>L'Évolution Graduelle</h3>
+                <p>Vers la fin de cette période, le nombre de musulmans atteint environ quarante personnes. Ce noyau, soigneusement formé et solidement uni, sera bientôt prêt à affronter l'épreuve de la proclamation publique.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Préparation Stratégique</div>
+                    Cette période de trois ans permet d'établir une base solide de croyants formés et convaincus. Quand viendra l'ordre de proclamer publiquement l'Islam, cette communauté constituera un soutien indefectible pour le Prophète ﷺ.
+                </div>
+
+            </section>
+
+            <div class="sources" id="sources">
+                <h3>Sources Authentiques Consultées</h3>
+                <ul>
+                    <li><strong>Ibn Hichâm</strong> - As-Sîra an-Nabawiyya</li>
+                    <li><strong>At-Tabari</strong> - Histoire des Prophètes et des Rois</li>
+                    <li><strong>Ibn Sa'd</strong> - Tabaqat al-Kubra</li>
+                    <li><strong>Sahih al-Bukhari</strong> - Livre des vertus des Compagnons</li>
+                    <li><strong>Ibn Kathir</strong> - Al-Bidaya wa an-Nihaya</li>
+                    <li><strong>Al-Hakim</strong> - Al-Mustadrak 'ala as-Sahihayn</li>
+                    <li><strong>Ibn al-Athir</strong> - Usd al-Ghaba</li>
+                </ul>
+            </div>
+
+            <nav class="page-navigation">
+                <a href="periode4_v2.html" class="nav-btn">
+                    ← Période 4 : La Première Révélation
+                </a>
+                <a href="periode6_v2.html" class="nav-btn">
+                    Période 6 : La Proclamation →
+                </a>
+            </nav>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h4>Navigation des Périodes</h4>
+                <nav class="timeline-nav">
+                    <a href="periode1_v2.html">1. La Lumière Promise</a>
+                    <a href="periode2_v2.html">2. L'Orphelin Béni</a>
+                    <a href="periode3_v2.html">3. L'Homme de Confiance</a>
+                    <a href="periode4_v2.html">4. La Première Révélation</a>
+                    <a href="periode5_v2.html" class="current">5. L'Appel Silencieux</a>
+                    <a href="periode6_v2.html">6. La Proclamation</a>
+                    <a href="periode7_v2.html">7. Les Premières Épreuves</a>
+                    <a href="periode8_v2.html">8. L'Hégire</a>
+                    <a href="periode9_v2.html">9. Médine la Radieuse</a>
+                    <a href="periode10_v2.html">10. Les Grandes Batailles</a>
+                    <a href="periode11_v2.html">11. Hudaybiya</a>
+                    <a href="periode12_v2.html">12. La Conquête</a>
+                    <a href="periode13_v2.html">13. L'Unification</a>
+                    <a href="periode14_v2.html">14. Le Pèlerinage d'Adieu</a>
+                    <a href="periode15_v2.html">15. L'Héritage Éternel</a>
+                </nav>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Faits Clés</h4>
+                <ul class="key-facts">
+                    <li><strong>Durée :</strong> 3 ans (610-613 EC)</li>
+                    <li><strong>Première musulmane :</strong> Khadija</li>
+                    <li><strong>Premier homme :</strong> Abu Bakr</li>
+                    <li><strong>Premier enfant :</strong> Ali</li>
+                    <li><strong>Lieu de réunion :</strong> Dar al-Arqam</li>
+                    <li><strong>Nombre total :</strong> ~40 musulmans</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Les Premiers Musulmans</h4>
+                <p>Ce groupe d'élite, formé dans la discrétion, développe une foi inébranlable qui résistera à toutes les épreuves. Leur dévouement total constitue le socle de la communauté islamique.</p>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

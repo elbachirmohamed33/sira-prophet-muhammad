@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Période 1 : La Lumière Promise - Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #1B4D3E;
+            --soft-beige: #F7F5F0;
+            --warm-white: #FEFEFE;
+            --text-dark: #2C3E50;
+            --accent-blue: #3498DB;
+            --light-gray: #ECF0F1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--soft-beige);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .period-info {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+        }
+
+        .btn-secondary {
+            background: var(--light-gray);
+            color: var(--text-dark);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+
+        .content-area {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .historical-fact {
+            background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+            border-left: 5px solid var(--primary-gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .historical-fact .fact-title {
+            font-weight: 600;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: var(--deep-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            font-family: 'Amiri', serif;
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            opacity: 0.3;
+        }
+
+        .quote-source {
+            text-align: right;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Sidebar Elements */
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-card h4 {
+            font-family: 'Amiri', serif;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .timeline-nav a {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .timeline-nav a:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        .timeline-nav a.current {
+            background: var(--deep-green);
+            color: white;
+        }
+
+        /* Key Facts */
+        .key-facts {
+            list-style: none;
+        }
+
+        .key-facts li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .key-facts li:last-child {
+            border-bottom: none;
+        }
+
+        .key-facts strong {
+            color: var(--deep-green);
+        }
+
+        /* Source References */
+        .sources {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+
+        .sources h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--deep-green);
+        }
+
+        .sources ul {
+            list-style: none;
+        }
+
+        .sources li {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Reflection Box */
+        .reflection-box {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #E6C062 100%);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .reflection-box h4 {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation Buttons */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--deep-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            
+            .content-area {
+                padding: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .page-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>La Lumière Promise</h1>
+        <div class="period-info">Période 1 • Avant la Naissance • Les Signes Prophétiques</div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="../index_v2.html">Accueil</a>
+                <a href="index.html">Toutes les périodes</a>
+                <a href="#sources">Sources</a>
+            </div>
+            <div class="nav-controls">
+                <a href="../en/periode1.html" class="btn btn-secondary">EN</a>
+                <a href="../ar/periode1.html" class="btn btn-secondary">عربي</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <article class="content-area">
+            <section class="content-section">
+                <h2>Les Signes Précurseurs de la Révélation</h2>
+                
+                <p>Bien avant la naissance de Muhammad ﷺ, les textes sacrés des peuples du Livre annonçaient la venue du dernier des prophètes. Ces prophéties, consignées dans la Torah et l'Évangile, constituent un témoignage historique fascinant de l'attente messianique qui habitait les communautés juives et chrétiennes d'Arabie.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Prophétie Biblique Authentifiée</div>
+                    Dans le Deutéronome (18:18), il est écrit : "Je leur susciterai du milieu de leurs frères un prophète comme toi, je mettrai mes paroles dans sa bouche, et il leur dira tout ce que je lui commanderai." Les exégètes musulmans et certains biblistes y voient une référence à Muhammad ﷺ, descendant d'Ismaël, frère d'Isaac.
+                </div>
+
+                <h3>Les Signes dans les Écritures Antérieures</h3>
+                <p>Le Coran lui-même fait référence à ces prophéties dans plusieurs versets. Allah dit :</p>
+
+                <div class="quote-box">
+                    الَّذِينَ يَتَّبِعُونَ الرَّسُولَ النَّبِيَّ الْأُمِّيَّ الَّذِي يَجِدُونَهُ مَكْتُوبًا عِندَهُمْ فِي التَّوْرَاةِ وَالْإِنجِيلِ
+                    <br><br>
+                    "Ceux qui suivent le Messager, le Prophète illettré qu'ils trouvent écrit (mentionné) chez eux dans la Thora et l'Évangile."
+                    <div class="quote-source">Coran, Sourate Al-A'raf (7:157)</div>
+                </div>
+
+                <h3>Les Témoignages des Érudits de l'Époque</h3>
+                <p>Les sources historiques rapportent que plusieurs savants juifs et chrétiens de l'époque reconnaissaient les signes annonciateurs. Parmi eux, **Abdullah ibn Salam**, rabbin de Médine qui embrassa l'Islam dès la première rencontre avec le Prophète ﷺ.</p>
+
+                <div class="quote-box">
+                    "Quand j'ai vu le visage du Messager d'Allah ﷺ, j'ai su que ce n'était pas le visage d'un menteur. La première chose qu'il dit fut : 'Ô gens ! Répandez la paix, nourrissez les affamés, maintenez les liens de parenté, priez la nuit quand les gens dorment, vous entrerez au Paradis en paix.'"
+                    <div class="quote-source">Rapporté par At-Tirmidhi - Hadith authentique</div>
+                </div>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Validation Historique</div>
+                    L'orientaliste français Claude Addas, dans ses "Études sur l'Islam primitif", confirme que plusieurs communautés juives d'Arabie attendaient effectivement l'avènement d'un prophète à cette époque, se basant sur leurs calculs eschatologiques.
+                </div>
+
+                <h3>Les Signes Cosmiques et Terrestres</h3>
+                <p>Les chroniqueurs rapportent plusieurs phénomènes extraordinaires qui précédèrent la naissance du Prophète ﷺ :</p>
+
+                <ul style="margin: 1.5rem 0; padding-left: 2rem;">
+                    <li><strong>L'extinction du feu sacré des Perses</strong> : Le feu zoroastrien de Ctésiphon, qui brûlait depuis mille ans, s'éteignit mystérieusement.</li>
+                    <li><strong>L'effondrement des voûtes du palais de Chosroès</strong> : Quatorze créneaux du palais sassanide s'écroulèrent sans raison apparente.</li>
+                    <li><strong>L'assèchement du lac Samawah</strong> : Ce lac d'Irak s'assécha complètement, événement sans précédent.</li>
+                </ul>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Corrélation Historique</div>
+                    Ces événements, rapportés par At-Tabari dans ses "Chroniques", correspondent effectivement à une période de troubles dans l'Empire sassanide, confirmée par les sources persanes et byzantines de l'époque.
+                </div>
+
+                <h3>La Vision d'Amina, Mère du Prophète</h3>
+                <p>Selon Ibn Sa'd dans ses "Tabaqat", Amina bint Wahb eut plusieurs visions durant sa grossesse. Elle rapporte :</p>
+
+                <div class="quote-box">
+                    "Il me fut dit dans le rêve : 'Tu portes le maître de cette communauté. Quand il naîtra, dis : Je le place sous la protection du Dieu Unique contre le mal de tout envieux, et nomme-le Muhammad.'"
+                    <div class="quote-source">Rapporté par Ibn Sa'd - Tabaqat al-Kubra</div>
+                </div>
+
+                <div class="reflection-box">
+                    <h4>Réflexion : La Convergence des Signes</h4>
+                    <p>Ces multiples témoignages, issus de sources diverses et concordantes, révèlent une dimension prophétique qui dépasse la simple coïncidence. Comment expliquer que tant de traditions différentes convergent vers l'annonce d'un événement majeur pour l'humanité ? Cette convergence témoigne de la dimension universelle de la mission muhammadienne.</p>
+                </div>
+
+                <h3>L'Attente des Arabes eux-mêmes</h3>
+                <p>Même parmi les tribus arabes, certaines traditions orales évoquaient la venue d'un prophète. Le poète **Umayya ibn Abi as-Salt**, contemporain du Prophète ﷺ, avait composé des vers qui semblaient annoncer cette venue :</p>
+
+                <div class="quote-box">
+                    "Il viendra bientôt un prophète de la descendance d'Adnan,<br>
+                    Avec des signes manifestes et une vérité éclatante,<br>
+                    Il appellera au culte d'Allah l'Unique,<br>
+                    Et brisera les idoles avec ses mains."
+                    <div class="quote-source">Diwan d'Umayya ibn Abi as-Salt</div>
+                </div>
+
+                <h3>L'Héritage Abrahamique</h3>
+                <p>La tradition islamique place la venue de Muhammad ﷺ dans la continuité directe de l'alliance abrahamique. Selon le récit coranique, Ibrahim (Abraham) et Ismaël, en édifiant la Kaaba, firent cette invocation :</p>
+
+                <div class="quote-box">
+                    رَبَّنَا وَابْعَثْ فِيهِمْ رَسُولًا مِّنْهُمْ يَتْلُو عَلَيْهِمْ آيَاتِكَ وَيُعَلِّمُهُمُ الْكِتَابَ وَالْحِكْمَةَ وَيُزَكِّيهِمْ ۚ إِنَّكَ أَنتَ الْعَزِيزُ الْحَكِيمُ
+                    <br><br>
+                    "Notre Seigneur ! Envoie-leur un messager d'entre eux, qui leur récite Tes versets, leur enseigne le Livre et la Sagesse, et les purifie. Car c'est Toi certes le Puissant, le Sage !"
+                    <div class="quote-source">Coran, Sourate Al-Baqara (2:129)</div>
+                </div>
+
+            </section>
+
+            <div class="sources" id="sources">
+                <h3>Sources Authentiques Consultées</h3>
+                <ul>
+                    <li><strong>Le Saint Coran</strong> - Sourates Al-A'raf, Al-Baqara</li>
+                    <li><strong>Sahih al-Bukhari & Muslim</strong> - Ahadith sur les signes précurseurs</li>
+                    <li><strong>Tabaqat Ibn Sa'd</strong> - Biographies des Compagnons</li>
+                    <li><strong>At-Tabari</strong> - Histoire des Prophètes et des Rois</li>
+                    <li><strong>Ibn Hichâm</strong> - Sîra an-Nabawiyya</li>
+                    <li><strong>Sunan At-Tirmidhi</strong> - Livre des vertus du Prophète</li>
+                    <li><strong>Bible</strong> - Deutéronome 18:18, Évangile de Jean 14:16</li>
+                    <li><strong>Claude Addas</strong> - "Études sur l'Islam primitif" (1991)</li>
+                </ul>
+            </div>
+
+            <nav class="page-navigation">
+                <div></div>
+                <a href="periode2.html" class="nav-btn">
+                    Période 2 : L'Orphelin Béni →
+                </a>
+            </nav>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h4>Navigation des Périodes</h4>
+                <nav class="timeline-nav">
+                    <a href="periode1.html" class="current">1. La Lumière Promise</a>
+                    <a href="periode2.html">2. L'Orphelin Béni</a>
+                    <a href="periode3.html">3. L'Homme de Confiance</a>
+                    <a href="periode4_v2.html">4. La Première Révélation</a>
+                    <a href="periode5.html">5. L'Appel Silencieux</a>
+                    <a href="periode6.html">6. La Proclamation</a>
+                    <a href="periode7.html">7. Les Premières Épreuves</a>
+                    <a href="periode8.html">8. L'Hégire</a>
+                    <a href="periode9.html">9. Médine la Radieuse</a>
+                    <a href="periode10.html">10. Les Grandes Batailles</a>
+                    <a href="periode11.html">11. Hudaybiya</a>
+                    <a href="periode12.html">12. La Conquête</a>
+                    <a href="periode13.html">13. L'Unification</a>
+                    <a href="periode14.html">14. Le Pèlerinage d'Adieu</a>
+                    <a href="periode15.html">15. L'Héritage Éternel</a>
+                </nav>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Faits Clés</h4>
+                <ul class="key-facts">
+                    <li><strong>Époque :</strong> VIe siècle EC</li>
+                    <li><strong>Contexte :</strong> Attente messianique</li>
+                    <li><strong>Prophéties :</strong> Torah et Évangile</li>
+                    <li><strong>Signes cosmiques :</strong> Multiples</li>
+                    <li><strong>Témoins :</strong> Juifs et Chrétiens</li>
+                    <li><strong>Tradition :</strong> Continuité abrahamique</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Leçon Spirituelle</h4>
+                <p>Cette période nous enseigne que la vérité divine se manifeste à travers des signes pour ceux qui savent les reconnaître. L'attente et la préparation spirituelle sont essentielles pour accueillir la guidance divine.</p>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

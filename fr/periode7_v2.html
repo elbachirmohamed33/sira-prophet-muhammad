@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Période 7 : Les Premières Épreuves - Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #1B4D3E;
+            --soft-beige: #F7F5F0;
+            --warm-white: #FEFEFE;
+            --text-dark: #2C3E50;
+            --accent-blue: #3498DB;
+            --light-gray: #ECF0F1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--soft-beige);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .period-info {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background: var(--light-gray);
+            color: var(--text-dark);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+
+        .content-area {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .historical-fact {
+            background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+            border-left: 5px solid var(--primary-gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .historical-fact .fact-title {
+            font-weight: 600;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: var(--deep-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            font-family: 'Amiri', serif;
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            opacity: 0.3;
+        }
+
+        .quote-source {
+            text-align: right;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-card h4 {
+            font-family: 'Amiri', serif;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .timeline-nav a {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .timeline-nav a:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        .timeline-nav a.current {
+            background: var(--deep-green);
+            color: white;
+        }
+
+        .key-facts {
+            list-style: none;
+        }
+
+        .key-facts li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .key-facts li:last-child {
+            border-bottom: none;
+        }
+
+        .key-facts strong {
+            color: var(--deep-green);
+        }
+
+        .sources {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+
+        .sources h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--deep-green);
+        }
+
+        .sources ul {
+            list-style: none;
+        }
+
+        .sources li {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .reflection-box {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #E6C062 100%);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .reflection-box h4 {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--deep-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+        }
+
+        .persecution-story {
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F0 100%);
+            border-left: 5px solid #DC3545;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .persecution-story .story-title {
+            font-weight: 600;
+            color: #DC3545;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            
+            .content-area {
+                padding: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .page-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Les Premières Épreuves</h1>
+        <div class="period-info">Période 7 • 616-619 EC • La Mecque • "L'épreuve du feu révèle l'or pur"</div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="../index_v2.html">Accueil</a>
+                <a href="index_v2.html">Toutes les périodes</a>
+                <a href="#sources">Sources</a>
+            </div>
+            <div class="nav-controls">
+                <a href="../en/periode7.html" class="btn btn-secondary">EN</a>
+                <a href="../ar/periode7.html" class="btn btn-secondary">عربي</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <article class="content-area">
+            <section class="content-section">
+                <h2>L'Escalade de la Persécution</h2>
+                
+                <p>Après la proclamation publique, l'opposition s'organise et se durcit. Les dirigeants de Quraych comprennent que l'Islam représente une menace directe à leur système socio-économique et religieux. Ils décident d'employer des méthodes de plus en plus brutales.</p>
+
+                <div class="quote-box">
+                    "Ô vous qui croyez ! Cherchez secours dans l'endurance et la Salat. Car Allah est avec les endurants."
+                    <div class="quote-source">Coran, Sourate Al-Baqara (2:153)</div>
+                </div>
+
+                <h3>Le Martyre de Sumayyah</h3>
+                <p>Sumayyah bint Khayyat devient la première martyre de l'Islam. Son sacrifice héroïque marque un tournant dans l'histoire de la nouvelle religion.</p>
+
+                <div class="persecution-story">
+                    <div class="story-title">Le Courage de Sumayyah</div>
+                    Épouse de Yasir et mère d'Ammar, Sumayyah refuse de renier sa foi malgré les tortures. Abu Jahl, dans sa rage, la transperce de sa lance, faisant d'elle la première personne à mourir pour l'Islam. Sa bravoure inspire les générations futures.
+                </div>
+
+                <h3>Les Tortures Systématiques</h3>
+                <p>Les persécutions touchent particulièrement les esclaves et les plus vulnérables de la société mecquoise :</p>
+
+                <div class="persecution-story">
+                    <div class="story-title">Bilal ibn Rabah</div>
+                    Umayyah ibn Khalaf fait traîner Bilal sur le sable brûlant du désert, plaçant une lourde pierre sur sa poitrine. Malgré la torture, Bilal répète : "Ahad, Ahad" (Un seul, Un seul), affirmant l'unicité d'Allah.
+                </div>
+
+                <div class="persecution-story">
+                    <div class="story-title">Khabbab ibn al-Arat</div>
+                    Les polythéistes forcent ce forgeron musulman à s'allonger sur des charbons ardents, maintenant sa position avec des pierres. Il portera les cicatrices de ces tortures toute sa vie.
+                </div>
+
+                <div class="persecution-story">
+                    <div class="story-title">La Famille de Yasir</div>
+                    Yasir, Sumayyah et leur fils Ammar subissent des tortures quotidiennes. Le Prophète ﷺ, passant près d'eux, leur dit : "Patience, famille de Yasir ! Votre rendez-vous est le Paradis."
+                </div>
+
+                <h3>L'Intervention d'Abu Bakr</h3>
+                <p>Ému par les souffrances de Bilal, Abu Bakr rachète l'esclave tortionnaire et l'affranchit, montrant l'exemple de la solidarité musulmane.</p>
+
+                <div class="quote-box">
+                    "Abu Bakr acheta Bilal d'Umayyah ibn Khalaf pour cinq onces d'or, puis l'affranchit pour Allah."
+                    <div class="quote-source">Ibn Hichâm, As-Sîra an-Nabawiyya</div>
+                </div>
+
+                <h3>Le Boycott Économique</h3>
+                <p>Face à la résistance des musulmans, Quraych organise un boycott économique et social total contre les clans de Banu Hashim et Banu al-Muttalib.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Les Termes du Boycott</div>
+                    Aucun mariage, aucun commerce, aucune relation sociale avec les deux clans. Le pacte est suspendu dans la Kaaba, témoignant de sa gravité. Ce siège durera trois longues années.
+                </div>
+
+                <h3>L'Exil au Shi'b Abi Talib</h3>
+                <p>Les clans boycottés se retirent dans une vallée étroite en périphérie de La Mecque. Les conditions de vie y sont extrêmement difficiles.</p>
+
+                <div class="quote-box">
+                    "Nous entendions les pleurs des enfants de faim depuis notre vallée. Parfois, nous ne trouvions rien d'autre à manger que les feuilles d'arbres."
+                    <div class="quote-source">Témoignage rapporté par At-Tabari</div>
+                </div>
+
+                <h3>La Solidarité dans l'Épreuve</h3>
+                <p>Malgré les privations, cette période renforce les liens entre les musulmans. L'entraide et la patience deviennent des valeurs cardinales.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">Leçons de Résilience</div>
+                    Les musulmans apprennent à vivre avec le minimum, développant une spiritualité profonde et une confiance absolue en Allah. Ces épreuves préparent la communauté aux défis futurs.
+                </div>
+
+                <h3>Les Tentatives de Corruption</h3>
+                <p>Parallèlement aux persécutions, les dirigeants mecquois tentent de corrompre le Prophète ﷺ avec des offres alléchantes.</p>
+
+                <div class="quote-box">
+                    "Si tu veux la richesse, nous rassemblerons pour toi des biens jusqu'à ce que tu deviennes le plus riche d'entre nous. Si tu veux l'honneur, nous te ferons notre chef. Si tu veux la royauté, nous te couronnerons roi sur nous."
+                    <div class="quote-source">Proposition de Quraych rapportée par Ibn Ishaq</div>
+                </div>
+
+                <p>La réponse du Prophète ﷺ reste ferme et inébranlable :</p>
+
+                <div class="quote-box">
+                    "Par Allah ! Si vous placiez le soleil dans ma main droite et la lune dans ma main gauche pour que j'abandonne cette affaire, je ne l'abandonnerais pas jusqu'à ce qu'Allah la fasse triompher ou que je périsse pour elle."
+                    <div class="quote-source">Réponse du Prophète ﷺ - Ibn Hichâm</div>
+                </div>
+
+                <h3>La Rupture du Boycott</h3>
+                <p>Après trois années, des voix s'élèvent parmi Quraych contre l'injustice du boycott. Certains membres influents, touchés par la compassion, œuvrent à sa rupture.</p>
+
+                <div class="historical-fact">
+                    <div class="fact-title">La Fin du Siège</div>
+                    Hichâm ibn 'Amr, Mut'im ibn 'Adi et d'autres notables mecquois forment une coalition pour annuler le pacte. Ils découvrent que le document a été miraculeusement rongé par les termites, ne laissant intact que le nom d'Allah.
+                </div>
+
+                <div class="reflection-box">
+                    <h4>Réflexion : La Forge des Caractères</h4>
+                    <p>Les épreuves ne détruisent pas les croyants sincères ; elles les raffinent. Comme l'or purifié par le feu, les premiers musulmans sortent de ces tribulations plus forts, plus unis, et plus déterminés. Leur exemple enseigne que la foi véritable se mesure non dans la facilité, mais dans l'adversité.</p>
+                </div>
+
+                <h3>Les Conversions Malgré la Persécution</h3>
+                <p>Paradoxalement, les persécutions attirent l'attention sur l'Islam. De nombreuses personnes, intriguées par la résistance des musulmans, finissent par embrasser la foi.</p>
+
+                <ul style="margin: 1.5rem 0; padding-left: 2rem;">
+                    <li><strong>Sa'd ibn Abi Waqqas</strong> - Futur conquérant de la Perse</li>
+                    <li><strong>Talha ibn Ubaydullah</strong> - L'un des dix promis au Paradis</li>
+                    <li><strong>Az-Zubayr ibn al-Awwam</strong> - Cousin du Prophète et brave guerrier</li>
+                    <li><strong>Abdur-Rahman ibn Awf</strong> - Grand marchand et philanthrope</li>
+                </ul>
+
+                <h3>L'Espoir dans l'Obscurité</h3>
+                <p>Malgré la noirceur de cette période, Allah console Son Messager ﷺ par des révélations pleines d'espoir et de promesses futures.</p>
+
+                <div class="quote-box">
+                    وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ
+                    <br><br>
+                    "Et ton Seigneur t'accordera certes [Ses faveurs], et alors tu seras satisfait."
+                    <div class="quote-source">Coran, Sourate Ad-Duha (93:5)</div>
+                </div>
+            </section>
+
+            <div class="sources" id="sources">
+                <h3>Sources Authentiques Consultées</h3>
+                <ul>
+                    <li><strong>Sahih al-Bukhari</strong> - Livre des vertus des Compagnons</li>
+                    <li><strong>Sahih Muslim</strong> - Livre de la Foi</li>
+                    <li><strong>Ibn Hichâm</strong> - As-Sîra an-Nabawiyya</li>
+                    <li><strong>At-Tabari</strong> - Histoire des Prophètes et des Rois</li>
+                    <li><strong>Ibn Sa'd</strong> - Tabaqat al-Kubra</li>
+                    <li><strong>Al-Waqidi</strong> - Kitab al-Maghazi</li>
+                </ul>
+            </div>
+
+            <nav class="page-navigation">
+                <a href="periode6_v2.html" class="nav-btn">
+                    ← Période 6 : La Proclamation
+                </a>
+                <a href="periode8_v2.html" class="nav-btn">
+                    Période 8 : L'Hégire →
+                </a>
+            </nav>
+        </article>
+
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h4>Navigation des Périodes</h4>
+                <nav class="timeline-nav">
+                    <a href="periode1_v2.html">1. La Lumière Promise</a>
+                    <a href="periode2_v2.html">2. L'Orphelin Béni</a>
+                    <a href="periode3_v2.html">3. L'Homme de Confiance</a>
+                    <a href="periode4_v2.html">4. La Première Révélation</a>
+                    <a href="periode5_v2.html">5. L'Appel Silencieux</a>
+                    <a href="periode6_v2.html">6. La Proclamation</a>
+                    <a href="periode7_v2.html" class="current">7. Les Premières Épreuves</a>
+                    <a href="periode8_v2.html">8. L'Hégire</a>
+                    <a href="periode9_v2.html">9. Médine la Radieuse</a>
+                    <a href="periode10_v2.html">10. Les Grandes Batailles</a>
+                    <a href="periode11_v2.html">11. Hudaybiya</a>
+                    <a href="periode12_v2.html">12. La Conquête</a>
+                    <a href="periode13_v2.html">13. L'Unification</a>
+                    <a href="periode14_v2.html">14. Le Pèlerinage d'Adieu</a>
+                    <a href="periode15_v2.html">15. L'Héritage Éternel</a>
+                </nav>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Faits Clés</h4>
+                <ul class="key-facts">
+                    <li><strong>Première martyre :</strong> Sumayyah bint Khayyat</li>
+                    <li><strong>Boycott :</strong> 3 années d'isolement</li>
+                    <li><strong>Lieu d'exil :</strong> Shi'b Abi Talib</li>
+                    <li><strong>Durée :</strong> 616-619 EC</li>
+                    <li><strong>Tortures :</strong> Bilal, Khabbab, famille Yasir</li>
+                    <li><strong>Solidarité :</strong> Abu Bakr affranchit Bilal</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>Leçon de Persévérance</h4>
+                <p>Les épreuves révèlent la sincérité de la foi. Les premiers musulmans nous enseignent que la vérité triomphe toujours, même face aux persécutions les plus cruelles.</p>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

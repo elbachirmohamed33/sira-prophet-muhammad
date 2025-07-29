@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistant IA - Analyse des Hadiths et Enseignements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #0F4C3A;
+            --soft-cream: #F8F6F0;
+            --warm-brown: #8B4513;
+            --text-dark: #2C1810;
+            --ai-blue: #4A90E2;
+            --ai-purple: #7B68EE;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .navigation {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .ai-header {
+            background: linear-gradient(135deg, var(--ai-blue), var(--ai-purple));
+            color: white;
+            text-align: center;
+            padding: 120px 0 80px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="ai-pattern" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="5" cy="5" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="15" cy="15" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23ai-pattern)"/></svg>');
+            opacity: 0.6;
+        }
+
+        .ai-title {
+            font-family: 'Amiri', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ai-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ai-container {
+            max-width: 1200px;
+            margin: -40px auto 2rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+        }
+
+        .chat-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, var(--deep-green), var(--warm-brown));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+        }
+
+        .chat-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .chat-status {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .message.ai .message-avatar {
+            background: linear-gradient(135deg, var(--ai-blue), var(--ai-purple));
+            color: white;
+        }
+
+        .message.user .message-avatar {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        .message-content {
+            background: #F8F9FA;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            max-width: 70%;
+            position: relative;
+        }
+
+        .message.user .message-content {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        .message-time {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 0.5rem;
+        }
+
+        .hadith-reference {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--primary-gold);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Amiri', serif;
+        }
+
+        .hadith-arabic {
+            font-size: 1.1rem;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .hadith-translation {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .hadith-source {
+            font-size: 0.9rem;
+            color: var(--warm-brown);
+            font-weight: 600;
+        }
+
+        .chat-input-container {
+            padding: 1.5rem;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        .chat-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 25px;
+            font-size: 1rem;
+            resize: none;
+            min-height: 50px;
+            max-height: 120px;
+            transition: border-color 0.3s ease;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--ai-blue);
+        }
+
+        .chat-send {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, var(--ai-blue), var(--ai-purple));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .chat-send:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .quick-actions {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .quick-actions h3 {
+            font-family: 'Amiri', serif;
+            color: var(--deep-green);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .action-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--soft-cream), #F0EDE6);
+            border: 2px solid var(--primary-gold);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .action-button:hover {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .suggested-questions {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .suggested-questions h3 {
+            font-family: 'Amiri', serif;
+            color: var(--deep-green);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .question-item {
+            background: #F8F9FA;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .question-item:hover {
+            background: var(--ai-blue);
+            color: white;
+        }
+
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            font-style: italic;
+            color: #666;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 3px;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--ai-blue);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ai-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin: -20px auto 2rem;
+            }
+            
+            .ai-title {
+                font-size: 2rem;
+            }
+            
+            .chat-container {
+                height: 500px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="nav-logo">Assistant IA ﷺ</div>
+            <ul class="nav-links">
+                <li><a href="index_v2.html">Accueil</a></li>
+                <li><a href="fr/index_v2.html">Périodes</a></li>
+                <li><a href="recherche.html">Recherche</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="ai-header">
+        <h1 class="ai-title">Assistant IA Islamique</h1>
+        <p class="ai-subtitle">Posez vos questions sur les hadiths et les enseignements du Prophète ﷺ</p>
+    </header>
+
+    <div class="ai-container">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2 class="chat-title">Assistant IA - Hadiths & Sira</h2>
+                <p class="chat-status">🟢 En ligne - Prêt à répondre</p>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <p>السلام عليكم ورحمة الله وبركاته</p>
+                        <p>Je suis votre assistant IA spécialisé dans les hadiths et la biographie du Prophète Muhammad ﷺ. Comment puis-je vous aider aujourd'hui ?</p>
+                        <div class="message-time">Maintenant</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="message-avatar">🤖</div>
+                <span>L'assistant réfléchit</span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div style="position: relative;">
+                    <textarea 
+                        class="chat-input" 
+                        id="chatInput" 
+                        placeholder="Posez votre question sur les hadiths, la Sira, ou les enseignements islamiques..."
+                        rows="1"
+                    ></textarea>
+                    <button class="chat-send" onclick="sendMessage()">➤</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="quick-actions">
+                <h3>Actions Rapides</h3>
+                <button class="action-button" onclick="askQuestion('Expliquez-moi un hadith sur la patience')">
+                    📚 Explication de hadith
+                </button>
+                <button class="action-button" onclick="askQuestion('Quels sont les hadiths sur la charité ?')">
+                    🔍 Recherche thématique
+                </button>
+                <button class="action-button" onclick="askQuestion('Contexte historique de la bataille de Badr')">
+                    📖 Contexte historique
+                </button>
+                <button class="action-button" onclick="askQuestion('Authenticité de ce hadith')">
+                    ✅ Vérification d\'authenticité
+                </button>
+            </div>
+
+            <div class="suggested-questions">
+                <h3>Questions Fréquentes</h3>
+                <div class="question-item" onclick="askQuestion('Quel est le hadith le plus important ?')">
+                    Quel est le hadith le plus important ?
+                </div>
+                <div class="question-item" onclick="askQuestion('Comment vérifier l\'authenticité d\'un hadith ?')">
+                    Comment vérifier l'authenticité d'un hadith ?
+                </div>
+                <div class="question-item" onclick="askQuestion('Différence entre hadith sahih et da\'if ?')">
+                    Différence entre hadith sahih et da'if ?
+                </div>
+                <div class="question-item" onclick="askQuestion('Quels sont les 6 livres de hadiths authentiques ?')">
+                    Quels sont les 6 livres de hadiths authentiques ?
+                </div>
+                <div class="question-item" onclick="askQuestion('Hadith sur les bonnes manières')">
+                    Hadiths sur les bonnes manières
+                </div>
+                <div class="question-item" onclick="askQuestion('Enseignements du Prophète sur la famille')">
+                    Enseignements sur la famille
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Base de données de réponses pré-programmées
+        const hadithDatabase = {
+            'hadith important': {
+                response: "Le hadith le plus célèbre et important est celui de l'intention :",
+                hadith: {
+                    arabic: "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى",
+                    translation: "Les actions ne valent que par leurs intentions, et chacun n'obtient que ce qu'il a eu l'intention de faire.",
+                    source: "Rapporté par al-Bukhari et Muslim"
+                },
+                explanation: "Ce hadith est considéré comme un tiers de l'Islam car il englobe toutes les actions du musulman. Il nous enseigne que la valeur de nos actes dépend entièrement de nos intentions."
+            },
+            'authenticité': {
+                response: "Pour vérifier l'authenticité d'un hadith, les savants examinent :",
+                explanation: "1. La chaîne de transmission (isnad) - qui a rapporté le hadith\n2. Le contenu (matn) - cohérence avec le Coran et autres hadiths\n3. La fiabilité des rapporteurs\n4. Les classifications : Sahih (authentique), Hasan (bon), Da'if (faible), Mawdu' (forgé)"
+            },
+            'sahih da\'if': {
+                response: "Différence entre hadith sahih et da'if :",
+                explanation: "• Hadith Sahih : Chaîne continue de rapporteurs fiables, sans défaut apparent\n• Hadith Da'if : Faiblesse dans la chaîne ou le contenu\n• Les hadiths sahih sont acceptés pour établir des règles religieuses\n• Les hadiths da'if peuvent être utilisés pour les encouragements généraux"
+            },
+            'six livres': {
+                response: "Les six livres de hadiths les plus authentiques (Kutub as-Sitta) :",
+                explanation: "1. Sahih al-Bukhari\n2. Sahih Muslim\n3. Sunan Abu Dawud\n4. Sunan at-Tirmidhi\n5. Sunan an-Nasa'i\n6. Sunan Ibn Majah\n\nLes deux premiers (Bukhari et Muslim) sont considérés comme les plus authentiques."
+            },
+            'patience': {
+                response: "Hadith sur la patience :",
+                hadith: {
+                    arabic: "وَمَن يَتَصَبَّرْ يُصَبِّرْهُ اللَّهُ، وَمَا أُعْطِيَ أَحَدٌ عَطَاءً خَيْرًا وَأَوْسَعَ مِنَ الصَّبْرِ",
+                    translation: "Celui qui s'efforce d'être patient, Allah lui accordera la patience. Et personne n'a reçu de don meilleur et plus vaste que la patience.",
+                    source: "Rapporté par al-Bukhari et Muslim"
+                },
+                explanation: "Ce hadith nous enseigne que la patience est un don d'Allah qui s'acquiert par l'effort personnel. C'est l'une des qualités les plus nobles qu'un croyant puisse développer."
+            },
+            'charité': {
+                response: "Voici quelques hadiths importants sur la charité :",
+                hadith: {
+                    arabic: "مَا نَقَصَ مَالُ عَبْدٍ مِنْ صَدَقَةٍ",
+                    translation: "La richesse d'un serviteur ne diminue jamais à cause de la charité.",
+                    source: "Rapporté par Muslim"
+                },
+                explanation: "Le Prophète ﷺ a beaucoup insisté sur la charité. Il a dit que même un sourire est une charité, et que la charité éteint les péchés comme l'eau éteint le feu."
+            },
+            'badr': {
+                response: "Contexte historique de la bataille de Badr (624 EC) :",
+                explanation: "• Première grande bataille des musulmans\n• 313 musulmans contre environ 1000 Mecquois\n• Victoire décisive malgré l'infériorité numérique\n• Mentionnée dans le Coran comme 'Yawm al-Furqan' (le jour du discernement)\n• Renforça la position de la communauté musulmane naissante"
+            },
+            'bonnes manières': {
+                response: "Le Prophète ﷺ a dit sur les bonnes manières :",
+                hadith: {
+                    arabic: "إِنَّمَا بُعِثْتُ لِأُتَمِّمَ مَكَارِمَ الْأَخْلَاقِ",
+                    translation: "Je n'ai été envoyé que pour parfaire les nobles caractères.",
+                    source: "Rapporté par Ahmad"
+                },
+                explanation: "Ce hadith résume la mission du Prophète ﷺ : perfectionner le comportement humain. Les bonnes manières sont au cœur de l'Islam."
+            },
+            'famille': {
+                response: "Enseignements du Prophète ﷺ sur la famille :",
+                hadith: {
+                    arabic: "خَيْرُكُمْ خَيْرُكُمْ لِأَهْلِهِ، وَأَنَا خَيْرُكُمْ لِأَهْلِي",
+                    translation: "Le meilleur d'entre vous est celui qui est le meilleur avec sa famille, et je suis le meilleur d'entre vous avec ma famille.",
+                    source: "Rapporté par at-Tirmidhi"
+                },
+                explanation: "Le Prophète ﷺ a mis l'accent sur l'importance de bien traiter sa famille. Il était un exemple parfait d'époux et de père aimant."
+            }
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+
+            // Ajouter le message de l'utilisateur
+            addMessage(message, 'user');
+            input.value = '';
+
+            // Simuler la réflexion de l'IA
+            showTypingIndicator();
+
+            // Répondre après un délai
+            setTimeout(() => {
+                hideTypingIndicator();
+                const response = generateResponse(message);
+                addMessage(response.text, 'ai', response.hadith);
+            }, 2000);
+        }
+
+        function addMessage(content, sender, hadith = null) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.textContent = sender === 'ai' ? '🤖' : '👤';
+
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            
+            let messageHTML = `<p>${content}</p>`;
+            
+            if (hadith) {
+                messageHTML += `
+                    <div class="hadith-reference">
+                        <div class="hadith-arabic">${hadith.arabic}</div>
+                        <div class="hadith-translation">${hadith.translation}</div>
+                        <div class="hadith-source">${hadith.source}</div>
+                    </div>
+                `;
+            }
+            
+            messageHTML += `<div class="message-time">${new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}</div>`;
+            
+            messageContent.innerHTML = messageHTML;
+
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(messageContent);
+            messagesContainer.appendChild(messageDiv);
+
+            // Scroll vers le bas
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function generateResponse(question) {
+            const lowerQuestion = question.toLowerCase();
+            
+            // Recherche de mots-clés
+            for (const [key, data] of Object.entries(hadithDatabase)) {
+                if (lowerQuestion.includes(key) || lowerQuestion.includes(key.replace(/'/g, ''))) {
+                    return {
+                        text: data.response + (data.explanation ? '\n\n' + data.explanation : ''),
+                        hadith: data.hadith || null
+                    };
+                }
+            }
+
+            // Réponse par défaut
+            return {
+                text: "Je vous remercie pour votre question. Pour une réponse plus précise, je recommande de consulter les sources authentiques comme Sahih al-Bukhari, Sahih Muslim, ou de demander conseil à un savant qualifié. Pouvez-vous reformuler votre question ou utiliser des mots-clés spécifiques ?",
+                hadith: null
+            };
+        }
+
+        function showTypingIndicator() {
+            document.getElementById('typingIndicator').style.display = 'flex';
+            const messagesContainer = document.getElementById('chatMessages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            document.getElementById('typingIndicator').style.display = 'none';
+        }
+
+        function askQuestion(question) {
+            document.getElementById('chatInput').value = question;
+            sendMessage();
+        }
+
+        // Permettre l'envoi avec Entrée
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Auto-resize du textarea
+        document.getElementById('chatInput').addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+    </script>
+</body>
+</html>
