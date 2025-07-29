@@ -1,93 +1,342 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>جاهلية (الفترة ما قبل الإسلام)</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fdfaf3;
-      color: #2c3e50;
-      margin: 0;
-      padding: 0;
-      direction: rtl;
-      text-align: right;
-    }
-    header {
-      background-color: #b4d3b2;
-      padding: 1rem;
-      text-align: center;
-      color: #1c3c2e;
-    }
-    nav {
-      background-color: #e8f5e9;
-      padding: 0.5rem;
-      text-align: center;
-    }
-    nav a {
-      margin: 0 10px;
-      color: #2e7d32;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem;
-    }
-    section {
-      background: #ffffff;
-      margin-bottom: 1rem;
-      padding: 1rem;
-      border-right: 6px solid #81c784;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    h2 {
-      color: #2e7d32;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قبل البعثة (570-610 م) - السيرة النبوية الشريفة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #0F4C3A;
+            --soft-cream: #F8F6F0;
+            --warm-brown: #8B4513;
+            --text-dark: #2C1810;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Arabic', 'Amiri', serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
+            color: var(--text-dark);
+            line-height: 1.8;
+            direction: rtl;
+        }
+
+        .navigation {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(15, 76, 58, 0.9), rgba(139, 69, 19, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><defs><pattern id="islamic" patternUnits="userSpaceOnUse" width="50" height="50"><path d="M25,25 L35,15 L25,5 L15,15 Z" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/></pattern></defs><rect width="1000" height="300" fill="url(%23islamic)"/></svg>');
+            color: white;
+            text-align: center;
+            padding: 120px 0 80px;
+            margin-top: 80px;
+        }
+
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .period-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-gold);
+        }
+
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--warm-brown);
+            margin-bottom: 1rem;
+            border-right: 4px solid var(--primary-gold);
+            padding-right: 1rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .quran-verse {
+            background: var(--deep-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+            font-family: 'Amiri', serif;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .quran-verse::before {
+            content: '﴿';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--primary-gold);
+        }
+
+        .quran-verse::after {
+            content: '﴾';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 2rem;
+            color: var(--primary-gold);
+        }
+
+        .hadith-box {
+            background: var(--warm-brown);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .source {
+            text-align: left;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            gap: 1rem;
+        }
+
+        .nav-button {
+            background: var(--primary-gold);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: var(--warm-brown);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .period-content {
+                padding: 2rem;
+            }
+            
+            .navigation-buttons {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>حياة النبي محمد ﷺ</h1>
-    <p>الفصل: جاهلية (الفترة ما قبل الإسلام)</p>
-  </header>
-  <nav>
-    <a href="index.html">الرئيسية</a>
-    <a href="periode1.html">الفصل السابق</a>
-    <a href="periode3.html">الفصل التالي</a>
-  </nav>
-  <main>
-    <section>
-      <h2>السياق الاجتماعي والديني</h2>
-      <p><strong>التاريخ:</strong> القرن الخامس والسادس (500-610 م)</p>
-      <p><strong>المكان:</strong> شبه الجزيرة العربية (الحجاز، نجد، اليمن)</p>
-      <p><strong>الشخصيات الرئيسية:</strong> عبد المطلب (جد النبي)، ورقة بن نوفل (عالم حنيف)</p>
-      <p><strong>المصادر:</strong></p>
-      <ul>
-        <li>ابن هشام (السيرة النبوية)</li>
-        <li>كتاب الأصنام لابن الكلبي (الأصنام العربية)</li>
-        <li>الحفريات الأثرية في قرية الفاو</li>
-      </ul>
-      <p><strong>الملخص:</strong> الشرك: 360 صنمًا في الكعبة منها هبل (ارتفاعه 3 أمتار، عقيق أحمر). الممارسات: التضحية بالبشر، دفن البنات أحياء، عبادة النجوم.</p>
-      <p><strong>الدرس الرئيسي:</strong> ألغى الإسلام الممارسات الهمجية مع الحفاظ على القيم النبيلة للشرف والضيافة.</p>
-    </section>
-    <section>
-      <h2>عام الفيل</h2>
-      <p><strong>التاريخ:</strong> 570 م (شهر المحرم)</p>
-      <p><strong>المكان:</strong> مكة → وادي المحسر</p>
-      <p><strong>الشخصيات الرئيسية:</strong> أبرهة الأشرم (ملك حمير)، عبد المطلب</p>
-      <p><strong>المصادر:</strong></p>
-      <ul>
-        <li>القرآن 105 (سورة الفيل)</li>
-        <li>نقش ري 506 للملك أبرهة</li>
-        <li>سجل يوحنا مالالاس (بيزنطة)</li>
-      </ul>
-      <p><strong>الملخص:</strong> القوات: 60,000 رجل، 13 فيل. المعجزة: طيور الأبابيل تحمل حجارة من سجيل، وباء الجدري في الجيش.</p>
-      <p><strong>الدرس الرئيسي:</strong> الله يحمي بيته (الكعبة) كتنبؤ بمجيء النبي ﷺ، الذي وُلد بعد 50 يومًا من هذا الحدث.</p>
-    </section>
-  </main>
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="nav-logo">السيرة النبوية ﷺ</div>
+            <ul class="nav-links">
+                <li><a href="index_v2.html">الرئيسية</a></li>
+                <li><a href="../carte_interactive.html">الخريطة</a></li>
+                <li><a href="../fr/index_v2.html">Français</a></li>
+                <li><a href="../en/index.html">English</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <h1 class="hero-title">بداية الوحي</h1>
+        <p class="hero-subtitle">٦١٠ - ٦١٣ م</p>
+    </header>
+
+    <div class="container">
+        <div class="period-content">
+            <h2 class="section-title">بداية نزول الوحي</h2>
+            
+            <div class="content-section">
+                <h3>🌟 ولادة النبي ﷺ (570 م)</h3>
+                <p>
+                    وُلد محمد ﷺ في مكة المكرمة في عام الفيل، الموافق للعام 570 للميلاد. وقد كانت ولادته مباركة، حيث وُلد يتيم الأب، فقد توفي والده عبد الله بن عبد المطلب قبل ولادته.
+                </p>
+                <p>
+                    كانت والدته آمنة بنت وهب من أشراف قريش، وقد تولى رعايته جده عبد المطلب بن هاشم، سيد قريش وزعيم مكة المكرمة.
+                </p>
+            </div>
+
+            <div class="quran-verse">
+                "أَلَمْ يَجِدْكَ يَتِيمًا فَآوَىٰ * وَوَجَدَكَ ضَالًّا فَهَدَىٰ * وَوَجَدَكَ عَائِلًا فَأَغْنَىٰ"
+                <div class="source">سورة الضحى: 6-8</div>
+            </div>
+
+            <div class="content-section">
+                <h3>👶 الطفولة والرضاعة</h3>
+                <p>
+                    أُرضع النبي ﷺ أولاً من ثُويبة مولاة أبي لهب، ثم من حليمة السعدية من بني سعد بن بكر. وقد نشأ في بادية بني سعد، حيث اكتسب فصاحة اللسان وقوة البدن.
+                </p>
+                <p>
+                    عاش النبي ﷺ مع حليمة السعدية حوالي أربع سنوات، وقد شهدت هذه الفترة بركات وخيرات كثيرة في بيت حليمة، حتى أنها لم ترد أن تفارقه.
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h3>💔 اليتم والكفالة</h3>
+                <p>
+                    توفيت والدته آمنة بنت وهب وهو في السادسة من عمره، فأصبح يتيماً من الأبوين. ثم توفي جده عبد المطلب وهو في الثامنة من عمره، فكفله عمه أبو طالب.
+                </p>
+                <p>
+                    كان أبو طالب فقيراً، لكنه أحب النبي ﷺ حباً جماً وحماه ورعاه. وقد استمرت هذه الكفالة أربعين عاماً حتى وفاة أبي طالب في عام الحزن.
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h3>🐑 الرعي والتجارة</h3>
+                <p>
+                    عمل النبي ﷺ في شبابه براعي الغنم لأهل مكة، وهذا ما هيأه لحمل الرسالة العظيمة، فالرعي يعلم الصبر والحلم والرفق. وقد قال ﷺ: "ما بعث الله نبياً إلا رعى الغنم".
+                </p>
+                <p>
+                    ثم عمل في التجارة، وسافر مع عمه أبي طالب إلى الشام وهو في الثانية عشرة من عمره، حيث التقى بالراهب بحيرا الذي تنبأ بنبوته.
+                </p>
+            </div>
+
+            <div class="hadith-box">
+                "كنت أرعى الغنم على قراريط لأهل مكة"
+                <div class="source">رواه البخاري</div>
+            </div>
+
+            <div class="content-section">
+                <h3>💍 الزواج من خديجة رضي الله عنها (595 م)</h3>
+                <p>
+                    عمل النبي ﷺ في تجارة خديجة بنت خويلد رضي الله عنها، وقد أُعجبت بأمانته وصدقه. وكانت خديجة سيدة من سيدات قريش، تاجرة ثرية وعاقلة.
+                </p>
+                <p>
+                    تزوج النبي ﷺ من خديجة وهو في الخامسة والعشرين من عمره، وكانت في الأربعين. وقد دامت هذه الزيجة المباركة 25 عاماً، وأنجبت له جميع أولاده عدا إبراهيم.
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h3>🕌 التحنث في غار حراء</h3>
+                <p>
+                    في السنوات الأخيرة قبل البعثة، كان النبي ﷺ يخلو بنفسه في غار حراء للتفكر والتعبد. وكان يقضي أياماً وليالي في هذا الغار، يتأمل في خلق الله ويتفكر في أحوال قومه.
+                </p>
+                <p>
+                    هذه الفترة كانت بمثابة إعداد روحي ونفسي للمهمة العظيمة التي سيكلف بها. وقد كان يرى الرؤى الصالحة التي تتحقق مثل فلق الصبح.
+                </p>
+            </div>
+
+            <div class="navigation-buttons">
+                <a href="index_v2.html" class="nav-button">← العودة للرئيسية</a>
+                <a href="periode2.html" class="nav-button">بداية الوحي →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: var(--deep-green); color: white; text-align: center; padding: 2rem; margin-top: 4rem;">
+        <p>السيرة النبوية الشريفة - صلى الله عليه وسلم</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">جميع المعلومات مستمدة من المصادر الإسلامية الموثقة</p>
+    </footer>
 </body>
 </html>
