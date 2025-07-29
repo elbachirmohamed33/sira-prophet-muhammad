@@ -46,4 +46,35 @@ defaults:
       layout: "default"
       
 # Thème (utilise le thème par défaut)
+# Configuration pour GitHub Pages - Site de la Sira du Prophète Muhammad ﷺ
+
+title: "السيرة النبوية الشريفة - Life of Prophet Muhammad ﷺ"
+description: "Complete multilingual biography of Prophet Muhammad ﷺ in Arabic, French, and English"
+baseurl: "/sira-prophet-muhammad"
+url: "https://elbachimohamed33.github.io"
+
+# GitHub Pages settings
 theme: minima
+markdown: kramdown
+highlighter: rouge
+
+# Supported languages
+languages: [ar, fr, en]
+
+# SEO settings
+lang: ar
+author: "Bachir Mohamed"
+
+# PWA and analytics
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude files
+exclude:
+  - "*.ps1"
+  - "*.bat"
+  - "*.sh"
+  - README.md
+  - node_modules/
+  - vendor/
