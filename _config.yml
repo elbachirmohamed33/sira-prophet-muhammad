@@ -1,0 +1,49 @@
+# Configuration GitHub Pages pour le site de la Sira
+title: "السيرة النبوية الشريفة - Vie du Prophète Muhammad ﷺ"
+description: "Site web éducatif interactif sur la biographie du Prophète Muhammad ﷺ avec 15 périodes historiques basées sur des sources authentiques"
+url: "https://elbachirmohamed33.github.io"
+baseurl: "/sira-prophet-muhammad"
+
+# Paramètres du site
+lang: fr
+locale: fr_FR
+
+# SEO et métadonnées
+author: "elbachirmohamed33"
+keywords: "Islam, Prophète Muhammad, Sira, Biographie, Éducation islamique, Histoire islamique"
+
+# Configuration Jekyll
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Plugins GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclusions
+exclude:
+  - README.md
+  - LICENSE
+  - .gitignore
+  - deploy_website.sh
+  - deploy_website.ps1
+  - deploy_website.bat
+
+# Inclusion forcée pour GitHub Pages
+include:
+  - _config.yml
+  - .nojekyll
+
+# Configuration des collections (optionnel)
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+      
+# Thème (utilise le thème par défaut)
+theme: minima

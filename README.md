@@ -1,9 +1,9 @@
 # 🕌 السيرة النبوية الشريفة - Vie du Prophète Muhammad ﷺ
 
-[![Deploy to GitHub Pages](https://github.com/your-username/sira-prophet-muhammad/actions/workflows/deploy.yml/badge.svg)](https://github.com/your-username/sira-prophet-muhammad/actions/workflows/deploy.yml)
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fyour-username.github.io%2Fsira-prophet-muhammad)](https://your-username.github.io/sira-prophet-muhammad)
+[![Deploy to GitHub Pages](https://github.com/elbachirmohamed33/sira-prophet-muhammad/actions/workflows/deploy.yml/badge.svg)](https://github.com/elbachirmohamed33/sira-prophet-muhammad/actions/workflows/deploy.yml)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Felbachirmohamed33.github.io%2Fsira-prophet-muhammad)](https://elbachirmohamed33.github.io/sira-prophet-muhammad)
 
-**🌐 Site Web : [https://your-username.github.io/sira-prophet-muhammad](https://your-username.github.io/sira-prophet-muhammad)**
+**🌐 Site Web : [https://elbachirmohamed33.github.io/sira-prophet-muhammad](https://elbachirmohamed33.github.io/sira-prophet-muhammad)**
 
 Un site web éducatif complet et interactif dédié à la biographie du Prophète Muhammad ﷺ, couvrant les 15 périodes principales de sa vie avec des sources authentiques.
 
