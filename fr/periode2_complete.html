@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Début de la Révélation (610 - 613) - Vie du Prophète Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #0F4C3A;
+            --soft-cream: #F8F6F0;
+            --warm-brown: #8B4513;
+            --text-dark: #2C1810;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+        
+        .navigation {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .nav-logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-green);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover { color: var(--primary-gold); }
+        
+        .hero-section {
+            background: linear-gradient(rgba(15, 76, 58, 0.9), rgba(139, 69, 19, 0.8));
+            color: white;
+            text-align: center;
+            padding: 120px 0 80px;
+            margin-top: 80px;
+        }
+        
+        .hero-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .period-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-gold);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            color: var(--warm-brown);
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-gold);
+            padding-left: 1rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .content-section ul {
+            margin-left: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quran-verse {
+            background: var(--deep-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        .hadith-box {
+            background: var(--warm-brown);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+        
+        .source {
+            text-align: right;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+            font-style: normal;
+        }
+        
+        .timeline-item {
+            border-left: 3px solid var(--primary-gold);
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--primary-gold);
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            gap: 1rem;
+        }
+        
+        .nav-button {
+            background: var(--primary-gold);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background: var(--warm-brown);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .container { padding: 2rem 1rem; }
+            .period-content { padding: 2rem; }
+            .navigation-buttons { flex-direction: column; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="nav-logo">Biographie du Prophète ﷺ</div>
+            <ul class="nav-links">
+                <li><a href="index_v2.html">Accueil</a></li>
+                <li><a href="../carte_interactive.html">Carte Interactive</a></li>
+                <li><a href="../en/index_v2.html">English</a></li>
+                <li><a href="../ar/index_v2.html">العربية</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <h1 class="hero-title">Début de la Révélation</h1>
+        <p class="hero-subtitle">610 - 613 après J.-C.</p>
+        <p class="hero-subtitle">Les Trois Premières Années du Message Final</p>
+    </header>
+
+    <div class="container">
+        <div class="period-content">
+            <h2 class="section-title">L'Aube de la Révélation Divine</h2>
+            
+            <div class="content-section">
+                <h3>🌟 La Nuit Bénie du Destin - Ramadan 610</h3>
+                <p>
+                    Par une nuit bénie du mois de Ramadan en 610 après J.-C., lorsque le Prophète Muhammad ﷺ était âgé de quarante ans, l'événement le plus significatif de l'histoire humaine se produisit. Alors qu'il se trouvait en retraite spirituelle dans la grotte de Hira, loin du bruit et de l'idolâtrie de La Mecque, l'Ange Gabriel (Jibril) descendit avec les premiers versets du Noble Coran, annonçant le début du message final à l'humanité.
+                </p>
+                <p>
+                    Le Prophète ﷺ avait pris l'habitude de se retirer dans cette grotte pendant un mois entier chaque année, s'adonnant à la contemplation spirituelle et à l'adoration selon la tradition monothéiste d'Abraham. Il emportait des provisions pour plusieurs nuits, puis retournait chez sa bien-aimée épouse Khadijah pour se ravitailler avant de retourner à sa retraite spirituelle.
+                </p>
+            </div>
+
+            <div class="quran-verse">
+                « Lis, au nom de ton Seigneur qui a créé, qui a créé l'homme d'une adhérence. Lis ! Ton Seigneur est le Très Noble, qui a enseigné par la plume [le calame], a enseigné à l'homme ce qu'il ne savait pas. »
+                <div class="source">Coran 96:1-5 - Les premiers versets révélés</div>
+            </div>
+
+            <div class="content-section">
+                <h3>👤 Khadijah la Grande - La Première Croyante</h3>
+                <p>
+                    Lorsque le Prophète ﷺ revint chez lui de la grotte de Hira, il était profondément ému par ce qu'il avait vécu. Il entra chez lui et dit à sa bien-aimée épouse Khadijah bint Khuwaylid : « Couvrez-moi, couvrez-moi ! » Elle l'enveloppa jusqu'à ce que sa peur se dissipe. Puis il lui raconta ce qui s'était passé et dit : « Je crains pour moi-même. »
+                </p>
+                <p>
+                    Les paroles de Khadijah servirent de baume guérisseur et de soutien solide au Messager d'Allah ﷺ pendant ces moments cruciaux. Avec sa sagesse, sa foi et sa confiance totale en son époux, elle le fortifiait et le soutenait, devenant la première personne à croire en son message et à confirmer sa prophétie.
+                </p>
+            </div>
+
+            <div class="hadith-box">
+                Khadijah dit : « Jamais ! Par Allah, Allah ne te déshonorera jamais. Tu maintiens les liens de parenté, tu aides les pauvres et les nécessiteux, tu sers tes invités généreusement, et tu assistes ceux qui sont frappés par des calamités méritoires. »
+                <div class="source">Sahih Bukhari - Livre du Début de la Révélation</div>
+            </div>
+
+            <div class="content-section">
+                <h3>📖 Waraqah ibn Nawfal - La Confirmation du Savant</h3>
+                <p>
+                    Khadijah emmena son époux chez son cousin âgé Waraqah ibn Nawfal, qui était un homme savant bien versé dans les Écritures. Il avait embrassé le christianisme durant la période pré-islamique et savait lire l'hébreu et l'araméen. Il avait une connaissance étendue à la fois de la Torah et de l'Évangile.
+                </p>
+                <p>
+                    Quand Waraqah entendit le récit du Prophète, il reconnut immédiatement la signification de ce qui s'était produit. Il dit : « C'est le même qui garde les secrets (l'Ange Gabriel) qu'Allah avait envoyé à Moïse. J'aimerais être jeune et pouvoir vivre pour voir quand ton peuple te chassera. » Le Prophète demanda avec surprise : « Vont-ils me chasser ? » Waraqah répondit : « Oui, quiconque a apporté quelque chose de similaire à ce que tu as apporté a été traité avec hostilité. »
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h3>⏳ La Pause dans la Révélation (Fatrat al-Wahy)</h3>
+                <p>
+                    Après la révélation initiale de la sourate Al-Alaq, il y eut une période où aucune révélation ne descendit, connue sous le nom de « Fatrat al-Wahy » (la pause dans la révélation). Les savants diffèrent sur sa durée - certains disent qu'elle a duré des jours, d'autres des mois. Pendant cette période, le Prophète ﷺ éprouva une grande tristesse et aspira à rencontrer Gabriel à nouveau.
+                </p>
+                <p>
+                    Cette pause était une sagesse divine qui prépara le Prophète ﷺ psychologiquement et spirituellement à la grande mission qui l'attendait. Elle lui enseigna la patience et l'attente, et lui fit désirer davantage la révélation et apprécier la bénédiction de la communication divine. Le silence prit fin avec la révélation de la sourate Al-Muddathir.
+                </p>
+            </div>
+
+            <div class="quran-verse">
+                « Ô toi qui t'enveloppes [dans tes vêtements] ! Lève-toi et avertis. Et de ton Seigneur, célèbre la grandeur. Et tes vêtements, purifie-les. Et de tout péché, écarte-toi. »
+                <div class="source">Coran 74:1-5 - Deuxième révélation après la pause</div>
+            </div>
+
+            <div class="content-section">
+                <h3>👥 Le Premier Cercle des Croyants</h3>
+                <div class="timeline-item">
+                    <h4><strong>Khadijah bint Khuwaylid</strong></h4>
+                    <p>La première personne à croire en l'Islam, parmi les hommes et les femmes. Elle soutenait le Prophète ﷺ avec sa richesse et elle-même, servant de ministre de vérité dans les moments d'aisance et de difficulté.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4><strong>Ali ibn Abi Talib</strong></h4>
+                    <p>Le premier enfant à embrasser l'Islam. Il était le cousin du Prophète qui fut élevé dans sa maison et crut à l'âge de dix ans.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4><strong>Abu Bakr As-Siddiq</strong></h4>
+                    <p>Le premier homme libre à embrasser l'Islam. Il était l'ami proche et compagnon du Prophète qui crut sans hésitation ni questionnement.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4><strong>Zayd ibn Harithah</strong></h4>
+                    <p>L'esclave affranchi et compagnon bien-aimé du Prophète, le premier esclave à embrasser l'Islam. Il était comme un fils pour le Prophète ﷺ.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>🏠 Dar al-Arqam - Centre de la Prédication Secrète</h3>
+                <p>
+                    Le Prophète ﷺ établit Dar al-Arqam (la maison d'al-Arqam ibn Abi al-Arqam) comme centre pour la prédication secrète durant cette phase. Cette maison était située près du mont Safa, dans un endroit tranquille loin des regards indiscrets des Quraysh. Là, les premiers croyants se rassemblaient pour apprendre les enseignements de la nouvelle religion et recevoir des instructions du Prophète ﷺ.
+                </p>
+                <p>
+                    La maison d'al-Arqam fut choisie parce qu'il appartenait aux Banu Makhzum, qui étaient ennemis des Banu Hashim, alors les Quraysh ne s'attendaient pas à ce que le centre de la nouvelle foi soit dans la maison de quelqu'un des Banu Makhzum. De plus, al-Arqam était un jeune homme qui n'était pas encore devenu célèbre, donc l'attention n'était pas concentrée sur lui.
+                </p>
+            </div>
+
+            <div class="hadith-box">
+                Abdullah ibn Mas'ud dit : « Nous avons été forts depuis qu'Umar a embrassé l'Islam. »
+                <div class="source">Sahih Bukhari - se référant à l'importance de la conversion d'Umar à la fin de cette période</div>
+            </div>
+
+            <div class="content-section">
+                <h3>📚 Sagesse de la Phase Secrète</h3>
+                <p>
+                    Le commencement secret de l'invitation était une sagesse divine profonde pour plusieurs raisons :
+                </p>
+                <ul>
+                    <li><strong>Construire un noyau solide :</strong> Former un groupe fort et cohésif de croyants avant de faire face à une opposition intense</li>
+                    <li><strong>Établir la foi :</strong> Fournir du temps pour établir les fondements de la foi dans les cœurs des premiers croyants</li>
+                    <li><strong>Formation spirituelle :</strong> Former les croyants à la patience, à la constance et à la discrétion</li>
+                    <li><strong>Sagesse graduelle :</strong> Progression graduelle dans l'invitation des plus proches aux plus éloignés des parents</li>
+                    <li><strong>Construction du caractère :</strong> Développer le caractère moral et spirituel de la première communauté</li>
+                    <li><strong>Préparation divine :</strong> Préparer le Prophète ﷺ aux défis à venir</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>🌅 Fin de la Phase Secrète</h3>
+                <p>
+                    Cette phase secrète continua pendant environ trois ans (610-613 après J.-C.), jusqu'à ce qu'Allah révèle : « Et avertis tes plus proches parents » (26:214), ce qui marqua le début d'une nouvelle phase de prédication publique. Pendant ces trois années, un noyau solide de croyants fut formé, comptant environ quarante hommes et femmes qui deviendraient la fondation de la communauté islamique.
+                </p>
+                <p>
+                    La transition de la prédication secrète à publique fut graduelle et divinement guidée. Les premiers croyants avaient été spirituellement préparés et émotionnellement renforcés pour faire face à l'opposition qui viendrait avec la déclaration publique de leur foi. Cette période posa les bases de tous les développements futurs de l'histoire islamique.
+                </p>
+            </div>
+
+            <div class="navigation-buttons">
+                <a href="periode1_complete.html" class="nav-button">← Précédent : Pré-Prophétie</a>
+                <a href="periode3_complete.html" class="nav-button">Suivant : Prédication Publique →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: var(--deep-green); color: white; text-align: center; padding: 2rem; margin-top: 4rem;">
+        <p>Vie du Prophète Muhammad ﷺ - Paix et Bénédictions sur Lui</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">Toutes les informations tirées de sources islamiques authentiques : Bukhari, Muslim, Ibn Hisham, At-Tabari</p>
+    </footer>
+
+    <script>
+        // Animation de défilement
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les éléments
+        document.querySelectorAll('.content-section, .quran-verse, .hadith-box').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(element);
+        });
+
+        // Défilement fluide pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

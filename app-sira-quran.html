@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sira & Coran - Application Complète</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Application complète : Biographie du Prophète Muhammad ﷺ et Coran avec traductions et phonétique">
+    <meta name="theme-color" content="#0F4C3A">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sira & Coran">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32x32.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- AdSense Integration -->
+    <link rel="stylesheet" href="../css/adsense.css">
+    
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #0F4C3A;
+            --soft-cream: #F8F6F0;
+            --warm-brown: #8B4513;
+            --text-dark: #2C1810;
+            --success-green: #27AE60;
+            --light-blue: #3498DB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .app-header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .app-logo {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .app-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Main Content */
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(15,76,58,0.1));
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 3rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--warm-brown);
+            margin-bottom: 2rem;
+        }
+
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Main Sections */
+        .main-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 25px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--success-green));
+        }
+
+        .section-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-icon {
+            font-size: 3rem;
+            margin-right: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: var(--deep-green);
+        }
+
+        .section-description {
+            color: var(--warm-brown);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .section-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .section-features li {
+            padding: 0.5rem 0;
+            color: var(--text-dark);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .section-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: bold;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-gold), #B8860B);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212,175,55,0.3);
+        }
+
+        /* Quran Preview */
+        .quran-preview {
+            background: linear-gradient(135deg, #E8F5E8, #D4EFDF);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--success-green);
+        }
+
+        .quran-verse {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            text-align: center;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .quran-translation {
+            text-align: center;
+            color: var(--warm-brown);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .quran-phonetic {
+            text-align: center;
+            color: var(--text-dark);
+            background: rgba(255,255,255,0.7);
+            padding: 0.5rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--deep-green), #2E8B57);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .app-nav {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .main-sections {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .section-card {
+                padding: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Slide-in animations */
+        .slide-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- App Header -->
+    <header class="app-header">
+        <div class="header-content">
+            <div class="app-logo">
+                🕌 Sira & Coran
+            </div>
+            <nav class="app-nav">
+                <a href="#" class="nav-item active">Accueil</a>
+                <a href="#sira" class="nav-item">Sira</a>
+                <a href="#quran" class="nav-item">Coran</a>
+                <a href="#audio" class="nav-item">Audio</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Google AdSense Banner Top -->
+    <div class="adsense-container">
+        <div class="adsense-slot adsense-leaderboard" style="background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #6c757d;">
+            <span>Google AdSense - 728x90</span>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div class="app-container">
+        <!-- Hero Section -->
+        <section class="hero-section slide-in">
+            <h1 class="hero-title">📖 Sira & Coran Complet</h1>
+            <p class="hero-subtitle">
+                Découvrez la vie du Prophète Muhammad ﷺ et le Saint Coran avec traductions, phonétique et audio - Entièrement gratuit
+            </p>
+            
+            <div class="hero-features">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <div class="feature-title">Sira Complète</div>
+                    <p>15 périodes détaillées de la vie du Prophète ﷺ</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <div class="feature-title">Coran Intégral</div>
+                    <p>114 sourates avec traductions et phonétique</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <div class="feature-title">Audio Premium</div>
+                    <p>Récitations par les meilleurs qaris</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <div class="feature-title">Multilingue</div>
+                    <p>Français, Arabe, Anglais</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Sections -->
+        <div class="main-sections">
+            <!-- Sira Section -->
+            <div class="section-card slide-in" id="sira">
+                <div class="section-header">
+                    <div class="section-icon">🕌</div>
+                    <h2 class="section-title">Biographie du Prophète ﷺ</h2>
+                </div>
+                <p class="section-description">
+                    Plongez dans la vie extraordinaire du Prophète Muhammad ﷺ à travers 15 périodes chronologiques détaillées, de sa naissance à Médine jusqu'à son retour triomphal à La Mecque.
+                </p>
+                <ul class="section-features">
+                    <li>15 périodes chronologiques complètes</li>
+                    <li>Contexte historique authentique</li>
+                    <li>Cartes interactives des lieux</li>
+                    <li>Citations des sources classiques</li>
+                    <li>Leçons et sagesses extraites</li>
+                </ul>
+                <a href="../en/periode1_complete.html" class="cta-button">
+                    Commencer la Sira →
+                </a>
+            </div>
+
+            <!-- Quran Section -->
+            <div class="section-card slide-in" id="quran">
+                <div class="section-header">
+                    <div class="section-icon">📖</div>
+                    <h2 class="section-title">Saint Coran Complet</h2>
+                </div>
+                <p class="section-description">
+                    Accédez au Coran complet avec traductions en français, phonétique pour l'apprentissage et récitations audio par les plus grands qaris du monde islamique.
+                </p>
+                <ul class="section-features">
+                    <li>114 sourates complètes</li>
+                    <li>Traduction française authentique</li>
+                    <li>Phonétique détaillée</li>
+                    <li>Audio haute qualité</li>
+                    <li>Mode mémorisation</li>
+                    <li>Recherche avancée</li>
+                </ul>
+                <a href="#" class="cta-button" onclick="openQuranReader()">
+                    <span id="quran-btn-text">Ouvrir le Coran</span>
+                    <span id="quran-loading" class="loading" style="display: none;"></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quran Preview -->
+        <div class="quran-preview slide-in">
+            <h3 style="text-align: center; color: var(--deep-green); margin-bottom: 2rem; font-family: 'Amiri', serif;">
+                📖 Aperçu du Coran - Sourate Al-Fatiha
+            </h3>
+            <div class="quran-verse">
+                بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+            </div>
+            <div class="quran-translation">
+                "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux"
+            </div>
+            <div class="quran-phonetic">
+                Bismillahi r-rahmani r-rahim
+            </div>
+        </div>
+
+        <!-- Google AdSense Rectangle -->
+        <div class="adsense-container">
+            <div class="adsense-slot adsense-rectangle" style="background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #6c757d; margin: 2rem auto;">
+                <span>Google AdSense<br>300x250</span>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <section class="stats-section slide-in">
+            <h2 style="font-family: 'Amiri', serif; font-size: 2.5rem; margin-bottom: 1rem;">
+                📊 Application Complète
+            </h2>
+            <p style="opacity: 0.9; font-size: 1.1rem;">
+                Tout le contenu islamique authentique dans une seule application
+            </p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">15</span>
+                    <div class="stat-label">Périodes de la Sira</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">114</span>
+                    <div class="stat-label">Sourates du Coran</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">6236</span>
+                    <div class="stat-label">Versets coraniques</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <div class="stat-label">Langues disponibles</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Final -->
+        <div style="text-align: center; margin: 3rem 0;">
+            <h2 style="font-family: 'Amiri', serif; color: var(--deep-green); margin-bottom: 1rem;">
+                🚀 Commencez votre apprentissage maintenant
+            </h2>
+            <p style="color: var(--warm-brown); margin-bottom: 2rem; font-size: 1.1rem;">
+                Application 100% gratuite - Aucun abonnement requis
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="../index_v2.html" class="cta-button" style="width: auto; padding: 1rem 2rem;">
+                    📖 Commencer la Sira
+                </a>
+                <a href="#" class="cta-button" onclick="openQuranReader()" style="width: auto; padding: 1rem 2rem; background: linear-gradient(135deg, var(--success-green), #219A52);">
+                    📚 Lire le Coran
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PWA Install Prompt -->
+    <div id="install-prompt" style="display: none; position: fixed; bottom: 20px; right: 20px; background: var(--deep-green); color: white; padding: 1rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 10000;">
+        <div style="margin-bottom: 1rem;">
+            <strong>📱 Installer l'Application</strong>
+        </div>
+        <div style="font-size: 0.9rem; margin-bottom: 1rem;">
+            Accédez hors-ligne à la Sira et au Coran
+        </div>
+        <div>
+            <button onclick="installApp()" style="background: var(--primary-gold); color: white; border: none; padding: 0.5rem 1rem; border-radius: 10px; margin-right: 0.5rem; cursor: pointer;">
+                Installer
+            </button>
+            <button onclick="closeInstallPrompt()" style="background: rgba(255,255,255,0.2); color: white; border: none; padding: 0.5rem 1rem; border-radius: 10px; cursor: pointer;">
+                Plus tard
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Animation on scroll
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.slide-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Quran Reader
+        function openQuranReader() {
+            const btn = document.getElementById('quran-btn-text');
+            const loading = document.getElementById('quran-loading');
+            
+            btn.style.display = 'none';
+            loading.style.display = 'inline-block';
+            
+            setTimeout(() => {
+                window.location.href = 'quran-reader.html';
+            }, 1000);
+        }
+
+        // PWA Installation
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('install-prompt').style.display = 'block';
+        });
+
+        function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    deferredPrompt = null;
+                    closeInstallPrompt();
+                });
+            }
+        }
+
+        function closeInstallPrompt() {
+            document.getElementById('install-prompt').style.display = 'none';
+        }
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        console.log('🕌 Sira & Coran App Loaded');
+        console.log('📖 Content: Biographie + Coran Complet');
+        console.log('💰 Monétisation: Google AdSense uniquement');
+        console.log('🆓 Accès: 100% gratuit pour tous');
+    </script>
+
+    <!-- AdSense Script -->
+    <script src="../js/adsense.js"></script>
+</body>
+</html>

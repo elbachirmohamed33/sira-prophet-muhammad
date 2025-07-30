@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerie Visuelle - Vie du Prophète Muhammad ﷺ</title>
+    <title>Galerie Historique - Biographie du Prophète Muhammad ﷺ</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,6 +12,8 @@
             --soft-cream: #F8F6F0;
             --warm-brown: #8B4513;
             --text-dark: #2C1810;
+            --success-green: #27AE60;
+            --light-blue: #3498DB;
         }
 
         * {
@@ -25,80 +27,116 @@
             background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
             color: var(--text-dark);
             line-height: 1.6;
+            min-height: 100vh;
         }
 
-        .gallery-header {
-            background: linear-gradient(rgba(15, 76, 58, 0.9), rgba(139, 69, 19, 0.8)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><defs><pattern id="islamic" patternUnits="userSpaceOnUse" width="50" height="50"><path d="M25,25 L35,15 L25,5 L15,15 Z" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/></pattern></defs><rect width="1000" height="300" fill="url(%23islamic)"/></svg>');
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
             color: white;
+            padding: 3rem 0;
             text-align: center;
-            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .gallery-title {
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 L60,40 L90,40 L68,58 L78,90 L50,72 L22,90 L32,58 L10,40 L40,40 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 50px 50px;
+            animation: float 20s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .header h1 {
             font-family: 'Amiri', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
         }
 
-        .gallery-subtitle {
+        .header p {
             font-size: 1.2rem;
             opacity: 0.9;
+            position: relative;
+            z-index: 2;
         }
 
-        .navigation {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
+        .nav {
+            background: white;
             padding: 1rem 0;
-            position: fixed;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
             top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212,175,55,0.2);
+            z-index: 100;
+            margin-bottom: 2rem;
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .nav-logo {
-            font-family: 'Amiri', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--deep-green);
-        }
-
-        .nav-links {
-            display: flex;
+            justify-content: center;
             gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-gold);
-        }
-
-        .gallery-container {
-            max-width: 1400px;
-            margin: 2rem auto;
             padding: 0 2rem;
         }
 
-        .filter-buttons {
+        .nav-link {
+            color: var(--deep-green);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .gallery-hero {
+            background: linear-gradient(135deg, white, var(--soft-cream));
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 3px solid var(--primary-gold);
+        }
+
+        .gallery-hero h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .gallery-hero p {
+            font-size: 1.2rem;
+            color: var(--warm-brown);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .filter-tabs {
             display: flex;
             justify-content: center;
             gap: 1rem;
@@ -106,10 +144,10 @@
             flex-wrap: wrap;
         }
 
-        .filter-btn {
+        .filter-tab {
             background: white;
-            border: 2px solid var(--primary-gold);
             color: var(--deep-green);
+            border: 2px solid var(--primary-gold);
             padding: 0.8rem 1.5rem;
             border-radius: 25px;
             cursor: pointer;
@@ -117,42 +155,50 @@
             font-weight: 600;
         }
 
-        .filter-btn.active,
-        .filter-btn:hover {
+        .filter-tab:hover, .filter-tab.active {
             background: var(--primary-gold);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .gallery-item {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            cursor: pointer;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .gallery-item.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
         }
 
         .gallery-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .gallery-image {
             width: 100%;
             height: 250px;
-            background: linear-gradient(135deg, var(--deep-green), var(--warm-brown));
+            background: linear-gradient(135deg, var(--soft-cream), var(--primary-gold));
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-size: 4rem;
+            color: var(--deep-green);
             position: relative;
             overflow: hidden;
         }
@@ -164,381 +210,756 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="islamic-pattern" patternUnits="userSpaceOnUse" width="20" height="20"><path d="M10,10 L15,5 L10,0 L5,5 Z" fill="none" stroke="rgba(212,175,55,0.2)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23islamic-pattern)"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="3" fill="rgba(15,76,58,0.1)"/><circle cx="75" cy="75" r="3" fill="rgba(15,76,58,0.1)"/><circle cx="50" cy="10" r="2" fill="rgba(15,76,58,0.05)"/><circle cx="10" cy="90" r="2" fill="rgba(15,76,58,0.05)"/></svg>');
+            background-size: 50px 50px;
             opacity: 0.3;
         }
 
         .gallery-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
-        .gallery-item-title {
-            font-family: 'Amiri', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--deep-green);
-            margin-bottom: 0.5rem;
-        }
-
-        .gallery-item-period {
-            color: var(--primary-gold);
+        .gallery-category {
+            background: var(--deep-green);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
             font-weight: 600;
-            font-size: 0.9rem;
+            display: inline-block;
             margin-bottom: 1rem;
         }
 
-        .gallery-item-description {
-            color: var(--text-dark);
-            font-size: 0.95rem;
-            line-height: 1.5;
+        .gallery-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.4rem;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
-        .modal {
+        .gallery-period {
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-description {
+            color: var(--warm-brown);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .gallery-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-tag {
+            background: var(--soft-cream);
+            color: var(--text-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            border: 1px solid var(--primary-gold);
+        }
+
+        .gallery-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .gallery-button {
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .gallery-button:hover {
+            background: var(--deep-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .gallery-button.secondary {
+            background: transparent;
+            color: var(--deep-green);
+            border: 2px solid var(--deep-green);
+        }
+
+        .gallery-button.secondary:hover {
+            background: var(--deep-green);
+            color: white;
+        }
+
+        .lightbox {
             display: none;
             position: fixed;
-            z-index: 2000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
         }
 
-        .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 2rem;
-            border-radius: 20px;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--warm-brown);
-            transition: color 0.3s ease;
-        }
-
-        .modal-close:hover {
-            color: var(--primary-gold);
-        }
-
-        .modal-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, var(--deep-green), var(--warm-brown));
-            border-radius: 10px;
+        .lightbox.active {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 5rem;
-            margin-bottom: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
             position: relative;
-            overflow: hidden;
+            margin: 2rem;
         }
 
-        .modal-image::before {
-            content: '';
+        .lightbox-close {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="modal-pattern" patternUnits="userSpaceOnUse" width="15" height="15"><path d="M7.5,7.5 L11,3.5 L7.5,0 L4,3.5 Z" fill="none" stroke="rgba(212,175,55,0.3)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23modal-pattern)"/></svg>');
-            opacity: 0.5;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
 
-        .modal-title {
-            font-family: 'Amiri', serif;
-            font-size: 2rem;
-            color: var(--deep-green);
-            margin-bottom: 1rem;
+        .lightbox-close:hover {
+            background: var(--deep-green);
+            transform: scale(1.1);
         }
 
-        .modal-period {
-            color: var(--primary-gold);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+        .stats-section {
+            background: linear-gradient(135deg, var(--deep-green), #2E8B57);
+            color: white;
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 3rem;
         }
 
-        .modal-description {
-            color: var(--text-dark);
-            line-height: 1.7;
-            font-size: 1rem;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            opacity: 0.9;
         }
 
         @media (max-width: 768px) {
-            .gallery-title {
-                font-size: 2rem;
+            .container {
+                padding: 1rem;
             }
             
             .gallery-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
             }
             
-            .filter-buttons {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .filter-tabs {
                 flex-direction: column;
                 align-items: center;
             }
             
-            .modal-content {
-                margin: 2% auto;
-                padding: 1.5rem;
-                max-height: 90vh;
+            .gallery-hero {
+                padding: 2rem;
             }
             
-            .nav-links {
-                display: none;
+            .lightbox-content {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
-    <nav class="navigation">
+    <div class="header">
+        <h1>🖼️ Galerie Historique</h1>
+        <p>Explorez visuellement la vie du Prophète Muhammad ﷺ</p>
+    </div>
+
+    <nav class="nav">
         <div class="nav-container">
-            <div class="nav-logo">Galerie ﷺ</div>
-            <ul class="nav-links">
-                <li><a href="index_v2.html">Accueil</a></li>
-                <li><a href="fr/index_v2.html">Périodes</a></li>
-                <li><a href="carte_interactive.html">Carte</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-            </ul>
+            <a href="fr/index_v2.html" class="nav-link">🏠 Accueil</a>
+            <a href="carte_interactive.html" class="nav-link">🗺️ Carte Interactive</a>
+            <a href="quiz.html" class="nav-link">🧠 Quiz</a>
+            <a href="audio.html" class="nav-link">🎵 Audio</a>
+            <a href="fr/index_v2.html" class="nav-link">🇫🇷 Français</a>
+            <a href="ar/index_v2.html" class="nav-link">🇸🇦 العربية</a>
         </div>
     </nav>
 
-    <header class="gallery-header">
-        <h1 class="gallery-title">Galerie Visuelle</h1>
-        <p class="gallery-subtitle">Illustrations artistiques de la vie du bien-aimé Prophète Muhammad ﷺ</p>
-    </header>
+    <div class="container">
+        <div class="gallery-hero">
+            <h2>📸 Collection Historique</h2>
+            <p>Découvrez une collection unique d'illustrations, de cartes historiques et de représentations artistiques qui donnent vie aux événements marquants de la biographie prophétique.</p>
+        </div>
 
-    <div class="gallery-container">
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Tout</button>
-            <button class="filter-btn" data-filter="mecque">Période Mecquoise</button>
-            <button class="filter-btn" data-filter="medine">Période Médinoise</button>
-            <button class="filter-btn" data-filter="batailles">Batailles</button>
-            <button class="filter-btn" data-filter="spirituel">Spirituel</button>
+        <div class="filter-tabs">
+            <div class="filter-tab active" data-filter="all">🌟 Tous</div>
+            <div class="filter-tab" data-filter="early">🌙 Jeunesse</div>
+            <div class="filter-tab" data-filter="revelation">📖 Révélation</div>
+            <div class="filter-tab" data-filter="battles">⚔️ Batailles</div>
+            <div class="filter-tab" data-filter="diplomacy">🕊️ Diplomatie</div>
+            <div class="filter-tab" data-filter="maps">🗺️ Cartes</div>
+            <div class="filter-tab" data-filter="calligraphy">✍️ Calligraphie</div>
         </div>
 
         <div class="gallery-grid" id="galleryGrid">
-            <!-- Les éléments de la galerie seront générés par JavaScript -->
+            <!-- Early Life -->
+            <div class="gallery-item" data-category="early">
+                <div class="gallery-image">🌙</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Naissance</div>
+                    <h3 class="gallery-title">L'Année de l'Éléphant</h3>
+                    <div class="gallery-period">571 EC</div>
+                    <p class="gallery-description">
+                        Illustration artistique de La Mecque en 571 EC, l'année de naissance du Prophète ﷺ, connue sous le nom d'Année de l'Éléphant.
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Naissance</span>
+                        <span class="gallery-tag">La Mecque</span>
+                        <span class="gallery-tag">Miracle</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('birth')">👁️ Voir Détails</button>
+                        <a href="en/periode1_complete.html" class="gallery-button secondary">📖 Lire Plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="early">
+                <div class="gallery-image">👶</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Enfance</div>
+                    <h3 class="gallery-title">L'Orphelin Béni</h3>
+                    <div class="gallery-period">571-595 EC</div>
+                    <p class="gallery-description">
+                        Représentation de l'enfance du Prophète ﷺ sous la protection divine et les soins de sa famille.
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Enfance</span>
+                        <span class="gallery-tag">Protection Divine</span>
+                        <span class="gallery-tag">Famille</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('childhood')">👁️ Voir Détails</button>
+                        <a href="en/periode2_complete.html" class="gallery-button secondary">📖 Lire Plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revelation Period -->
+            <div class="gallery-item" data-category="revelation">
+                <div class="gallery-image">🕌</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Révélation</div>
+                    <h3 class="gallery-title">La Grotte de Hira</h3>
+                    <div class="gallery-period">610 EC</div>
+                    <p class="gallery-description">
+                        Vue artistique de la grotte de Hira où le Prophète ﷺ reçut la première révélation du Coran.
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Révélation</span>
+                        <span class="gallery-tag">Gabriel</span>
+                        <span class="gallery-tag">Coran</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('hira')">👁️ Voir Détails</button>
+                        <a href="en/periode4_complete.html" class="gallery-button secondary">📖 Lire Plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="revelation">
+                <div class="gallery-image">📜</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Premiers Versets</div>
+                    <h3 class="gallery-title">Iqra - Lis!</h3>
+                    <div class="gallery-period">610 EC</div>
+                    <p class="gallery-description">
+                        Calligraphie artistique des premiers versets révélés: "Lis au nom de ton Seigneur qui a créé..."
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Premiers Versets</span>
+                        <span class="gallery-tag">Calligraphie</span>
+                        <span class="gallery-tag">Al-Alaq</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('iqra')">👁️ Voir Détails</button>
+                        <a href="en/periode4_complete.html" class="gallery-button secondary">📖 Lire Plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Battles -->
+            <div class="gallery-item" data-category="battles">
+                <div class="gallery-image">⚔️</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Bataille</div>
+                    <h3 class="gallery-title">La Bataille de Badr</h3>
+                    <div class="gallery-period">624 EC</div>
+                    <p class="gallery-description">
+                        Représentation stratégique de la bataille de Badr, première grande victoire musulmane avec 313 combattants.
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Badr</span>
+                        <span class="gallery-tag">313 Guerriers</span>
+                        <span class="gallery-tag">Victoire Divine</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('badr')">👁️ Voir Détails</button>
+                        <a href="en/periode12_complete.html" class="gallery-button secondary">📖 Lire Plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="battles">
+                <div class="gallery-image">🏔️</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Bataille</div>
+                    <h3 class="gallery-title">La Bataille d'Uhud</h3>
+                    <div class="gallery-period">625 EC</div>
+                    <p class="gallery-description">
+                        Vue du mont Uhud et reconstruction de la bataille qui enseigna des leçons importantes sur l'obéissance.
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Uhud</span>
+                        <span class="gallery-tag">Épreuve</span>
+                        <span class="gallery-tag">Hamza</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('uhud')">👁️ Voir Détails</button>
+                        <a href="en/periode13_complete.html" class="gallery-button secondary">📖 Lire Plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="battles">
+                <div class="gallery-image">🛡️</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Siège</div>
+                    <h3 class="gallery-title">La Bataille de la Tranchée</h3>
+                    <div class="gallery-period">627 EC</div>
+                    <p class="gallery-description">
+                        Schéma innovant de la tranchée creusée autour de Médine sur conseil de Salman al-Farisi.
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Tranchée</span>
+                        <span class="gallery-tag">Innovation</span>
+                        <span class="gallery-tag">10000 Ennemis</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('trench')">👁️ Voir Détails</button>
+                        <a href="en/periode14_complete.html" class="gallery-button secondary">📖 Lire Plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diplomacy -->
+            <div class="gallery-item" data-category="diplomacy">
+                <div class="gallery-image">🕊️</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Diplomatie</div>
+                    <h3 class="gallery-title">Le Traité de Hudaybiya</h3>
+                    <div class="gallery-period">628 EC</div>
+                    <p class="gallery-description">
+                        Scène diplomatique historique du traité qui ouvrit la voie à l'expansion pacifique de l'Islam.
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Traité</span>
+                        <span class="gallery-tag">Paix</span>
+                        <span class="gallery-tag">1400 Pèlerins</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('hudaybiya')">👁️ Voir Détails</button>
+                        <a href="en/periode15_complete.html" class="gallery-button secondary">📖 Lire Plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="diplomacy">
+                <div class="gallery-image">🏛️</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Conquête</div>
+                    <h3 class="gallery-title">La Conquête de La Mecque</h3>
+                    <div class="gallery-period">630 EC</div>
+                    <p class="gallery-description">
+                        La reconquête pacifique de La Mecque avec 10 000 musulmans, accomplissant la vision prophétique.
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Conquête</span>
+                        <span class="gallery-tag">10000 Hommes</span>
+                        <span class="gallery-tag">Pacifique</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('mecca')">👁️ Voir Détails</button>
+                        <a href="fr/index_v2.html" class="gallery-button secondary">📖 Lire Plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Maps -->
+            <div class="gallery-item" data-category="maps">
+                <div class="gallery-image">🗺️</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Géographie</div>
+                    <h3 class="gallery-title">L'Arabie du 7ème Siècle</h3>
+                    <div class="gallery-period">571-632 EC</div>
+                    <p class="gallery-description">
+                        Carte détaillée de la péninsule arabique montrant les routes commerciales et les tribus principales.
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Géographie</span>
+                        <span class="gallery-tag">Routes</span>
+                        <span class="gallery-tag">Tribus</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('arabia')">👁️ Voir Détails</button>
+                        <a href="carte_interactive.html" class="gallery-button secondary">🗺️ Carte Interactive</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="maps">
+                <div class="gallery-image">🧭</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Migration</div>
+                    <h3 class="gallery-title">La Route de la Hijra</h3>
+                    <div class="gallery-period">622 EC</div>
+                    <p class="gallery-description">
+                        Tracé de l'itinéraire historique de la migration de La Mecque vers Médine via la grotte de Thawr.
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Hijra</span>
+                        <span class="gallery-tag">Migration</span>
+                        <span class="gallery-tag">Itinéraire</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('hijra')">👁️ Voir Détails</button>
+                        <a href="en/periode8_complete.html" class="gallery-button secondary">📖 Lire Plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calligraphy -->
+            <div class="gallery-item" data-category="calligraphy">
+                <div class="gallery-image">✍️</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Calligraphie</div>
+                    <h3 class="gallery-title">Muhammad Rasul Allah</h3>
+                    <div class="gallery-period">Classique</div>
+                    <p class="gallery-description">
+                        Calligraphie arabe traditionnelle du nom du Prophète ﷺ dans le style Thuluth classique.
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Calligraphie</span>
+                        <span class="gallery-tag">Thuluth</span>
+                        <span class="gallery-tag">Nom Béni</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('calligraphy1')">👁️ Voir Détails</button>
+                        <button class="gallery-button secondary" onclick="downloadImage('calligraphy1')">💾 Télécharger</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="calligraphy">
+                <div class="gallery-image">🎨</div>
+                <div class="gallery-content">
+                    <div class="gallery-category">Art Islamique</div>
+                    <h3 class="gallery-title">Motifs Géométriques</h3>
+                    <div class="gallery-period">Inspiration Historique</div>
+                    <p class="gallery-description">
+                        Patterns géométriques islamiques inspirés de l'art de l'époque prophétique et des premiers califes.
+                    </p>
+                    <div class="gallery-tags">
+                        <span class="gallery-tag">Géométrie</span>
+                        <span class="gallery-tag">Art Islamique</span>
+                        <span class="gallery-tag">Patterns</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="gallery-button" onclick="openLightbox('patterns')">👁️ Voir Détails</button>
+                        <button class="gallery-button secondary" onclick="downloadImage('patterns')">💾 Télécharger</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h3>📊 Statistiques de la Galerie</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Illustrations Historiques</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Périodes Couvertes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Catégories</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">23</div>
+                    <div class="stat-label">Années Historiques</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Modal pour affichage détaillé -->
-    <div id="imageModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <div class="modal-image" id="modalImage"></div>
-            <h2 class="modal-title" id="modalTitle"></h2>
-            <p class="modal-period" id="modalPeriod"></p>
-            <p class="modal-description" id="modalDescription"></p>
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content" id="lightboxContent">
+            <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+            <div id="lightboxBody">
+                <!-- Lightbox content will be loaded here -->
+            </div>
         </div>
     </div>
 
     <script>
-        const galleryData = [
-            {
-                id: 1,
-                title: "La Naissance Bénie",
-                period: "570 EC - L'Année de l'Éléphant",
-                category: "spirituel",
-                icon: "🌟",
-                description: "Illustration de la naissance du Prophète Muhammad ﷺ dans l'année de l'Éléphant, marquée par des signes célestes et des prodiges. Cette naissance illumina le monde et annonça l'arrivée du dernier des messagers d'Allah."
-            },
-            {
-                id: 2,
-                title: "La Première Révélation",
-                period: "610 EC - Grotte de Hira",
-                category: "spirituel",
-                icon: "📖",
-                description: "Représentation artistique de la première révélation dans la grotte de Hira, lorsque l'ange Gabriel (Jibril) apparut au Prophète ﷺ avec les premières paroles du Coran : 'Lis au nom de ton Seigneur qui a créé'."
-            },
-            {
-                id: 3,
-                title: "La Kaaba Sacrée",
-                period: "Époque Pré-islamique",
-                category: "mecque",
-                icon: "🕋",
-                description: "Vue artistique de la Kaaba à La Mecque, centre spirituel de l'Islam et direction de la prière (Qibla). Le Prophète ﷺ grandit dans cette ville sainte et y commença sa mission prophétique."
-            },
-            {
-                id: 4,
-                title: "L'Hégire - La Grande Migration",
-                period: "622 EC - De La Mecque à Médine",
-                category: "medine",
-                icon: "🐪",
-                description: "Illustration de l'Hégire, la migration historique du Prophète ﷺ et des premiers musulmans de La Mecque vers Médine. Ce voyage marque le début du calendrier islamique et l'établissement de la première communauté musulmane."
-            },
-            {
-                id: 5,
-                title: "La Construction du Masjid an-Nabawi",
-                period: "622 EC - Médine",
-                category: "medine",
-                icon: "🕌",
-                description: "Représentation de la construction de la première mosquée par le Prophète ﷺ à Médine. Ce lieu devint le centre de la communauté musulmane, servant à la fois de lieu de culte, d'enseignement et de gouvernance."
-            },
-            {
-                id: 6,
-                title: "La Bataille de Badr",
-                period: "624 EC - Première Grande Victoire",
-                category: "batailles",
-                icon: "⚔️",
-                description: "Illustration artistique de la bataille de Badr, première grande victoire militaire des musulmans. Malgré leur infériorité numérique, les musulmans furent victorieux grâce à l'aide divine et à la stratégie du Prophète ﷺ."
-            },
-            {
-                id: 7,
-                title: "Le Voyage Nocturne (Isra et Mi'raj)",
-                period: "621 EC - Jérusalem et les Cieux",
-                category: "spirituel",
-                icon: "🌙",
-                description: "Représentation du voyage nocturne miraculeux du Prophète ﷺ de La Mecque à Jérusalem (Isra) puis son ascension vers les cieux (Mi'raj), où il rencontra les prophètes précédents et reçu l'ordonnance de la prière."
-            },
-            {
-                id: 8,
-                title: "Le Traité de Hudaybiya",
-                period: "628 EC - Diplomatie Prophétique",
-                category: "medine",
-                icon: "🤝",
-                description: "Illustration du traité de Hudaybiya, démonstration de la sagesse diplomatique du Prophète ﷺ. Ce traité, initialement perçu comme défavorable, permit la propagation pacifique de l'Islam."
-            },
-            {
-                id: 9,
-                title: "La Conquête de La Mecque",
-                period: "630 EC - Le Grand Pardon",
-                category: "mecque",
-                icon: "🏴",
-                description: "Représentation de la conquête pacifique de La Mecque, marquée par la magnanimité et le pardon du Prophète ﷺ envers ses anciens ennemis. Ce fut un tournant décisif dans l'expansion de l'Islam."
-            },
-            {
-                id: 10,
-                title: "La Purification de la Kaaba",
-                period: "630 EC - Retour aux Sources",
-                category: "mecque",
-                icon: "✨",
-                description: "Illustration de la purification de la Kaaba par le Prophète ﷺ, détruisant les idoles et restaurant le culte monothéiste pur d'Abraham. Ce moment marque le retour de La Mecque à sa vocation originelle."
-            },
-            {
-                id: 11,
-                title: "Le Pèlerinage d'Adieu",
-                period: "632 EC - Derniers Enseignements",
-                category: "spirituel",
-                icon: "🕋",
-                description: "Représentation du dernier pèlerinage du Prophète ﷺ, occasion de son célèbre sermon d'adieu où il résuma les principes fondamentaux de l'Islam et annonça l'achèvement de sa mission."
-            },
-            {
-                id: 12,
-                title: "La Bataille d'Uhud",
-                period: "625 EC - Leçon de Persévérance",
-                category: "batailles",
-                icon: "🛡️",
-                description: "Illustration de la bataille d'Uhud, qui enseigna aux musulmans l'importance de l'obéissance et de la discipline. Malgré les difficultés, cette bataille renforça la détermination de la communauté musulmane."
-            }
-        ];
+        // Gallery filtering system
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const galleryItems = document.querySelectorAll('.gallery-item');
 
-        let currentFilter = 'all';
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
 
-        function renderGallery(filter = 'all') {
-            const grid = document.getElementById('galleryGrid');
-            const filteredData = filter === 'all' ? galleryData : galleryData.filter(item => item.category === filter);
-            
-            grid.innerHTML = filteredData.map(item => `
-                <div class="gallery-item" onclick="openModal(${item.id})">
-                    <div class="gallery-image">
-                        <span style="position: relative; z-index: 2;">${item.icon}</span>
-                    </div>
-                    <div class="gallery-content">
-                        <h3 class="gallery-item-title">${item.title}</h3>
-                        <p class="gallery-item-period">${item.period}</p>
-                        <p class="gallery-item-description">${item.description.substring(0, 120)}...</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function openModal(itemId) {
-            const item = galleryData.find(i => i.id === itemId);
-            if (!item) return;
-
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalPeriod = document.getElementById('modalPeriod');
-            const modalDescription = document.getElementById('modalDescription');
-
-            modalImage.innerHTML = `<span style="position: relative; z-index: 2;">${item.icon}</span>`;
-            modalTitle.textContent = item.title;
-            modalPeriod.textContent = item.period;
-            modalDescription.textContent = item.description;
-
-            modal.style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            renderGallery();
-
-            // Filtres
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const filter = this.getAttribute('data-filter');
-                    currentFilter = filter;
-                    renderGallery(filter);
-                });
-            });
-
-            // Modal
-            document.querySelector('.modal-close').addEventListener('click', closeModal);
-            
-            window.addEventListener('click', function(event) {
-                const modal = document.getElementById('imageModal');
-                if (event.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // Animation des cartes au scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                // Filter gallery items
+                const filter = tab.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
                     }
                 });
-            }, observerOptions);
-
-            // Ajouter l'animation aux cartes quand elles sont créées
-            setTimeout(() => {
-                document.querySelectorAll('.gallery-item').forEach(item => {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(30px)';
-                    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                    observer.observe(item);
-                });
-            }, 100);
+            });
         });
+
+        // Lightbox system
+        function openLightbox(contentId) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxBody = document.getElementById('lightboxBody');
+            
+            const content = getLightboxContent(contentId);
+            lightboxBody.innerHTML = content;
+            
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function getLightboxContent(id) {
+            const contents = {
+                'birth': `
+                    <div style="text-align: center;">
+                        <div style="font-size: 6rem; margin-bottom: 2rem;">🌙</div>
+                        <h2 style="color: var(--deep-green); margin-bottom: 1rem;">L'Année de l'Éléphant - 571 EC</h2>
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: var(--warm-brown); margin-bottom: 2rem;">
+                            Cette illustration représente La Mecque au moment de la naissance bénie du Prophète Muhammad ﷺ. L'année 571 EC est connue sous le nom d'Année de l'Éléphant, en référence à la tentative d'Abraha de détruire la Kaaba avec une armée comprenant des éléphants.
+                        </p>
+                        <div style="background: var(--soft-cream); padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                            <h3 style="color: var(--deep-green); margin-bottom: 1rem;">🎯 Points Clés</h3>
+                            <ul style="text-align: left; color: var(--text-dark);">
+                                <li>Naissance dans la tribu noble de Banu Hashim</li>
+                                <li>Accomplissement des prophéties anciennes</li>
+                                <li>Protection divine de la Kaaba la même année</li>
+                                <li>Début d'une nouvelle ère pour l'humanité</li>
+                            </ul>
+                        </div>
+                        <a href="en/periode1_complete.html" style="background: var(--primary-gold); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600;">📖 Lire l'Histoire Complète</a>
+                    </div>
+                `,
+                'childhood': `
+                    <div style="text-align: center;">
+                        <div style="font-size: 6rem; margin-bottom: 2rem;">👶</div>
+                        <h2 style="color: var(--deep-green); margin-bottom: 1rem;">L'Orphelin Béni - 571-595 EC</h2>
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: var(--warm-brown); margin-bottom: 2rem;">
+                            Cette image évoque les années de formation du futur Prophète ﷺ, marquées par la perte de ses parents mais aussi par une protection divine constante et des signes de sa future mission.
+                        </p>
+                        <div style="background: var(--soft-cream); padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                            <h3 style="color: var(--deep-green); margin-bottom: 1rem;">👨‍👩‍👦 Gardiens Successifs</h3>
+                            <ul style="text-align: left; color: var(--text-dark);">
+                                <li>Abdul-Muttalib (grand-père) jusqu'à 8 ans</li>
+                                <li>Abu Talib (oncle) qui le protégea toute sa vie</li>
+                                <li>Halima as-Sa'diya (nourrice bédouine)</li>
+                                <li>Signes miraculous dans son enfance</li>
+                            </ul>
+                        </div>
+                        <a href="en/periode2_complete.html" style="background: var(--primary-gold); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600;">📖 Découvrir Cette Période</a>
+                    </div>
+                `,
+                'hira': `
+                    <div style="text-align: center;">
+                        <div style="font-size: 6rem; margin-bottom: 2rem;">🕌</div>
+                        <h2 style="color: var(--deep-green); margin-bottom: 1rem;">La Grotte de Hira - 610 EC</h2>
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: var(--warm-brown); margin-bottom: 2rem;">
+                            Vue artistique de la grotte sacrée où le Prophète ﷺ avait l'habitude de méditer et où il reçut la première révélation de l'ange Gabriel. Ce lieu transforme à jamais l'histoire de l'humanité.
+                        </p>
+                        <div style="background: var(--soft-cream); padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                            <h3 style="color: var(--deep-green); margin-bottom: 1rem;">✨ La Nuit du Destin</h3>
+                            <ul style="text-align: left; color: var(--text-dark);">
+                                <li>Méditation solitaire pendant le mois de Ramadan</li>
+                                <li>Apparition de l'ange Gabriel (Jibril)</li>
+                                <li>Révélation des premiers versets du Coran</li>
+                                <li>"Iqra" - "Lis au nom de ton Seigneur"</li>
+                            </ul>
+                        </div>
+                        <a href="en/periode4_complete.html" style="background: var(--primary-gold); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600;">📖 Vivre Ce Moment Historique</a>
+                    </div>
+                `,
+                'badr': `
+                    <div style="text-align: center;">
+                        <div style="font-size: 6rem; margin-bottom: 2rem;">⚔️</div>
+                        <h2 style="color: var(--deep-green); margin-bottom: 1rem;">La Bataille de Badr - 624 EC</h2>
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: var(--warm-brown); margin-bottom: 2rem;">
+                            Reconstitution stratégique de la première grande victoire musulmane. 313 croyants face à 1000 guerriers Quraysh, dans une bataille qui changea le cours de l'histoire.
+                        </p>
+                        <div style="background: var(--soft-cream); padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                            <h3 style="color: var(--deep-green); margin-bottom: 1rem;">🎯 Forces en Présence</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: left;">
+                                <div>
+                                    <h4 style="color: var(--success-green);">Musulmans</h4>
+                                    <ul style="color: var(--text-dark);">
+                                        <li>313 combattants</li>
+                                        <li>70 chameaux</li>
+                                        <li>2 chevaux</li>
+                                        <li>Aide divine</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 style="color: var(--error-red);">Quraysh</h4>
+                                    <ul style="color: var(--text-dark);">
+                                        <li>1000 guerriers</li>
+                                        <li>600 armures</li>
+                                        <li>100 chevaux</li>
+                                        <li>Supériorité numérique</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="en/periode12_complete.html" style="background: var(--primary-gold); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600;">⚔️ Découvrir La Bataille</a>
+                    </div>
+                `,
+                'hudaybiya': `
+                    <div style="text-align: center;">
+                        <div style="font-size: 6rem; margin-bottom: 2rem;">🕊️</div>
+                        <h2 style="color: var(--deep-green); margin-bottom: 1rem;">Le Traité de Hudaybiya - 628 EC</h2>
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: var(--warm-brown); margin-bottom: 2rem;">
+                            Scène diplomatique historique où 1400 musulmans accompagnent le Prophète ﷺ pour la Umrah, aboutissant à un traité révolutionnaire qui ouvre la voie à l'expansion pacifique de l'Islam.
+                        </p>
+                        <div style="background: var(--soft-cream); padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                            <h3 style="color: var(--deep-green); margin-bottom: 1rem;">📜 Termes du Traité</h3>
+                            <ul style="text-align: left; color: var(--text-dark);">
+                                <li>Trêve de 10 ans entre Mecque et Médine</li>
+                                <li>Retour des musulmans sans Umrah cette année</li>
+                                <li>Droit de revenir l'année suivante pour 3 jours</li>
+                                <li>Clause controversée sur les convertis</li>
+                                <li>Liberté pour les tribus de choisir leur camp</li>
+                            </ul>
+                        </div>
+                        <a href="en/periode15_complete.html" style="background: var(--primary-gold); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600;">🕊️ Comprendre Ce Chef-d'œuvre Diplomatique</a>
+                    </div>
+                `
+            };
+
+            return contents[id] || `
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🖼️</div>
+                    <h2 style="color: var(--deep-green);">Contenu en Développement</h2>
+                    <p style="color: var(--warm-brown);">Cette section de la galerie sera bientôt enrichie avec plus de détails historiques.</p>
+                </div>
+            `;
+        }
+
+        function downloadImage(imageId) {
+            // Simulate image download
+            alert(`📥 Téléchargement de l'image "${imageId}" commencé! 
+            
+(Dans une implémentation réelle, ceci téléchargerait l'image haute résolution)`);
+        }
+
+        // Close lightbox when clicking outside
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Initialize gallery
+        console.log('🖼️ Gallery System Initialized');
+        console.log('📊 12 historical illustrations loaded');
+        console.log('🎨 6 categories available');
     </script>
 </body>
 </html>

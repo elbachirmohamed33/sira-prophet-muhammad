@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicités - Biographie du Prophète Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #0F4C3A;
+            --soft-cream: #F8F6F0;
+            --warm-brown: #8B4513;
+            --text-dark: #2C1810;
+            --success-green: #27AE60;
+            --light-blue: #3498DB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Ad Banner Styles */
+        .ad-banner {
+            background: linear-gradient(135deg, white, var(--soft-cream));
+            border: 3px solid var(--primary-gold);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .ad-banner:hover {
+            transform: translateY(-3px);
+        }
+
+        .ad-banner.large {
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-banner.medium {
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-banner.small {
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-content {
+            max-width: 100%;
+        }
+
+        .ad-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .ad-description {
+            color: var(--warm-brown);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .ad-cta {
+            background: var(--primary-gold);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .ad-cta:hover {
+            background: var(--deep-green);
+            transform: translateY(-2px);
+        }
+
+        .ad-label {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        /* Sidebar Ad */
+        .sidebar-ad {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            background: white;
+            border: 3px solid var(--primary-gold);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+
+        .sidebar-ad .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--warm-brown);
+        }
+
+        /* Floating Ad */
+        .floating-ad {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 300px;
+            background: linear-gradient(135deg, var(--primary-gold), #B8860B);
+            color: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .floating-ad .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Modal Ad */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-ad {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-ad {
+            transform: scale(1);
+        }
+
+        .modal-ad .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--warm-brown);
+        }
+
+        /* In-content Ad */
+        .content-ad {
+            background: linear-gradient(45deg, #F0F8E8, #E8F5E8);
+            border: 2px solid var(--success-green);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar-ad {
+                display: none;
+            }
+            
+            .floating-ad {
+                width: calc(100% - 40px);
+                left: 20px;
+                right: 20px;
+            }
+            
+            .modal-ad {
+                margin: 1rem;
+                padding: 2rem;
+            }
+        }
+
+        /* Ad Categories */
+        .ad-category {
+            background: var(--soft-cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .ad-category h3 {
+            font-family: 'Amiri', serif;
+            color: var(--deep-green);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .ads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .ad-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .ad-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📢 Système Publicitaire</h1>
+        <p>Monétisation intelligente et respectueuse pour votre site éducatif</p>
+    </div>
+
+    <div class="container">
+        <!-- Bannière principale -->
+        <div class="ad-banner large">
+            <div class="ad-label">Publicité</div>
+            <div class="ad-content">
+                <h2 class="ad-title">🕌 Découvrez l'Islam Authentique</h2>
+                <p class="ad-description">
+                    Approfondissez vos connaissances avec nos cours en ligne certifiés et nos ressources éducatives de qualité.
+                </p>
+                <a href="#" class="ad-cta">En Savoir Plus</a>
+            </div>
+        </div>
+
+        <div class="ad-category">
+            <h3>🎯 Types de Publicités Disponibles</h3>
+            <div class="ads-grid">
+                <!-- Google AdSense -->
+                <div class="ad-card">
+                    <h4 style="color: var(--deep-green); margin-bottom: 1rem;">🌐 Google AdSense</h4>
+                    <p>Publicités contextuelles automatiques basées sur le contenu de votre site. Revenus : 0,50€ - 2€ par 1000 vues.</p>
+                    <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 10px; text-align: center;">
+                        <div style="color: #666; font-size: 0.9rem;">Espace Google AdSense</div>
+                        <div style="width: 100%; height: 100px; background: linear-gradient(45deg, #e9ecef, #dee2e6); border-radius: 5px; margin-top: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                            <span style="color: #6c757d;">300x100 Banner</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publicités islamiques -->
+                <div class="ad-card">
+                    <h4 style="color: var(--deep-green); margin-bottom: 1rem;">☪️ Partenaires Islamiques</h4>
+                    <p>Publicités de librairies islamiques, instituts d'apprentissage du Coran, et produits halal. Commission : 5-15%.</p>
+                    <div style="margin-top: 1rem; padding: 1rem; background: var(--soft-cream); border-radius: 10px; text-align: center;">
+                        <div style="color: var(--deep-green); font-weight: 600;">📚 Librairie Islamique</div>
+                        <div style="font-size: 0.9rem; color: var(--warm-brown); margin: 0.5rem 0;">Corans, livres de Hadith, ouvrages de Fiqh</div>
+                        <button style="background: var(--success-green); color: white; border: none; padding: 0.5rem 1rem; border-radius: 15px; cursor: pointer;">Découvrir →</button>
+                    </div>
+                </div>
+
+                <!-- Produits éducatifs -->
+                <div class="ad-card">
+                    <h4 style="color: var(--deep-green); margin-bottom: 1rem;">🎓 Éducation Islamique</h4>
+                    <p>Cours d'arabe, mémorisation du Coran, formations en ligne. Commissions élevées : 20-40%.</p>
+                    <div style="margin-top: 1rem; padding: 1rem; background: #E8F4FD; border-radius: 10px; text-align: center;">
+                        <div style="color: var(--light-blue); font-weight: 600;">🎵 Cours d'Arabe en Ligne</div>
+                        <div style="font-size: 0.9rem; color: #2980b9; margin: 0.5rem 0;">Apprenez l'arabe coranique avec des professeurs qualifiés</div>
+                        <button style="background: var(--light-blue); color: white; border: none; padding: 0.5rem 1rem; border-radius: 15px; cursor: pointer;">S'inscrire →</button>
+                    </div>
+                </div>
+
+                <!-- Voyage Hajj/Omra -->
+                <div class="ad-card">
+                    <h4 style="color: var(--deep-green); margin-bottom: 1rem;">🕋 Hajj & Omra</h4>
+                    <p>Agences de voyage spécialisées dans les pèlerinages. Commissions importantes : 100-500€ par vente.</p>
+                    <div style="margin-top: 1rem; padding: 1rem; background: #FFF8E1; border-radius: 10px; text-align: center;">
+                        <div style="color: var(--primary-gold); font-weight: 600;">✈️ Hajj 2025</div>
+                        <div style="font-size: 0.9rem; color: var(--warm-brown); margin: 0.5rem 0;">Packages complets avec guide spirituel</div>
+                        <button style="background: var(--primary-gold); color: white; border: none; padding: 0.5rem 1rem; border-radius: 15px; cursor: pointer;">Réserver →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bannière moyenne -->
+        <div class="ad-banner medium">
+            <div class="ad-label">Sponsorisé</div>
+            <div class="ad-content">
+                <h3 class="ad-title">📱 Application Mobile Coran</h3>
+                <p class="ad-description">Récitation, traduction, et apprentissage interactif</p>
+                <a href="#" class="ad-cta">Télécharger</a>
+            </div>
+        </div>
+
+        <div class="ad-category">
+            <h3>💰 Stratégies de Monétisation</h3>
+            <div class="ads-grid">
+                <div class="ad-card">
+                    <h4 style="color: var(--success-green); margin-bottom: 1rem;">🎯 Publicité Contextuelle</h4>
+                    <ul style="color: var(--text-dark); line-height: 1.8;">
+                        <li>• Intégration naturelle dans le contenu</li>
+                        <li>• Respect du thème islamique</li>
+                        <li>• Publicités non-intrusives</li>
+                        <li>• Revenus automatiques</li>
+                    </ul>
+                </div>
+
+                <div class="ad-card">
+                    <h4 style="color: var(--light-blue); margin-bottom: 1rem;">🤝 Partenariats Directs</h4>
+                    <ul style="color: var(--text-dark); line-height: 1.8;">
+                        <li>• Négociation de tarifs préférentiels</li>
+                        <li>• Contrôle total du contenu</li>
+                        <li>• Relations durables</li>
+                        <li>• Commissions plus élevées</li>
+                    </ul>
+                </div>
+
+                <div class="ad-card">
+                    <h4 style="color: var(--warm-brown); margin-bottom: 1rem;">📊 Marketing d'Affiliation</h4>
+                    <ul style="color: var(--text-dark); line-height: 1.8;">
+                        <li>• Promotion de produits islamiques</li>
+                        <li>• Liens de parrainage personnalisés</li>
+                        <li>• Suivi des conversions</li>
+                        <li>• Paiements réguliers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bannière de contenu -->
+        <div class="content-ad">
+            <div class="ad-label">Contenu Sponsorisé</div>
+            <h3 style="color: var(--success-green); margin-bottom: 1rem;">🌿 Produits Bio Halal</h3>
+            <p style="color: var(--text-dark); margin-bottom: 1rem;">
+                Découvrez notre gamme de produits alimentaires biologiques certifiés halal, cultivés dans le respect des traditions islamiques.
+            </p>
+            <a href="#" class="ad-cta">Boutique Bio Halal →</a>
+        </div>
+
+        <!-- Petite bannière -->
+        <div class="ad-banner small">
+            <div class="ad-label">Pub</div>
+            <div class="ad-content">
+                <span style="color: var(--deep-green); font-weight: 600;">📖 Abonnez-vous à notre newsletter islamique</span>
+                <a href="#" class="ad-cta" style="margin-left: 1rem;">S'abonner</a>
+            </div>
+        </div>
+
+        <div style="background: var(--soft-cream); border-radius: 20px; padding: 2rem; margin-top: 3rem; text-align: center; border: 2px solid var(--primary-gold);">
+            <h3 style="color: var(--deep-green); margin-bottom: 1rem; font-family: 'Amiri', serif;">💡 Recommandations</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <div>
+                    <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">🎨 Design Respectueux</h4>
+                    <p style="color: var(--warm-brown); font-size: 0.9rem;">Publicités qui s'intègrent harmonieusement au design islamique</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">⚖️ Contenu Halal</h4>
+                    <p style="color: var(--warm-brown); font-size: 0.9rem;">Vérification de la conformité islamique des produits promus</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">📈 Optimisation Continue</h4>
+                    <p style="color: var(--warm-brown); font-size: 0.9rem;">Analyse des performances et ajustements réguliers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Ad -->
+    <div class="sidebar-ad" id="sidebarAd">
+        <button class="close-btn" onclick="closeSidebarAd()">×</button>
+        <div style="color: var(--deep-green); font-weight: 600; margin-bottom: 1rem;">🎓 Formation Coran</div>
+        <div style="font-size: 0.9rem; color: var(--warm-brown); margin-bottom: 1rem;">Mémorisez le Coran avec nos méthodes éprouvées</div>
+        <button style="background: var(--success-green); color: white; border: none; padding: 0.8rem; border-radius: 15px; width: 100%; cursor: pointer;">Commencer →</button>
+    </div>
+
+    <!-- Floating Ad -->
+    <div class="floating-ad" id="floatingAd">
+        <button class="close-btn" onclick="closeFloatingAd()">×</button>
+        <div style="font-weight: 600; margin-bottom: 0.5rem;">🌟 Offre Spéciale</div>
+        <div style="font-size: 0.9rem; margin-bottom: 1rem; opacity: 0.9;">Accès gratuit aux cours d'arabe pendant 7 jours</div>
+        <button style="background: white; color: var(--primary-gold); border: none; padding: 0.8rem 1.5rem; border-radius: 20px; font-weight: 600; width: 100%; cursor: pointer;">Profiter de l'offre</button>
+    </div>
+
+    <!-- Modal Ad -->
+    <div class="modal-overlay" id="modalAd">
+        <div class="modal-ad">
+            <button class="close-btn" onclick="closeModalAd()">×</button>
+            <h2 style="color: var(--deep-green); margin-bottom: 1rem; font-family: 'Amiri', serif;">🎁 Cadeau de Bienvenue</h2>
+            <p style="color: var(--warm-brown); margin-bottom: 2rem; line-height: 1.6;">
+                Recevez gratuitement notre e-book "Les 99 Noms d'Allah" en vous inscrivant à notre newsletter éducative.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button style="background: var(--primary-gold); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-weight: 600; cursor: pointer;">Recevoir le Cadeau</button>
+                <button onclick="closeModalAd()" style="background: var(--soft-cream); color: var(--deep-green); border: 2px solid var(--primary-gold); padding: 1rem 2rem; border-radius: 25px; font-weight: 600; cursor: pointer;">Plus tard</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show modal ad after 10 seconds
+        setTimeout(() => {
+            document.getElementById('modalAd').classList.add('active');
+        }, 10000);
+
+        function closeSidebarAd() {
+            document.getElementById('sidebarAd').style.display = 'none';
+        }
+
+        function closeFloatingAd() {
+            document.getElementById('floatingAd').style.display = 'none';
+        }
+
+        function closeModalAd() {
+            document.getElementById('modalAd').classList.remove('active');
+        }
+
+        // Auto-hide floating ad after 15 seconds
+        setTimeout(() => {
+            const floatingAd = document.getElementById('floatingAd');
+            if (floatingAd) {
+                floatingAd.style.animation = 'slideInUp 0.5s ease-out reverse';
+                setTimeout(() => floatingAd.style.display = 'none', 500);
+            }
+        }, 15000);
+
+        console.log('📢 Ad System Initialized');
+        console.log('💰 Multiple Revenue Streams Available');
+        console.log('🎯 Contextual and Islamic-Compliant Advertising');
+    </script>
+</body>
+</html>

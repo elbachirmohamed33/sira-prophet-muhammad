@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Quiz - Debug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        
+        .debug-panel {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .error {
+            color: red;
+            background: #ffebee;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .success {
+            color: green;
+            background: #e8f5e8;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+        
+        .test-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test de Débogage du Quiz</h1>
+    
+    <div class="debug-panel">
+        <h2>📋 Tests de Base</h2>
+        <button class="test-button" onclick="testBasicJS()">Test JavaScript</button>
+        <button class="test-button" onclick="testQuizData()">Test Données Quiz</button>
+        <button class="test-button" onclick="testElements()">Test Éléments HTML</button>
+        <button class="test-button" onclick="testQuizInit()">Test Initialisation</button>
+        <div id="testResults"></div>
+    </div>
+    
+    <div class="debug-panel">
+        <h2>🎯 Quiz Minimal</h2>
+        <div id="miniQuiz">
+            <div id="question">Chargement...</div>
+            <div id="options"></div>
+            <button class="test-button" onclick="startMiniQuiz()">Démarrer Test</button>
+        </div>
+    </div>
+    
+    <div class="debug-panel">
+        <h2>🔗 Liens de Test</h2>
+        <button class="test-button" onclick="openOriginalQuiz()">Ouvrir Quiz Original</button>
+        <button class="test-button" onclick="openQuizInNewTab()">Quiz Nouvelle Fenêtre</button>
+    </div>
+
+    <script>
+        function log(message, type = 'info') {
+            const results = document.getElementById('testResults');
+            const div = document.createElement('div');
+            div.className = type === 'error' ? 'error' : 'success';
+            div.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+            results.appendChild(div);
+        }
+        
+        function testBasicJS() {
+            log('🧪 Test JavaScript de base...', 'info');
+            
+            try {
+                // Test variables
+                let test = "Hello World";
+                log('✅ Variables fonctionnent');
+                
+                // Test fonctions
+                function testFunction() { return true; }
+                if (testFunction()) {
+                    log('✅ Fonctions fonctionnent');
+                }
+                
+                // Test DOM
+                if (document.getElementById('testResults')) {
+                    log('✅ Accès DOM fonctionne');
+                }
+                
+                // Test console
+                console.log('Test console');
+                log('✅ Console accessible');
+                
+            } catch (error) {
+                log('❌ Erreur JavaScript: ' + error.message, 'error');
+            }
+        }
+        
+        function testQuizData() {
+            log('🧪 Test des données du quiz...', 'info');
+            
+            // Données de test simplifiées
+            const testQuizData = [
+                {
+                    question: "Test: En quelle année est né le Prophète ﷺ ?",
+                    options: ["569", "570", "571", "572"],
+                    correct: 1,
+                    explanation: "Test explanation"
+                }
+            ];
+            
+            try {
+                if (testQuizData && testQuizData.length > 0) {
+                    log('✅ Structure des données OK');
+                    log(`✅ ${testQuizData.length} question(s) de test`);
+                    
+                    const q = testQuizData[0];
+                    if (q.question && q.options && q.correct !== undefined) {
+                        log('✅ Format des questions OK');
+                    }
+                }
+            } catch (error) {
+                log('❌ Erreur données: ' + error.message, 'error');
+            }
+        }
+        
+        function testElements() {
+            log('🧪 Test des éléments HTML...', 'info');
+            
+            const requiredElements = [
+                'question',
+                'options',
+                'miniQuiz',
+                'testResults'
+            ];
+            
+            requiredElements.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    log(`✅ Élément #${id} trouvé`);
+                } else {
+                    log(`❌ Élément #${id} manquant`, 'error');
+                }
+            });
+        }
+        
+        function testQuizInit() {
+            log('🧪 Test initialisation quiz...', 'info');
+            
+            try {
+                // Variables globales simulées
+                let currentQuestion = 0;
+                let selectedAnswers = [];
+                let startTime = Date.now();
+                
+                log('✅ Variables globales OK');
+                
+                // Test fonction de base
+                function showTestQuestion() {
+                    document.getElementById('question').textContent = 'Question test chargée !';
+                    return true;
+                }
+                
+                if (showTestQuestion()) {
+                    log('✅ Affichage question fonctionne');
+                }
+                
+            } catch (error) {
+                log('❌ Erreur initialisation: ' + error.message, 'error');
+            }
+        }
+        
+        function startMiniQuiz() {
+            log('🚀 Démarrage du quiz minimal...', 'info');
+            
+            const testQ = {
+                question: "Quelle est la première sourate révélée ?",
+                options: ["Al-Fatiha", "Al-Alaq", "Al-Nas", "Al-Ikhlas"],
+                correct: 1
+            };
+            
+            try {
+                document.getElementById('question').innerHTML = `<h3>${testQ.question}</h3>`;
+                
+                const optionsHtml = testQ.options.map((option, index) => 
+                    `<button class="test-button" onclick="selectAnswer(${index})">${option}</button>`
+                ).join('');
+                
+                document.getElementById('options').innerHTML = optionsHtml;
+                
+                log('✅ Quiz minimal chargé avec succès');
+                
+            } catch (error) {
+                log('❌ Erreur quiz minimal: ' + error.message, 'error');
+            }
+        }
+        
+        function selectAnswer(index) {
+            if (index === 1) {
+                log('🎉 Correct ! Al-Alaq était la première sourate révélée.', 'success');
+            } else {
+                log('❌ Incorrect. La bonne réponse est Al-Alaq.', 'error');
+            }
+        }
+        
+        function openOriginalQuiz() {
+            try {
+                window.location.href = 'quiz.html';
+            } catch (error) {
+                log('❌ Impossible d\'ouvrir quiz.html: ' + error.message, 'error');
+            }
+        }
+        
+        function openQuizInNewTab() {
+            try {
+                window.open('quiz.html', '_blank');
+            } catch (error) {
+                log('❌ Impossible d\'ouvrir nouvelle fenêtre: ' + error.message, 'error');
+            }
+        }
+        
+        // Auto-test au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            log('🔄 Page de debug chargée', 'success');
+            setTimeout(() => {
+                testBasicJS();
+                testElements();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

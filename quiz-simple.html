@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Simple - Test</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #F8F6F0 0%, #E8E2D4 100%);
+            color: #2C1810;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .question-card {
+            background: #F8F6F0;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid #D4AF37;
+        }
+
+        .question-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #0F4C3A;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid #D4AF37;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            background: #D4AF37;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            background: #0F4C3A;
+            color: white;
+            border-color: #0F4C3A;
+        }
+
+        .quiz-button {
+            background: #27AE60;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-button:hover {
+            background: #0F4C3A;
+            transform: translateY(-2px);
+        }
+
+        .progress {
+            background: #E8E2D4;
+            border-radius: 10px;
+            height: 10px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: #D4AF37;
+            height: 100%;
+            transition: width 0.5s ease;
+        }
+
+        .debug-info {
+            background: #f0f0f0;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>🧠 Quiz Simple - Test de Fonctionnement</h1>
+        
+        <div class="debug-info" id="debugInfo">
+            État: Initialisation...
+        </div>
+
+        <div class="progress">
+            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+        </div>
+
+        <div id="quizContent">
+            <div class="question-card">
+                <div id="questionText">Chargement de la question...</div>
+                <div id="optionsContainer"></div>
+            </div>
+        </div>
+
+        <div>
+            <button class="quiz-button" onclick="previousQuestion()" id="prevBtn" disabled>← Précédent</button>
+            <button class="quiz-button" onclick="nextQuestion()" id="nextBtn">Suivant →</button>
+            <button class="quiz-button" onclick="showResults()" id="finishBtn" style="display: none;">🏁 Terminer</button>
+        </div>
+    </div>
+
+    <script>
+        // Données de test simples
+        const quizData = [
+            {
+                question: "En quelle année est né le Prophète Muhammad ﷺ ?",
+                options: ["569 EC", "570 EC", "571 EC", "572 EC"],
+                correct: 1,
+                explanation: "Le Prophète ﷺ est né en 570 EC, l'Année de l'Éléphant."
+            },
+            {
+                question: "Comment s'appelait la mère du Prophète ﷺ ?",
+                options: ["Khadija", "Aminah", "Fatimah", "Aisha"],
+                correct: 1,
+                explanation: "Aminah bint Wahb était la mère du Prophète ﷺ."
+            },
+            {
+                question: "À quel âge le Prophète ﷺ a-t-il reçu la première révélation ?",
+                options: ["35 ans", "38 ans", "40 ans", "42 ans"],
+                correct: 2,
+                explanation: "Le Prophète ﷺ avait 40 ans lors de la première révélation."
+            }
+        ];
+
+        // Variables globales
+        let currentQuestion = 0;
+        let selectedAnswers = new Array(quizData.length).fill(-1);
+        let startTime = Date.now();
+
+        function updateDebug(message) {
+            const debugInfo = document.getElementById('debugInfo');
+            const timestamp = new Date().toLocaleTimeString();
+            debugInfo.innerHTML += `<br>[${timestamp}] ${message}`;
+            console.log(`[Quiz Debug] ${message}`);
+        }
+
+        function showQuestion(index) {
+            updateDebug(`Affichage question ${index + 1}/${quizData.length}`);
+            
+            try {
+                const question = quizData[index];
+                
+                // Afficher la question
+                document.getElementById('questionText').innerHTML = `
+                    <div class="question-title">
+                        Question ${index + 1}/${quizData.length}: ${question.question}
+                    </div>
+                `;
+
+                // Afficher les options
+                const optionsHtml = question.options.map((option, optIndex) => `
+                    <div class="option ${selectedAnswers[index] === optIndex ? 'selected' : ''}" 
+                         onclick="selectOption(${optIndex})">
+                        ${String.fromCharCode(65 + optIndex)}. ${option}
+                    </div>
+                `).join('');
+
+                document.getElementById('optionsContainer').innerHTML = optionsHtml;
+
+                // Mettre à jour la barre de progression
+                const progress = ((index + 1) / quizData.length) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+
+                // Mettre à jour les boutons
+                updateButtons();
+                
+                updateDebug(`Question ${index + 1} affichée avec succès`);
+                
+            } catch (error) {
+                updateDebug(`ERREUR lors de l'affichage: ${error.message}`);
+                console.error('Erreur showQuestion:', error);
+            }
+        }
+
+        function selectOption(optionIndex) {
+            updateDebug(`Option ${optionIndex} sélectionnée pour question ${currentQuestion + 1}`);
+            
+            selectedAnswers[currentQuestion] = optionIndex;
+            
+            // Mettre à jour l'affichage
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, index) => {
+                option.classList.toggle('selected', index === optionIndex);
+            });
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+                updateDebug(`Navigation vers question ${currentQuestion + 1}`);
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+                updateDebug(`Retour à question ${currentQuestion + 1}`);
+            }
+        }
+
+        function updateButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const finishBtn = document.getElementById('finishBtn');
+
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === quizData.length - 1) {
+                nextBtn.style.display = 'none';
+                finishBtn.style.display = 'inline-block';
+            } else {
+                nextBtn.style.display = 'inline-block';
+                finishBtn.style.display = 'none';
+            }
+        }
+
+        function showResults() {
+            updateDebug('Calcul des résultats...');
+            
+            const correctAnswers = selectedAnswers.filter((answer, index) => 
+                answer === quizData[index].correct
+            ).length;
+            
+            const totalQuestions = quizData.length;
+            const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+
+            let message = "";
+            if (percentage >= 80) {
+                message = "🌟 Excellent ! Parfaite maîtrise !";
+            } else if (percentage >= 60) {
+                message = "👏 Très bien ! Bonnes connaissances !";
+            } else {
+                message = "📚 Continuez à apprendre !";
+            }
+
+            document.getElementById('quizContent').innerHTML = `
+                <div class="question-card" style="text-align: center;">
+                    <h2>🏆 Résultats du Quiz</h2>
+                    <div style="font-size: 3rem; margin: 1rem 0;">${percentage}%</div>
+                    <div style="font-size: 1.2rem; margin: 1rem 0;">${message}</div>
+                    <p><strong>Score:</strong> ${correctAnswers}/${totalQuestions} bonnes réponses</p>
+                    <p><strong>Temps:</strong> ${elapsed} secondes</p>
+                    <button class="quiz-button" onclick="restartQuiz()">🔄 Recommencer</button>
+                    <button class="quiz-button" onclick="showDetails()">📊 Voir détails</button>
+                </div>
+            `;
+
+            updateDebug(`Résultats: ${correctAnswers}/${totalQuestions} (${percentage}%)`);
+        }
+
+        function showDetails() {
+            let detailsHtml = '<div class="question-card"><h3>📊 Détails des Réponses</h3>';
+            
+            quizData.forEach((question, index) => {
+                const userAnswer = selectedAnswers[index];
+                const correct = userAnswer === question.correct;
+                
+                detailsHtml += `
+                    <div style="margin: 1rem 0; padding: 1rem; background: ${correct ? '#e8f5e8' : '#ffebee'}; border-radius: 10px;">
+                        <strong>Q${index + 1}:</strong> ${question.question}<br>
+                        <strong>Votre réponse:</strong> ${userAnswer >= 0 ? question.options[userAnswer] : 'Non répondu'} ${correct ? '✅' : '❌'}<br>
+                        <strong>Bonne réponse:</strong> ${question.options[question.correct]}<br>
+                        <em>${question.explanation}</em>
+                    </div>
+                `;
+            });
+            
+            detailsHtml += '<button class="quiz-button" onclick="restartQuiz()">🔄 Recommencer</button></div>';
+            
+            document.getElementById('quizContent').innerHTML = detailsHtml;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            selectedAnswers = new Array(quizData.length).fill(-1);
+            startTime = Date.now();
+            showQuestion(0);
+            updateDebug('Quiz redémarré');
+        }
+
+        // Initialisation
+        function initQuiz() {
+            updateDebug('Initialisation du quiz...');
+            
+            try {
+                updateDebug(`${quizData.length} questions chargées`);
+                showQuestion(0);
+                updateDebug('Quiz initialisé avec succès !');
+            } catch (error) {
+                updateDebug(`ERREUR d'initialisation: ${error.message}`);
+                console.error('Erreur init:', error);
+            }
+        }
+
+        // Démarrage automatique
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDebug('Page chargée, démarrage du quiz...');
+            setTimeout(initQuiz, 100);
+        });
+
+        // Test de fonctionnalité
+        window.addEventListener('load', function() {
+            updateDebug('Tous les éléments chargés');
+        });
+    </script>
+</body>
+</html>

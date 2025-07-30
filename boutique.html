@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Éducative - Biographie du Prophète Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #0F4C3A;
+            --soft-cream: #F8F6F0;
+            --warm-brown: #8B4513;
+            --text-dark: #2C1810;
+            --success-green: #27AE60;
+            --light-blue: #3498DB;
+            --rose-gold: #E8B4B8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,50 Q50,20 80,50 Q50,80 20,50 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 60px 60px;
+            animation: rotate 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-bottom: 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .nav-link {
+            color: var(--deep-green);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .shop-hero {
+            background: linear-gradient(135deg, white, var(--soft-cream));
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 3px solid var(--primary-gold);
+        }
+
+        .shop-hero h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .shop-hero p {
+            font-size: 1.2rem;
+            color: var(--warm-brown);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: var(--soft-cream);
+            color: var(--deep-green);
+            border: 2px solid var(--primary-gold);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 6px solid var(--primary-gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--success-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .product-description {
+            color: var(--warm-brown);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            padding: 0.3rem 0;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-features li::before {
+            content: '✅';
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--soft-cream);
+            border-radius: 15px;
+        }
+
+        .price-current {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-green);
+        }
+
+        .price-original {
+            font-size: 1.1rem;
+            color: var(--warm-brown);
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .discount {
+            background: var(--success-green);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .purchase-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-gold), #B8860B);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .purchase-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #B8860B, var(--primary-gold));
+        }
+
+        .coming-soon-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--deep-green);
+        }
+
+        .testimonials {
+            background: linear-gradient(135deg, var(--deep-green), #2E8B57);
+            color: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .testimonials h3 {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .newsletter {
+            background: var(--soft-cream);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid var(--primary-gold);
+        }
+
+        .newsletter h3 {
+            font-family: 'Amiri', serif;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 1rem auto 0;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid var(--primary-gold);
+            border-radius: 15px;
+            background: white;
+        }
+
+        .newsletter-btn {
+            background: var(--deep-green);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--primary-gold);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .categories {
+                justify-content: center;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📚 Boutique Éducative</h1>
+        <p>Ressources authentiques pour approfondir votre connaissance de la Sira</p>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="fr/index_v2.html" class="nav-link">🏠 Accueil</a>
+            <a href="carte_interactive.html" class="nav-link">🗺️ Carte Interactive</a>
+            <a href="quiz.html" class="nav-link">🧠 Quiz</a>
+            <a href="audio.html" class="nav-link">🎵 Audio</a>
+            <a href="galerie.html" class="nav-link">🖼️ Galerie</a>
+            <a href="soutenir.html" class="nav-link">🤲 Soutenir</a>
+            <a href="boutique.html" class="nav-link active">📚 Boutique</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="shop-hero">
+            <h2>🌟 Ressources Éducatives Authentiques</h2>
+            <p>Découvrez notre collection soigneusement sélectionnée de livres électroniques, guides pratiques et ressources éducatives pour approfondir votre compréhension de la vie du Prophète Muhammad ﷺ.</p>
+        </div>
+
+        <div class="categories">
+            <button class="category-btn active" onclick="filterProducts('all')">Tous</button>
+            <button class="category-btn" onclick="filterProducts('ebooks')">📖 E-books</button>
+            <button class="category-btn" onclick="filterProducts('guides')">📋 Guides</button>
+            <button class="category-btn" onclick="filterProducts('audio')">🎵 Audio</button>
+            <button class="category-btn" onclick="filterProducts('cours')">🎓 Cours</button>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+            <!-- E-book Principal -->
+            <div class="product-card" data-category="ebooks">
+                <div class="product-badge">Bestseller</div>
+                <div class="product-icon">📖</div>
+                <h3>La Sira Complète - Version Premium</h3>
+                <div class="product-description">
+                    Un e-book complet de 300+ pages couvrant toute la biographie du Prophète Muhammad ﷺ avec des cartes détaillées, des illustrations et des analyses approfondies.
+                </div>
+                <ul class="product-features">
+                    <li>15 chapitres détaillés avec chronologie</li>
+                    <li>50+ cartes et illustrations haute qualité</li>
+                    <li>Références académiques complètes</li>
+                    <li>Format PDF optimisé pour tous appareils</li>
+                    <li>Mises à jour gratuites à vie</li>
+                </ul>
+                <div class="product-price">
+                    <div>
+                        <span class="price-current">29,99€</span>
+                        <span class="price-original">39,99€</span>
+                    </div>
+                    <div class="discount">-25%</div>
+                </div>
+                <button class="purchase-btn">
+                    🛒 Acheter Maintenant
+                </button>
+                <div class="coming-soon-overlay">
+                    🚧 Bientôt Disponible
+                </div>
+            </div>
+
+            <!-- Guide Pédagogique -->
+            <div class="product-card" data-category="guides">
+                <div class="product-icon">📋</div>
+                <h3>Guide Pédagogique pour Enseignants</h3>
+                <div class="product-description">
+                    Un guide complet pour les enseignants et éducateurs souhaitant intégrer l'enseignement de la Sira dans leurs programmes éducatifs.
+                </div>
+                <ul class="product-features">
+                    <li>Plans de cours détaillés par âge</li>
+                    <li>Activités interactives et exercices</li>
+                    <li>Ressources visuelles prêtes à imprimer</li>
+                    <li>Évaluations et corrections</li>
+                    <li>Formation vidéo incluse (2h)</li>
+                </ul>
+                <div class="product-price">
+                    <div>
+                        <span class="price-current">19,99€</span>
+                    </div>
+                </div>
+                <button class="purchase-btn">
+                    🛒 Acheter Maintenant
+                </button>
+                <div class="coming-soon-overlay">
+                    🚧 Bientôt Disponible
+                </div>
+            </div>
+
+            <!-- Collection Audio -->
+            <div class="product-card" data-category="audio">
+                <div class="product-badge">Nouveau</div>
+                <div class="product-icon">🎵</div>
+                <h3>Collection Audio - Récitations Authentiques</h3>
+                <div class="product-description">
+                    Une collection de 15 récitations audio professionnelles de la Sira, parfaites pour l'écoute en famille ou l'apprentissage autonome.
+                </div>
+                <ul class="product-features">
+                    <li>15 épisodes de 20-30 minutes chacun</li>
+                    <li>Narration par des spécialistes qualifiés</li>
+                    <li>Qualité studio haute définition</li>
+                    <li>Téléchargement illimité MP3</li>
+                    <li>Transcriptions complètes incluses</li>
+                </ul>
+                <div class="product-price">
+                    <div>
+                        <span class="price-current">24,99€</span>
+                        <span class="price-original">34,99€</span>
+                    </div>
+                    <div class="discount">-29%</div>
+                </div>
+                <button class="purchase-btn">
+                    🛒 Acheter Maintenant
+                </button>
+                <div class="coming-soon-overlay">
+                    🚧 Bientôt Disponible
+                </div>
+            </div>
+
+            <!-- Cours en Ligne -->
+            <div class="product-card" data-category="cours">
+                <div class="product-icon">🎓</div>
+                <h3>Cours Interactif - 8 Semaines</h3>
+                <div class="product-description">
+                    Un programme d'apprentissage structuré sur 8 semaines avec vidéos, quiz interactifs et suivi personnalisé de progression.
+                </div>
+                <ul class="product-features">
+                    <li>24 vidéos de formation (6h total)</li>
+                    <li>Quiz hebdomadaires avec correction</li>
+                    <li>Forum de discussion privé</li>
+                    <li>Certificat de completion</li>
+                    <li>Support par email inclus</li>
+                </ul>
+                <div class="product-price">
+                    <div>
+                        <span class="price-current">49,99€</span>
+                        <span class="price-original">69,99€</span>
+                    </div>
+                    <div class="discount">-29%</div>
+                </div>
+                <button class="purchase-btn">
+                    🛒 Acheter Maintenant
+                </button>
+                <div class="coming-soon-overlay">
+                    🚧 Bientôt Disponible
+                </div>
+            </div>
+
+            <!-- Kit Famille -->
+            <div class="product-card" data-category="ebooks guides">
+                <div class="product-badge">Pack Famille</div>
+                <div class="product-icon">👨‍👩‍👧‍👦</div>
+                <h3>Kit Éducatif Famille Complète</h3>
+                <div class="product-description">
+                    Un pack complet incluant l'e-book premium, le guide pédagogique, et des activités spécialement conçues pour l'apprentissage en famille.
+                </div>
+                <ul class="product-features">
+                    <li>E-book Sira Complète (300+ pages)</li>
+                    <li>Guide pédagogique famille</li>
+                    <li>Jeux éducatifs à imprimer</li>
+                    <li>Calendrier historique illustré</li>
+                    <li>Bonus: Cartes de collection</li>
+                </ul>
+                <div class="product-price">
+                    <div>
+                        <span class="price-current">39,99€</span>
+                        <span class="price-original">59,98€</span>
+                    </div>
+                    <div class="discount">-33%</div>
+                </div>
+                <button class="purchase-btn">
+                    🛒 Acheter Maintenant
+                </button>
+                <div class="coming-soon-overlay">
+                    🚧 Bientôt Disponible
+                </div>
+            </div>
+
+            <!-- Collection Cartes -->
+            <div class="product-card" data-category="guides">
+                <div class="product-icon">🗺️</div>
+                <h3>Atlas Historique de la Sira</h3>
+                <div class="product-description">
+                    Une collection de cartes haute résolution retraçant tous les voyages, batailles et événements géographiques de la vie du Prophète ﷺ.
+                </div>
+                <ul class="product-features">
+                    <li>25 cartes historiques détaillées</li>
+                    <li>Résolution 4K pour impression</li>
+                    <li>Légendes explicatives complètes</li>
+                    <li>Chronologie géographique</li>
+                    <li>Format numérique et imprimable</li>
+                </ul>
+                <div class="product-price">
+                    <div>
+                        <span class="price-current">14,99€</span>
+                    </div>
+                </div>
+                <button class="purchase-btn">
+                    🛒 Acheter Maintenant
+                </button>
+                <div class="coming-soon-overlay">
+                    🚧 Bientôt Disponible
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonials">
+            <h3>💬 Ce que disent nos utilisateurs</h3>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "L'e-book Sira Complète est exceptionnel ! Les cartes et illustrations rendent l'apprentissage si vivant. Mes enfants adorent découvrir l'histoire avec ces ressources."
+                    </div>
+                    <div class="testimonial-author">- Fatima M., Enseignante</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Le guide pédagogique m'a énormément aidé dans mes cours. Les activités sont bien pensées et adaptées à tous les âges. Un investissement qui en vaut vraiment la peine."
+                    </div>
+                    <div class="testimonial-author">- Ahmed B., Éducateur</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "La qualité des contenus est remarquable. Authentique, bien documenté et accessible. Exactement ce que je cherchais pour approfondir mes connaissances."
+                    </div>
+                    <div class="testimonial-author">- Khadija L., Étudiante</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="newsletter">
+            <h3>📧 Restez Informé</h3>
+            <p>Recevez en avant-première nos nouvelles ressources et offres spéciales</p>
+            <div class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Votre email">
+                <button class="newsletter-btn">S'abonner</button>
+            </div>
+        </div>
+
+        <div style="background: var(--soft-cream); border-radius: 20px; padding: 2rem; margin-top: 3rem; text-align: center; border: 2px solid var(--primary-gold);">
+            <h3 style="color: var(--deep-green); margin-bottom: 1rem; font-family: 'Amiri', serif;">🎯 Notre Engagement</h3>
+            <p style="color: var(--warm-brown); font-size: 1.1rem; line-height: 1.6;">
+                Tous nos contenus sont vérifiés par des spécialistes de la Sira et basés sur les sources les plus authentiques. Nous nous engageons à fournir des ressources éducatives de la plus haute qualité pour préserver et transmettre fidèlement l'héritage du Prophète Muhammad ﷺ.
+            </p>
+            <div style="margin-top: 1.5rem; font-size: 1.2rem; color: var(--primary-gold); font-weight: 600;">
+                🌟 Garantie Satisfait ou Remboursé 30 jours 🌟
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterProducts(category) {
+            // Update category buttons
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Filter products
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                if (category === 'all' || product.dataset.category.includes(category)) {
+                    product.style.display = 'block';
+                    product.style.animation = 'fadeIn 0.5s ease-in';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Newsletter form handling
+        document.querySelector('.newsletter-btn').addEventListener('click', function() {
+            const email = document.querySelector('.newsletter-input').value;
+            if (email) {
+                alert('Merci ! Vous recevrez bientôt nos actualités à l\'adresse : ' + email);
+                document.querySelector('.newsletter-input').value = '';
+            } else {
+                alert('Veuillez entrer une adresse email valide.');
+            }
+        });
+
+        console.log('🛒 Educational Shop Initialized');
+        console.log('📚 6 Products Available');
+        console.log('🏷️ Categories: E-books, Guides, Audio, Cours');
+    </script>
+</body>
+</html>

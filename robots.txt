@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://votre-username.github.io/sira-prophete-muhammad/sitemap.xml
+
+# Pages prioritaires pour les moteurs de recherche
+Allow: /index.html
+Allow: /app-sira-quran.html
+Allow: /fr/
+Allow: /en/
+Allow: /ar/
+
+# Fichiers techniques à ne pas indexer
+Disallow: /js/
+Disallow: /css/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /*.log
+
+# Délai entre les requêtes (respectueux)
+Crawl-delay: 1

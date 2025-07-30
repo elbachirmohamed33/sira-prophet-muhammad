@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بداية الوحي (٦١٠ - ٦١٣ م) - السيرة النبوية الشريفة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #0F4C3A;
+            --soft-cream: #F8F6F0;
+            --warm-brown: #8B4513;
+            --text-dark: #2C1810;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans Arabic', 'Amiri', serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
+            color: var(--text-dark);
+            line-height: 1.8;
+            direction: rtl;
+        }
+        
+        .navigation {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .nav-logo {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-green);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover { color: var(--primary-gold); }
+        
+        .hero-section {
+            background: linear-gradient(rgba(15, 76, 58, 0.9), rgba(139, 69, 19, 0.8));
+            color: white;
+            text-align: center;
+            padding: 120px 0 80px;
+            margin-top: 80px;
+        }
+        
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .period-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-gold);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--warm-brown);
+            margin-bottom: 1rem;
+            border-right: 4px solid var(--primary-gold);
+            padding-right: 1rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .quran-verse {
+            background: var(--deep-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            position: relative;
+        }
+        
+        .quran-verse::before {
+            content: '﴿';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--primary-gold);
+        }
+        
+        .quran-verse::after {
+            content: '﴾';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 2rem;
+            color: var(--primary-gold);
+        }
+        
+        .hadith-box {
+            background: var(--warm-brown);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .source {
+            text-align: left;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+        }
+        
+        .timeline-item {
+            border-right: 3px solid var(--primary-gold);
+            padding-right: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 0;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--primary-gold);
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            gap: 1rem;
+        }
+        
+        .nav-button {
+            background: var(--primary-gold);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background: var(--warm-brown);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .container { padding: 2rem 1rem; }
+            .period-content { padding: 2rem; }
+            .navigation-buttons { flex-direction: column; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="nav-logo">السيرة النبوية ﷺ</div>
+            <ul class="nav-links">
+                <li><a href="index_v2.html">الرئيسية</a></li>
+                <li><a href="../carte_interactive.html">الخريطة</a></li>
+                <li><a href="../fr/index_v2.html">Français</a></li>
+                <li><a href="../en/index_v2.html">English</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <h1 class="hero-title">بداية الوحي</h1>
+        <p class="hero-subtitle">٦١٠ - ٦١٣ م</p>
+        <p class="hero-subtitle">السنوات الثلاث الأولى من الرسالة المحمدية</p>
+    </header>
+
+    <div class="container">
+        <div class="period-content">
+            <h2 class="section-title">بداية نزول الوحي الشريف</h2>
+            
+            <div class="content-section">
+                <h3>🌟 ليلة القدر المباركة - رمضان ٦١٠ م</h3>
+                <p>
+                    في ليلة من ليالي شهر رمضان المبارك، في السنة العاشرة والأربعين من عمر النبي الشريف، وبينما كان يتعبد الله في غار حراء بعيداً عن ضوضاء مكة وأصنامها، حدث أعظم حدث في تاريخ البشرية. نزل الملك جبريل عليه السلام حاملاً أول آيات القرآن الكريم، معلناً بداية الرسالة الخاتمة.
+                </p>
+                <p>
+                    كان النبي ﷺ قد اعتاد الخلوة في هذا الغار شهراً كاملاً من كل سنة، يتحنث ويتعبد على ملة إبراهيم عليه السلام، بعيداً عن الشرك والوثنية التي انتشرت في مكة. وكان يأخذ معه الطعام والشراب لعدة ليالٍ، ثم يعود إلى خديجة رضي الله عنها ليتزود مرة أخرى.
+                </p>
+            </div>
+
+            <div class="quran-verse">
+                اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ ۝ خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ ۝ اقْرَأْ وَرَبُّكَ الْأَكْرَمُ ۝ الَّذِي عَلَّمَ بِالْقَلَمِ ۝ عَلَّمَ الْإِنسَانَ مَا لَمْ يَعْلَمْ
+                <div class="source">سورة العلق: الآيات 1-5 - أول ما نزل من القرآن الكريم</div>
+            </div>
+
+            <div class="content-section">
+                <h3>👤 خديجة الكبرى - أول المؤمنين</h3>
+                <p>
+                    عندما عاد النبي ﷺ إلى منزله من غار حراء، كان مضطرباً مما رأى وسمع. دخل على زوجته الحبيبة خديجة بنت خويلد رضي الله عنها وقال: "زملوني زملوني"، فزملته حتى ذهب عنه الروع. ثم قال لها: "لقد خشيت على نفسي".
+                </p>
+                <p>
+                    فكانت كلمات خديجة رضي الله عنها بمثابة البلسم الشافي والسند القوي لرسول الله ﷺ في هذه اللحظات العصيبة. بحكمتها وإيمانها وثقتها الكاملة في زوجها، ثبتته وشدت من أزره، فكانت بذلك أول من آمن برسالته وصدق دعوته.
+                </p>
+            </div>
+
+            <div class="hadith-box">
+                قالت خديجة رضي الله عنها: "كلا والله ما يخزيك الله أبداً، إنك لتصل الرحم، وتحمل الكل، وتكسب المعدوم، وتقري الضيف، وتعين على نوائب الحق"
+                <div class="source">صحيح البخاري - كتاب بدء الوحي</div>
+            </div>
+
+            <div class="content-section">
+                <h3>📖 ورقة بن نوفل والتأكيد النبوي</h3>
+                <p>
+                    اصطحبت خديجة رضي الله عنها زوجها النبي ﷺ إلى ابن عمها ورقة بن نوفل، وكان شيخاً كبيراً قد عمي، وكان امرأً تنصر في الجاهلية، وكان يكتب الكتاب العبراني، ويكتب من الإنجيل بالعبرانية ما شاء الله أن يكتب.
+                </p>
+                <p>
+                    فلما سمع ورقة حديث النبي ﷺ، قال له: "هذا الناموس الذي نزل على موسى، يا ليتني فيها جذعاً، ليتني أكون حياً إذ يخرجك قومك". فقال رسول الله ﷺ: "أومخرجي هم؟" قال: "نعم، لم يأت رجل قط بمثل ما جئت به إلا عودي".
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h3>⏳ فترة انقطاع الوحي (فترة الفتور)</h3>
+                <p>
+                    بعد نزول الآيات الأولى من سورة العلق، انقطع الوحي فترة من الزمن تُعرف بـ"فترة الفتور". اختلف العلماء في مدتها، فقيل أياماً وقيل شهوراً. خلال هذه الفترة، حزن النبي ﷺ حزناً شديداً واشتاق إلى لقاء جبريل عليه السلام مرة أخرى.
+                </p>
+                <p>
+                    كانت هذه الفترة حكمة إلهية، حيث هيأت النبي ﷺ نفسياً وروحياً لاستقبال المهمة العظيمة. كما علمته الصبر والانتظار، وجعلته يتشوق أكثر إلى الوحي ويقدر نعمة الاتصال بالسماء.
+                </p>
+            </div>
+
+            <div class="quran-verse">
+                يَا أَيُّهَا الْمُدَّثِّرُ ۝ قُمْ فَأَنذِرْ ۝ وَرَبَّكَ فَكَبِّرْ ۝ وَثِيَابَكَ فَطَهِّرْ ۝ وَالرُّجْزَ فَاهْجُرْ
+                <div class="source">سورة المدثر: الآيات 1-5 - ثاني ما نزل من القرآن بعد انقطاع الوحي</div>
+            </div>
+
+            <div class="content-section">
+                <h3>👥 النواة الأولى للمؤمنين</h3>
+                <div class="timeline-item">
+                    <h4><strong>خديجة بنت خويلد رضي الله عنها</strong></h4>
+                    <p>أول من آمن بالرسول ﷺ من النساء والرجال جميعاً. سندته بمالها ونفسها وكانت وزير صدق في السراء والضراء.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4><strong>علي بن أبي طالب رضي الله عنه</strong></h4>
+                    <p>أول من أسلم من الصبيان، وهو ابن عم النبي ﷺ الذي تربى في بيته. آمن وهو في العاشرة من عمره.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4><strong>أبو بكر الصديق رضي الله عنه</strong></h4>
+                    <p>أول من أسلم من الرجال الأحرار. صاحب النبي ﷺ وأعز أصدقائه، آمن دون تردد أو تساؤل.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4><strong>زيد بن حارثة رضي الله عنه</strong></h4>
+                    <p>مولى النبي ﷺ وحِبُّه، أول من أسلم من الموالي. كان بمثابة الابن للنبي ﷺ.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>🏠 بيت الأرقم - مركز الدعوة السرية</h3>
+                <p>
+                    اتخذ النبي ﷺ من دار الأرقم بن أبي الأرقم مركزاً للدعوة في هذه المرحلة السرية. كان هذا البيت يقع عند الصفا، في مكان هادئ بعيد عن أعين قريش المتطفلة. هناك كان المؤمنون الأوائل يجتمعون ليتعلموا أحكام الدين الجديد ويتلقوا تعاليم النبي ﷺ.
+                </p>
+                <p>
+                    اختير بيت الأرقم لأن الأرقم كان من بني مخزوم، وهم أعداء بني هاشم، فلم تكن قريش تتوقع أن يكون مركز الدعوة في دار أحد من بني مخزوم. كما أن الأرقم كان شاباً لم يُشتهر بعد، فلم تكن الأنظار تتجه إليه.
+                </p>
+            </div>
+
+            <div class="hadith-box">
+                عن عبد الله بن مسعود رضي الله عنه قال: "ما زلنا أعزة منذ أسلم عمر"
+                <div class="source">صحيح البخاري - في إشارة إلى أهمية إسلام عمر بن الخطاب في نهاية هذه الفترة</div>
+            </div>
+
+            <div class="content-section">
+                <h3>📚 الحكمة من المرحلة السرية</h3>
+                <p>
+                    كانت البداية السرية للدعوة حكمة إلهية بالغة لعدة أسباب:
+                </p>
+                <ul style="margin-right: 2rem; margin-top: 1rem;">
+                    <li><strong>إعداد النواة الصلبة:</strong> تكوين مجموعة مؤمنة قوية ومتماسكة قبل مواجهة المعارضة الشديدة</li>
+                    <li><strong>ترسيخ العقيدة:</strong> إتاحة الوقت لترسيخ أسس الإيمان في قلوب المؤمنين الأوائل</li>
+                    <li><strong>التربية الإيمانية:</strong> تربية المؤمنين على الصبر والثبات والكتمان</li>
+                    <li><strong>الحكمة التدريجية:</strong> التدرج في الدعوة من الأقربين إلى الأبعدين</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>🌅 نهاية المرحلة السرية</h3>
+                <p>
+                    استمرت هذه المرحلة السرية حوالي ثلاث سنوات (610-613 م)، حتى نزل قول الله تعالى: "وَأَنذِرْ عَشِيرَتَكَ الْأَقْرَبِينَ"، فبدأت مرحلة جديدة من الدعوة الجهرية العلنية. خلال هذه السنوات الثلاث، تكونت نواة قوية من المؤمنين بلغ عددهم حوالي الأربعين رجلاً وامرأة.
+                </p>
+            </div>
+
+            <div class="navigation-buttons">
+                <a href="periode1.html" class="nav-button">← الفترة السابقة: قبل البعثة</a>
+                <a href="periode3.html" class="nav-button">الفترة التالية: الدعوة الجهرية →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: var(--deep-green); color: white; text-align: center; padding: 2rem; margin-top: 4rem;">
+        <p>السيرة النبوية الشريفة - صلى الله عليه وسلم</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">جميع المعلومات مستمدة من المصادر الإسلامية الموثقة: البخاري، مسلم، ابن هشام، الطبري</p>
+    </footer>
+
+    <script>
+        // Animation d'apparition au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les éléments
+        document.querySelectorAll('.content-section, .quran-verse, .hadith-box').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(element);
+        });
+
+        // Smooth scroll pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

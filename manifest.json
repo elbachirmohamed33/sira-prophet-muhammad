@@ -1,27 +1,104 @@
 {
-  "name": "Vie du Prophète Muhammad ﷺ",
-  "short_name": "Sira ﷺ",
-  "description": "Biographie complète et interactive du Prophète Muhammad ﷺ avec cartes, quiz et contenus authentiques",
-  "start_url": "/index_v2.html",
+  "name": "Sira & Coran - Application Complète",
+  "short_name": "Sira&Coran",
+  "description": "Application complète : Biographie du Prophète Muhammad ﷺ et Saint Coran avec traductions, phonétique et audio",
+  "start_url": "/app-sira-quran.html",
   "display": "standalone",
   "background_color": "#F8F6F0",
-  "theme_color": "#D4AF37",
+  "theme_color": "#0F4C3A",
+  "orientation": "portrait-primary",
+  "lang": "fr",
+  "scope": "/",
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' fill='%23D4AF37'/><text x='96' y='110' font-family='serif' font-size='80' text-anchor='middle' fill='%230F4C3A'>ﷺ</text></svg>",
-      "sizes": "192x192",
-      "type": "image/svg+xml"
+      "src": "icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%23D4AF37'/><text x='256' y='300' font-family='serif' font-size='220' text-anchor='middle' fill='%230F4C3A'>ﷺ</text></svg>",
+      "src": "icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml"
+      "type": "image/png",
+      "purpose": "maskable any"
     }
   ],
-  "categories": ["education", "books", "reference"],
-  "lang": "fr",
-  "orientation": "any",
-  "scope": "/",
+  "categories": ["education", "books", "religion"],
+  "screenshots": [
+    {
+      "src": "screenshots/desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshots/mobile.png",
+      "sizes": "640x1136",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Lire la Sira",
+      "short_name": "Sira",
+      "description": "Accéder à la biographie du Prophète ﷺ",
+      "url": "/index_v2.html",
+      "icons": [{ "src": "icons/sira-shortcut.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Lire le Coran",
+      "short_name": "Coran",
+      "description": "Accéder au Saint Coran",
+      "url": "/quran-reader.html",
+      "icons": [{ "src": "icons/quran-shortcut.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Audio",
+      "short_name": "Audio",
+      "description": "Écouter les récitations",
+      "url": "/audio-player.html",
+      "icons": [{ "src": "icons/audio-shortcut.png", "sizes": "192x192" }]
+    }
+  ],
   "related_applications": [],
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "dir": "ltr",
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7"
 }

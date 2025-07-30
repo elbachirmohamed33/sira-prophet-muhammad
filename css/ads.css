@@ -1,0 +1,406 @@
+/* ===========================
+   ADVERTISING SYSTEM CSS
+   Styles for ads integration
+   =========================== */
+
+/* Base Ad Styles */
+.ad-container {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: linear-gradient(135deg, #F8F6F0, #E8E2D4);
+    border: 2px solid #D4AF37;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.ad-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.ad-label {
+    position: absolute;
+    top: -8px;
+    right: 15px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* Header Banner Ad */
+.header-ad {
+    background: linear-gradient(135deg, #0F4C3A, #2E8B57);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.header-ad h3 {
+    font-family: 'Amiri', serif;
+    margin-bottom: 0.5rem;
+}
+
+.header-ad .ad-btn {
+    background: #D4AF37;
+    color: white;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.header-ad .ad-btn:hover {
+    background: #B8860B;
+    transform: translateY(-2px);
+}
+
+/* Content Banner Ads */
+.content-ad {
+    background: linear-gradient(45deg, #E8F5E8, #D4EFDF);
+    border: 2px solid #27AE60;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.content-ad h4 {
+    color: #0F4C3A;
+    font-family: 'Amiri', serif;
+    margin-bottom: 1rem;
+}
+
+.content-ad p {
+    color: #2C1810;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.content-ad .ad-cta {
+    background: #27AE60;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.content-ad .ad-cta:hover {
+    background: #219A52;
+    transform: translateY(-2px);
+}
+
+/* Sidebar Ads */
+.sidebar-ad-container {
+    position: sticky;
+    top: 20px;
+    background: white;
+    border: 3px solid #D4AF37;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.sidebar-ad-container h4 {
+    color: #0F4C3A;
+    font-family: 'Amiri', serif;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.sidebar-ad-container .ad-image {
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(135deg, #D4AF37, #B8860B);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* In-text Ads */
+.inline-ad {
+    background: #FFF8E1;
+    border-left: 4px solid #D4AF37;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 0 10px 10px 0;
+}
+
+.inline-ad .ad-text {
+    color: #8B4513;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.inline-ad .ad-link {
+    color: #0F4C3A;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.inline-ad .ad-link:hover {
+    color: #D4AF37;
+}
+
+/* Footer Ads */
+.footer-ad {
+    background: linear-gradient(135deg, #2C1810, #8B4513);
+    color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.footer-ad h3 {
+    font-family: 'Amiri', serif;
+    margin-bottom: 1rem;
+}
+
+.footer-ad .ad-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.footer-ad .ad-item {
+    background: rgba(255,255,255,0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.footer-ad .ad-item:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-3px);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .ad-container {
+        margin: 1rem 0;
+        padding: 1rem;
+    }
+    
+    .header-ad {
+        padding: 1rem;
+    }
+    
+    .content-ad {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    .sidebar-ad-container {
+        position: static;
+        margin: 1rem 0;
+    }
+    
+    .footer-ad .ad-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Floating Banner */
+.floating-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #D4AF37, #B8860B);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.floating-banner.show {
+    transform: translateY(0);
+}
+
+.floating-banner .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-banner .banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.floating-banner .banner-btn {
+    background: white;
+    color: #D4AF37;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.floating-banner .banner-btn:hover {
+    background: #F8F6F0;
+    transform: translateY(-1px);
+}
+
+/* Google AdSense Integration Styles */
+.adsense-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    padding: 1rem;
+}
+
+.adsense-placeholder {
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Islamic Theme Ads */
+.islamic-ad {
+    background: linear-gradient(45deg, #E8F5E8, #D4EFDF);
+    border: 2px solid #27AE60;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.islamic-ad::before {
+    content: '☪️';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #27AE60;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.islamic-ad h4 {
+    color: #0F4C3A;
+    margin-bottom: 1rem;
+    font-family: 'Amiri', serif;
+}
+
+/* Animation Classes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ad-animated {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Ad Performance Tracking */
+.ad-container[data-ad-id] {
+    cursor: pointer;
+}
+
+.ad-container[data-ad-id]:hover {
+    border-color: #B8860B;
+}
+
+/* Responsive Ad Sizes */
+.ad-leaderboard {
+    width: 100%;
+    max-width: 728px;
+    height: 90px;
+    margin: 0 auto;
+}
+
+.ad-rectangle {
+    width: 300px;
+    height: 250px;
+    margin: 0 auto;
+}
+
+.ad-skyscraper {
+    width: 160px;
+    height: 600px;
+}
+
+.ad-banner {
+    width: 468px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .ad-leaderboard {
+        max-width: 320px;
+        height: 50px;
+    }
+    
+    .ad-rectangle {
+        width: 300px;
+        height: 250px;
+    }
+    
+    .ad-banner {
+        width: 320px;
+        height: 50px;
+    }
+    
+    .ad-skyscraper {
+        display: none;
+    }
+}

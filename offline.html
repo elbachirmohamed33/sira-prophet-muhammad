@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil hors ligne - Sira & Coran</title>
+    <meta name="description" content="Application hors ligne pour la Sira du Prophète Muhammad ﷺ et le Saint Coran">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#0F4C3A">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sira & Coran">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0F4C3A 0%, #1a6b4f 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .offline-container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .offline-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #D4AF37;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .features-list {
+            text-align: left;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #D4AF37;
+        }
+
+        .features-list h3 {
+            color: #D4AF37;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .features-list ul {
+            list-style: none;
+        }
+
+        .features-list li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #D4AF37, #f4d03f);
+            color: #0F4C3A;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .connection-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            background: #e74c3c;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .islamic-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(circle at 20% 50%, transparent 20%, rgba(212, 175, 55, 0.1) 21%, rgba(212, 175, 55, 0.1) 34%, transparent 35%, transparent),
+                linear-gradient(0deg, transparent 24%, rgba(212, 175, 55, 0.1) 25%, rgba(212, 175, 55, 0.1) 26%, transparent 27%, transparent 74%, rgba(212, 175, 55, 0.1) 75%, rgba(212, 175, 55, 0.1) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+        }
+
+        @media (max-width: 768px) {
+            .offline-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .message {
+                font-size: 1rem;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation d'entrée */
+        .offline-container {
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="islamic-pattern"></div>
+    
+    <div class="connection-status" id="connectionStatus">
+        🔴 Hors ligne
+    </div>
+
+    <div class="offline-container">
+        <div class="offline-icon">📱</div>
+        
+        <h1>Mode Hors Ligne</h1>
+        <p class="subtitle">Sira & Coran disponible sans connexion</p>
+        
+        <p class="message">
+            Vous êtes actuellement hors ligne, mais vous pouvez continuer à utiliser l'application 
+            avec toutes les fonctionnalités essentielles disponibles localement.
+        </p>
+
+        <div class="features-list">
+            <h3>Fonctionnalités disponibles hors ligne :</h3>
+            <ul>
+                <li>Lecture complète de la Sira du Prophète ﷺ</li>
+                <li>Accès aux sourates du Coran déjà consultées</li>
+                <li>Vos marque-pages et favoris</li>
+                <li>Historique de lecture</li>
+                <li>Quiz et outils éducatifs</li>
+                <li>Carte interactive de l'époque</li>
+                <li>Galerie historique</li>
+            </ul>
+        </div>
+
+        <div class="actions">
+            <a href="/app-sira-quran.html" class="btn btn-primary">
+                📖 Continuer la lecture
+            </a>
+            
+            <a href="/index_v2.html" class="btn btn-secondary">
+                🏠 Retour à l'accueil
+            </a>
+            
+            <button class="btn btn-secondary" onclick="window.location.reload();">
+                🔄 Réessayer la connexion
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Gestion du statut de connexion
+        function updateConnectionStatus() {
+            const statusElement = document.getElementById('connectionStatus');
+            
+            if (navigator.onLine) {
+                statusElement.innerHTML = '🟢 En ligne';
+                statusElement.style.background = '#27ae60';
+                
+                // Rediriger vers l'application principale après 2 secondes
+                setTimeout(() => {
+                    window.location.href = '/app-sira-quran.html';
+                }, 2000);
+            } else {
+                statusElement.innerHTML = '🔴 Hors ligne';
+                statusElement.style.background = '#e74c3c';
+            }
+        }
+
+        // Vérifier le statut au chargement
+        updateConnectionStatus();
+
+        // Écouter les changements de connexion
+        window.addEventListener('online', updateConnectionStatus);
+        window.addEventListener('offline', updateConnectionStatus);
+
+        // Vérification périodique de la connexion
+        setInterval(() => {
+            // Test simple de connexion
+            fetch('/app-sira-quran.html', { method: 'HEAD', cache: 'no-cache' })
+                .then(() => {
+                    if (!navigator.onLine) {
+                        // Forcer la mise à jour du statut
+                        window.dispatchEvent(new Event('online'));
+                    }
+                })
+                .catch(() => {
+                    if (navigator.onLine) {
+                        // Forcer la mise à jour du statut
+                        window.dispatchEvent(new Event('offline'));
+                    }
+                });
+        }, 30000); // Vérifier toutes les 30 secondes
+
+        // Animation de chargement pour les boutons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.href && !this.href.includes('javascript:')) {
+                    this.innerHTML = '⏳ Chargement...';
+                    this.style.opacity = '0.7';
+                }
+            });
+        });
+
+        // Enregistrement du Service Worker si disponible
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('Service Worker enregistré pour la page hors ligne');
+                })
+                .catch(error => {
+                    console.log('Erreur Service Worker:', error);
+                });
+        }
+
+        // Gestion des raccourcis clavier
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const primaryBtn = document.querySelector('.btn-primary');
+                if (primaryBtn) {
+                    primaryBtn.click();
+                }
+            }
+            
+            if (e.key === 'Escape') {
+                window.history.back();
+            }
+        });
+    </script>
+</body>
+</html>

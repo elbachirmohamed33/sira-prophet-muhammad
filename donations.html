@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soutenir le Projet - Biographie du Prophète Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #0F4C3A;
+            --soft-cream: #F8F6F0;
+            --warm-brown: #8B4513;
+            --text-dark: #2C1810;
+            --success-green: #27AE60;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-bottom: 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .nav-link {
+            color: var(--deep-green);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .donation-hero {
+            background: linear-gradient(135deg, white, var(--soft-cream));
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 3px solid var(--primary-gold);
+        }
+
+        .donation-hero h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .islamic-quote {
+            background: linear-gradient(135deg, var(--soft-cream), #F0EDE6);
+            border: 2px solid var(--primary-gold);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            font-style: italic;
+            color: var(--warm-brown);
+            font-size: 1.1rem;
+        }
+
+        .quote-source {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--deep-green);
+        }
+
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .donation-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 6px solid var(--primary-gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .donation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .donation-icon {
+            background: var(--primary-gold);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .donation-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.4rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .donation-description {
+            color: var(--warm-brown);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .amount-btn {
+            background: var(--soft-cream);
+            border: 2px solid var(--primary-gold);
+            color: var(--deep-green);
+            padding: 0.8rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .amount-btn:hover, .amount-btn.selected {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .custom-amount {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--primary-gold);
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .donate-btn {
+            background: var(--success-green);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        .donate-btn:hover {
+            background: var(--deep-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .transparency-section {
+            background: linear-gradient(135deg, var(--deep-green), #2E8B57);
+            color: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin-top: 3rem;
+        }
+
+        .transparency-title {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .transparency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .transparency-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .transparency-percentage {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-stats {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .impact-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: var(--deep-green);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--soft-cream);
+            border-radius: 15px;
+            border: 2px solid var(--primary-gold);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--warm-brown);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .donation-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .donation-hero {
+                padding: 2rem;
+            }
+            
+            .donation-amounts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🤲 Soutenir le Projet</h1>
+        <p>Aidez-nous à préserver et partager l'héritage prophétique</p>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="fr/index_v2.html" class="nav-link">🏠 Accueil</a>
+            <a href="carte_interactive.html" class="nav-link">🗺️ Carte Interactive</a>
+            <a href="quiz.html" class="nav-link">🧠 Quiz</a>
+            <a href="audio.html" class="nav-link">🎵 Audio</a>
+            <a href="galerie.html" class="nav-link">🖼️ Galerie</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="donation-hero">
+            <h2>🕌 Une Sadaqah pour l'Éducation Islamique</h2>
+            <p style="font-size: 1.2rem; color: var(--warm-brown); max-width: 700px; margin: 0 auto;">
+                Votre soutien nous aide à créer du contenu éducatif de qualité sur la biographie du Prophète ﷺ, accessible gratuitement à tous les musulmans du monde entier.
+            </p>
+        </div>
+
+        <div class="islamic-quote">
+            "Quiconque facilite à un croyant une difficulté de ce monde, Allah lui facilitera une difficulté du Jour du Jugement."
+            <div class="quote-source">- Hadith du Prophète ﷺ (Sahih Muslim)</div>
+        </div>
+
+        <div class="impact-stats">
+            <h3 class="impact-title">📊 Impact de vos Donations</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">150K+</div>
+                    <div class="stat-label">Visiteurs par mois</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Périodes historiques</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Langues disponibles</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25</div>
+                    <div class="stat-label">Questions de quiz</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="donation-options">
+            <div class="donation-card">
+                <div class="donation-icon">💝</div>
+                <h3 class="donation-title">Donation Unique</h3>
+                <p class="donation-description">
+                    Soutenez le projet avec une contribution ponctuelle selon vos moyens.
+                </p>
+                <div class="donation-amounts">
+                    <div class="amount-btn" onclick="selectAmount(this, 10)">10€</div>
+                    <div class="amount-btn" onclick="selectAmount(this, 25)">25€</div>
+                    <div class="amount-btn" onclick="selectAmount(this, 50)">50€</div>
+                </div>
+                <input type="number" class="custom-amount" placeholder="Montant personnalisé (€)" min="1">
+                <button class="donate-btn" onclick="processDonation('one-time')">🤲 Faire un Don</button>
+            </div>
+
+            <div class="donation-card">
+                <div class="donation-icon">🔄</div>
+                <h3 class="donation-title">Soutien Mensuel</h3>
+                <p class="donation-description">
+                    Devenez un mécène régulier et aidez-nous à planifier sur le long terme.
+                </p>
+                <div class="donation-amounts">
+                    <div class="amount-btn" onclick="selectAmount(this, 5)">5€/mois</div>
+                    <div class="amount-btn" onclick="selectAmount(this, 15)">15€/mois</div>
+                    <div class="amount-btn" onclick="selectAmount(this, 30)">30€/mois</div>
+                </div>
+                <input type="number" class="custom-amount" placeholder="Montant mensuel (€)" min="1">
+                <button class="donate-btn" onclick="processDonation('monthly')">🔄 Soutien Mensuel</button>
+            </div>
+
+            <div class="donation-card">
+                <div class="donation-icon">🎯</div>
+                <h3 class="donation-title">Projets Spécifiques</h3>
+                <p class="donation-description">
+                    Financez directement des fonctionnalités spécifiques que vous souhaitez voir développées.
+                </p>
+                <div style="text-align: left; margin-bottom: 1rem;">
+                    <div style="margin-bottom: 0.5rem;">🎵 Audio professionnel: 500€</div>
+                    <div style="margin-bottom: 0.5rem;">🖼️ Illustrations historiques: 300€</div>
+                    <div style="margin-bottom: 0.5rem;">🌍 Nouvelle langue: 200€</div>
+                    <div style="margin-bottom: 0.5rem;">📱 App mobile: 1000€</div>
+                </div>
+                <button class="donate-btn" onclick="processDonation('specific')">🎯 Choisir un Projet</button>
+            </div>
+        </div>
+
+        <div class="transparency-section">
+            <h3 class="transparency-title">🔍 Transparence Financière</h3>
+            <div class="transparency-grid">
+                <div class="transparency-item">
+                    <div class="transparency-percentage">60%</div>
+                    <div>Développement de Contenu</div>
+                </div>
+                <div class="transparency-item">
+                    <div class="transparency-percentage">20%</div>
+                    <div>Infrastructure Technique</div>
+                </div>
+                <div class="transparency-item">
+                    <div class="transparency-percentage">15%</div>
+                    <div>Traductions & Localisation</div>
+                </div>
+                <div class="transparency-item">
+                    <div class="transparency-percentage">5%</div>
+                    <div>Frais de Transaction</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; opacity: 0.9;">
+                📊 Rapport financier détaillé publié chaque trimestre
+            </div>
+        </div>
+
+        <div class="islamic-quote">
+            "L'exemple de ceux qui dépensent leurs biens dans le sentier d'Allah est semblable à une graine qui fait pousser sept épis, à cent grains l'épi."
+            <div class="quote-source">- Coran 2:261</div>
+        </div>
+    </div>
+
+    <script>
+        // ===========================
+        // PAYPAL CONFIGURATION
+        // ===========================
+        const PAYPAL_CONFIG = {
+            business: 'elbachirmohamedba@gmail.com',
+            currency: 'EUR',
+            country: 'FR',
+            language: 'fr'
+        };
+
+        let selectedAmount = 0;
+        let selectedCard = null;
+
+        function selectAmount(button, amount) {
+            // Remove previous selection in the same card
+            const card = button.closest('.donation-card');
+            card.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('selected'));
+            
+            // Select current button
+            button.classList.add('selected');
+            selectedAmount = amount;
+            
+            // Clear custom amount in the same card
+            card.querySelector('.custom-amount').value = '';
+        }
+
+        function processDonation(type) {
+            const card = event.target.closest('.donation-card');
+            const customAmount = card.querySelector('.custom-amount').value;
+            const finalAmount = customAmount || selectedAmount;
+            
+            if (!finalAmount || finalAmount <= 0) {
+                alert('Veuillez sélectionner ou saisir un montant valide.');
+                return;
+            }
+
+            // Create PayPal form and submit
+            createPayPalForm(finalAmount, type);
+        }
+
+        function createPayPalForm(amount, type) {
+            // Create hidden form for PayPal
+            const form = document.createElement('form');
+            form.action = 'https://www.paypal.com/donate';
+            form.method = 'post';
+            form.target = '_blank';
+
+            // PayPal parameters
+            const params = {
+                'business': PAYPAL_CONFIG.business,
+                'currency_code': PAYPAL_CONFIG.currency,
+                'amount': amount,
+                'item_name': `Soutien au projet Sira du Prophète ﷺ - ${getDonationType(type)}`,
+                'return': window.location.href + '?success=1',
+                'cancel_return': window.location.href + '?cancel=1',
+                'notify_url': window.location.origin + '/paypal-ipn', // For real implementation
+                'custom': `donation_${type}_${Date.now()}`
+            };
+
+            // Add recurring donation for monthly support
+            if (type === 'monthly') {
+                params['cmd'] = '_xclick-subscriptions';
+                params['a3'] = amount; // Monthly amount
+                params['p3'] = '1'; // Every 1 period
+                params['t3'] = 'M'; // Monthly
+                params['src'] = '1'; // Recurring payments
+                params['sra'] = '1'; // Reattempt on failure
+            } else {
+                params['cmd'] = '_donations';
+            }
+
+            // Create hidden inputs
+            Object.keys(params).forEach(key => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = params[key];
+                form.appendChild(input);
+            });
+
+            // Add form to page and submit
+            document.body.appendChild(form);
+            
+            // Show confirmation before redirect
+            const message = type === 'monthly' 
+                ? `🔄 Redirection vers PayPal pour un soutien mensuel de ${amount}€/mois`
+                : `💝 Redirection vers PayPal pour une donation de ${amount}€`;
+                
+            if (confirm(`${message}\n\nVous allez être redirigé vers PayPal pour finaliser votre don.\n\nContinuer ?`)) {
+                form.submit();
+            }
+            
+            // Clean up
+            document.body.removeChild(form);
+        }
+
+        function getDonationType(type) {
+            switch(type) {
+                case 'one-time': return 'Donation unique';
+                case 'monthly': return 'Soutien mensuel';
+                case 'specific': return 'Projet spécifique';
+                default: return 'Donation';
+            }
+        }
+
+        // Handle custom amount input
+        document.querySelectorAll('.custom-amount').forEach(input => {
+            input.addEventListener('input', function() {
+                const card = this.closest('.donation-card');
+                card.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('selected'));
+                selectedAmount = 0;
+            });
+        });
+
+        // Handle PayPal return parameters
+        function handlePayPalReturn() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            if (urlParams.get('success')) {
+                showNotification('🌟 Merci pour votre généreux don ! Baarak Allaahu feek !', 'success');
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } else if (urlParams.get('cancel')) {
+                showNotification('❌ Donation annulée. Vous pouvez réessayer quand vous le souhaitez.', 'info');
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#27AE60' : '#3498DB'};
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                font-weight: 600;
+                z-index: 1000;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                max-width: 400px;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 5000);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            handlePayPalReturn();
+            console.log('💰 PayPal Donation System Initialized');
+            console.log('🤲 Configuration:', PAYPAL_CONFIG);
+        });
+    </script>
+</body>
+</html>

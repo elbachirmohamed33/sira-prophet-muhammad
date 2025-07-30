@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lecteur Audio - Récitations et Enseignements</title>
+    <title>Récitations Audio - Biographie du Prophète Muhammad ﷺ</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,6 +12,8 @@
             --soft-cream: #F8F6F0;
             --warm-brown: #8B4513;
             --text-dark: #2C1810;
+            --success-green: #27AE60;
+            --light-blue: #3498DB;
         }
 
         * {
@@ -28,130 +30,140 @@
             min-height: 100vh;
         }
 
-        .navigation {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: fixed;
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
             top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212,175,55,0.2);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="20" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.05)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-bottom: 2rem;
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .nav-logo {
-            font-family: 'Amiri', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--deep-green);
-        }
-
-        .nav-links {
-            display: flex;
+            justify-content: center;
             gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-gold);
-        }
-
-        .audio-header {
-            background: linear-gradient(rgba(15, 76, 58, 0.9), rgba(139, 69, 19, 0.8));
-            color: white;
-            text-align: center;
-            padding: 120px 0 80px;
-            margin-top: 80px;
-        }
-
-        .audio-title {
-            font-family: 'Amiri', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .audio-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .audio-container {
-            max-width: 1000px;
-            margin: -40px auto 2rem;
             padding: 0 2rem;
         }
 
-        .player-container {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-
-        .current-track {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid #F0F0F0;
-        }
-
-        .track-title {
-            font-family: 'Amiri', serif;
-            font-size: 1.8rem;
+        .nav-link {
             color: var(--deep-green);
-            margin-bottom: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
 
-        .track-reciter {
-            color: var(--warm-brown);
-            font-weight: 600;
+        .nav-link:hover {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .audio-hero {
+            background: linear-gradient(135deg, white, var(--soft-cream));
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 3px solid var(--primary-gold);
+        }
+
+        .audio-hero h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--deep-green);
             margin-bottom: 1rem;
         }
 
-        .track-description {
-            color: var(--text-dark);
-            font-size: 0.95rem;
+        .audio-hero p {
+            font-size: 1.2rem;
+            color: var(--warm-brown);
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .audio-player {
-            background: linear-gradient(135deg, var(--deep-green), var(--warm-brown));
-            padding: 2rem;
-            border-radius: 15px;
-            color: white;
-            margin-bottom: 2rem;
+        .audio-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .player-controls {
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 6px solid var(--primary-gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .category-header {
             display: flex;
-            justify-content: center;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
-        .control-btn {
-            background: rgba(255,255,255,0.2);
-            border: none;
+        .category-icon {
+            background: var(--primary-gold);
             color: white;
             width: 50px;
             height: 50px;
@@ -159,66 +171,179 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .category-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            font-weight: 600;
+        }
+
+        .audio-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .audio-item {
+            background: var(--soft-cream);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 2px solid transparent;
             transition: all 0.3s ease;
         }
 
-        .control-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: scale(1.1);
+        .audio-item:hover {
+            border-color: var(--primary-gold);
+            transform: translateX(5px);
         }
 
-        .control-btn.play-pause {
-            width: 70px;
-            height: 70px;
-            font-size: 1.8rem;
-            background: var(--primary-gold);
+        .audio-item.playing {
+            border-color: var(--success-green);
+            background: linear-gradient(135deg, #E8F5E8, #D4EFDF);
         }
 
-        .control-btn.play-pause:hover {
-            background: rgba(212, 175, 55, 0.8);
-        }
-
-        .progress-container {
+        .audio-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 1rem;
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 10px;
+        .audio-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .audio-duration {
+            background: var(--deep-green);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .audio-description {
+            color: var(--warm-brown);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .play-btn {
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .play-btn:hover {
+            background: var(--deep-green);
+            transform: scale(1.1);
+        }
+
+        .play-btn.playing {
+            background: var(--success-green);
+        }
+
+        .progress-container {
+            flex: 1;
+            background: #E0E0E0;
+            height: 6px;
+            border-radius: 3px;
             overflow: hidden;
             cursor: pointer;
         }
 
-        .progress-fill {
+        .progress-bar {
             height: 100%;
-            background: var(--primary-gold);
+            background: linear-gradient(90deg, var(--primary-gold), var(--deep-green));
             width: 0%;
             transition: width 0.1s ease;
         }
 
-        .time-info {
-            display: flex;
-            justify-content: space-between;
+        .time-display {
             font-size: 0.9rem;
-            margin-top: 0.5rem;
+            color: var(--warm-brown);
+            font-weight: 600;
+            min-width: 80px;
+            text-align: right;
         }
 
-        .volume-container {
+        .global-player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--deep-green), #2E8B57);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .global-player.active {
+            transform: translateY(0);
+        }
+
+        .global-player-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .global-player-info {
+            flex: 1;
+        }
+
+        .global-player-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .global-player-category {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .global-player-controls {
             display: flex;
             align-items: center;
             gap: 1rem;
-            justify-content: center;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .volume-slider {
-            width: 100px;
-            height: 5px;
+            width: 80px;
+            height: 4px;
+            border-radius: 2px;
             background: rgba(255,255,255,0.3);
-            border-radius: 5px;
             outline: none;
             -webkit-appearance: none;
         }
@@ -227,628 +352,593 @@
             -webkit-appearance: none;
             width: 15px;
             height: 15px;
-            background: var(--primary-gold);
             border-radius: 50%;
+            background: white;
             cursor: pointer;
         }
 
-        .playlist-container {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        }
-
-        .playlist-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #F0F0F0;
-        }
-
-        .playlist-title {
-            font-family: 'Amiri', serif;
-            font-size: 1.8rem;
-            color: var(--deep-green);
-        }
-
-        .playlist-filter {
-            padding: 0.8rem 1rem;
-            border: 1px solid #E0E0E0;
-            border-radius: 8px;
-            background: white;
-        }
-
-        .track-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .track-item {
-            background: linear-gradient(135deg, var(--soft-cream), #F0EDE6);
-            padding: 1.5rem;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
-        }
-
-        .track-item:hover {
-            transform: translateX(5px);
-            border-left-color: var(--primary-gold);
-        }
-
-        .track-item.active {
-            border-left-color: var(--deep-green);
-            background: linear-gradient(135deg, #E8F5E8, #F0FFF4);
-        }
-
-        .track-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .track-main {
-            flex-grow: 1;
-        }
-
-        .track-item-title {
-            font-family: 'Amiri', serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--deep-green);
-            margin-bottom: 0.3rem;
-        }
-
-        .track-item-reciter {
-            color: var(--warm-brown);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .track-item-type {
-            background: var(--primary-gold);
+        .featured-section {
+            margin-top: 3rem;
+            background: linear-gradient(135deg, var(--deep-green), #2E8B57);
             color: white;
-            padding: 0.2rem 0.8rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-        }
-
-        .track-duration {
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .lyrics-container {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            margin-top: 2rem;
-            display: none;
-        }
-
-        .lyrics-header {
+            border-radius: 25px;
+            padding: 3rem;
             text-align: center;
-            margin-bottom: 2rem;
         }
 
-        .lyrics-title {
+        .featured-section h3 {
             font-family: 'Amiri', serif;
-            font-size: 1.5rem;
-            color: var(--deep-green);
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
 
-        .lyrics-content {
-            background: #FAFAFA;
-            padding: 2rem;
-            border-radius: 10px;
-            font-family: 'Amiri', serif;
+        .featured-section p {
             font-size: 1.1rem;
-            line-height: 2;
-            text-align: center;
-            border-right: 4px solid var(--primary-gold);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
         }
 
-        .arabic-text {
-            font-size: 1.3rem;
-            color: var(--deep-green);
-            margin-bottom: 1rem;
-            direction: rtl;
-        }
-
-        .translation {
-            color: var(--text-dark);
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        .reference {
-            color: var(--warm-brown);
-            font-size: 0.9rem;
+        .coming-soon {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            display: inline-block;
             font-weight: 600;
         }
 
         @media (max-width: 768px) {
-            .audio-title {
-                font-size: 2rem;
+            .container {
+                padding: 1rem;
             }
             
-            .player-controls {
-                flex-wrap: wrap;
+            .audio-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .audio-hero {
+                padding: 2rem;
+            }
+            
+            .global-player-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .audio-controls {
+                flex-direction: column;
                 gap: 0.5rem;
             }
             
-            .track-info {
-                flex-direction: column;
-                gap: 1rem;
+            .progress-container {
+                order: -1;
             }
-            
-            .playlist-header {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: stretch;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* Animations */
-        .playing-indicator {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-left: 10px;
-        }
-
-        .playing-indicator::before {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23D4AF37" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>') no-repeat center;
-            background-size: contain;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(0.95); }
         }
     </style>
 </head>
 <body>
-    <nav class="navigation">
+    <div class="header">
+        <h1>🎵 Récitations Audio</h1>
+        <p>Écoutez les récits de la vie du Prophète Muhammad ﷺ</p>
+    </div>
+
+    <nav class="nav">
         <div class="nav-container">
-            <div class="nav-logo">Audio ﷺ</div>
-            <ul class="nav-links">
-                <li><a href="index_v2.html">Accueil</a></li>
-                <li><a href="fr/index_v2.html">Périodes</a></li>
-                <li><a href="recherche.html">Recherche</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-            </ul>
+            <a href="fr/index_v2.html" class="nav-link">🏠 Accueil</a>
+            <a href="carte_interactive.html" class="nav-link">🗺️ Carte Interactive</a>
+            <a href="quiz.html" class="nav-link">🧠 Quiz</a>
+            <a href="galerie.html" class="nav-link">🖼️ Galerie</a>
+            <a href="fr/index_v2.html" class="nav-link">🇫🇷 Français</a>
+            <a href="ar/index_v2.html" class="nav-link">🇸🇦 العربية</a>
         </div>
     </nav>
 
-    <header class="audio-header">
-        <h1 class="audio-title">Lecteur Audio</h1>
-        <p class="audio-subtitle">Récitations du Coran et Enseignements Prophétiques</p>
-    </header>
+    <div class="container">
+        <div class="audio-hero">
+            <h2>🎧 Bibliothèque Audio</h2>
+            <p>Découvrez la biographie du Prophète ﷺ à travers des récitations authentiques et des narrations captivantes qui donnent vie à l'histoire islamique.</p>
+        </div>
 
-    <div class="audio-container">
-        <div class="player-container">
-            <div class="current-track" id="currentTrack">
-                <h2 class="track-title">Sélectionnez un audio</h2>
-                <p class="track-reciter">Choisissez une récitation dans la liste ci-dessous</p>
-                <p class="track-description">Découvrez les récitations du Coran et les enseignements du Prophète Muhammad ﷺ</p>
+        <div class="audio-categories">
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🌙</div>
+                    <h3 class="category-title">Naissance et Jeunesse</h3>
+                </div>
+                <div class="audio-list">
+                    <div class="audio-item" data-audio="birth" data-title="La Naissance Bénie" data-category="Naissance et Jeunesse">
+                        <div class="audio-header">
+                            <div class="audio-title">La Naissance Bénie (571 EC)</div>
+                            <div class="audio-duration">15:30</div>
+                        </div>
+                        <div class="audio-description">
+                            L'histoire miraculeuse de la naissance du Prophète ﷺ dans l'Année de l'Éléphant, les signes divins et les prophéties accomplies.
+                        </div>
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="toggleAudio('birth')">▶️</button>
+                            <div class="progress-container" onclick="seekAudio(event, 'birth')">
+                                <div class="progress-bar" id="progress-birth"></div>
+                            </div>
+                            <div class="time-display" id="time-birth">0:00 / 15:30</div>
+                        </div>
+                    </div>
+
+                    <div class="audio-item" data-audio="orphan" data-title="L'Orphelin Béni" data-category="Naissance et Jeunesse">
+                        <div class="audio-header">
+                            <div class="audio-title">L'Orphelin Béni (571-595 EC)</div>
+                            <div class="audio-duration">18:45</div>
+                        </div>
+                        <div class="audio-description">
+                            Les années de formation sous la protection divine, la mort de ses parents et l'éducation par son grand-père Abdul-Muttalib.
+                        </div>
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="toggleAudio('orphan')">▶️</button>
+                            <div class="progress-container" onclick="seekAudio(event, 'orphan')">
+                                <div class="progress-bar" id="progress-orphan"></div>
+                            </div>
+                            <div class="time-display" id="time-orphan">0:00 / 18:45</div>
+                        </div>
+                    </div>
+
+                    <div class="audio-item" data-audio="trustworthy" data-title="Al-Amin - Le Digne de Confiance" data-category="Naissance et Jeunesse">
+                        <div class="audio-header">
+                            <div class="audio-title">Al-Amin - Le Digne de Confiance</div>
+                            <div class="audio-duration">12:20</div>
+                        </div>
+                        <div class="audio-description">
+                            Comment Muhammad ﷺ gagna sa réputation de Al-Amin (le Digne de Confiance) dans la société mecquoise pré-islamique.
+                        </div>
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="toggleAudio('trustworthy')">▶️</button>
+                            <div class="progress-container" onclick="seekAudio(event, 'trustworthy')">
+                                <div class="progress-bar" id="progress-trustworthy"></div>
+                            </div>
+                            <div class="time-display" id="time-trustworthy">0:00 / 12:20</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="audio-player">
-                <div class="player-controls">
-                    <button class="control-btn" onclick="previousTrack()">⏮</button>
-                    <button class="control-btn" onclick="rewind()">⏪</button>
-                    <button class="control-btn play-pause" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
-                    <button class="control-btn" onclick="fastForward()">⏩</button>
-                    <button class="control-btn" onclick="nextTrack()">⏭</button>
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">📖</div>
+                    <h3 class="category-title">Révélation et Mission</h3>
                 </div>
-
-                <div class="progress-container">
-                    <div class="progress-bar" onclick="setProgress(event)">
-                        <div class="progress-fill" id="progressFill"></div>
+                <div class="audio-list">
+                    <div class="audio-item" data-audio="revelation" data-title="La Première Révélation" data-category="Révélation et Mission">
+                        <div class="audio-header">
+                            <div class="audio-title">La Première Révélation (610 EC)</div>
+                            <div class="audio-duration">22:15</div>
+                        </div>
+                        <div class="audio-description">
+                            La nuit transformatrice dans la grotte de Hira, la rencontre avec l'ange Gabriel et les premiers versets du Coran.
+                        </div>
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="toggleAudio('revelation')">▶️</button>
+                            <div class="progress-container" onclick="seekAudio(event, 'revelation')">
+                                <div class="progress-bar" id="progress-revelation"></div>
+                            </div>
+                            <div class="time-display" id="time-revelation">0:00 / 22:15</div>
+                        </div>
                     </div>
-                    <div class="time-info">
-                        <span id="currentTime">0:00</span>
-                        <span id="totalTime">0:00</span>
+
+                    <div class="audio-item" data-audio="secret" data-title="La Da'wa Secrète" data-category="Révélation et Mission">
+                        <div class="audio-header">
+                            <div class="audio-title">La Da'wa Secrète (610-613 EC)</div>
+                            <div class="audio-duration">16:30</div>
+                        </div>
+                        <div class="audio-description">
+                            Les trois années de prédication discrète, les premiers convertis et la formation de la communauté musulmane naissante.
+                        </div>
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="toggleAudio('secret')">▶️</button>
+                            <div class="progress-container" onclick="seekAudio(event, 'secret')">
+                                <div class="progress-bar" id="progress-secret"></div>
+                            </div>
+                            <div class="time-display" id="time-secret">0:00 / 16:30</div>
+                        </div>
+                    </div>
+
+                    <div class="audio-item" data-audio="public" data-title="La Proclamation Publique" data-category="Révélation et Mission">
+                        <div class="audio-header">
+                            <div class="audio-title">La Proclamation Publique (613 EC)</div>
+                            <div class="audio-duration">19:45</div>
+                        </div>
+                        <div class="audio-description">
+                            Le passage de la da'wa secrète à la prédication publique, les premières oppositions et les défis.
+                        </div>
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="toggleAudio('public')">▶️</button>
+                            <div class="progress-container" onclick="seekAudio(event, 'public')">
+                                <div class="progress-bar" id="progress-public"></div>
+                            </div>
+                            <div class="time-display" id="time-public">0:00 / 19:45</div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="volume-container">
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">⚔️</div>
+                    <h3 class="category-title">Batailles Décisives</h3>
+                </div>
+                <div class="audio-list">
+                    <div class="audio-item" data-audio="badr" data-title="La Bataille de Badr" data-category="Batailles Décisives">
+                        <div class="audio-header">
+                            <div class="audio-title">La Bataille de Badr (624 EC)</div>
+                            <div class="audio-duration">25:40</div>
+                        </div>
+                        <div class="audio-description">
+                            Le Jour du Furqan - La première grande victoire où 313 musulmans triomphèrent de 1000 guerriers avec l'aide divine.
+                        </div>
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="toggleAudio('badr')">▶️</button>
+                            <div class="progress-container" onclick="seekAudio(event, 'badr')">
+                                <div class="progress-bar" id="progress-badr"></div>
+                            </div>
+                            <div class="time-display" id="time-badr">0:00 / 25:40</div>
+                        </div>
+                    </div>
+
+                    <div class="audio-item" data-audio="uhud" data-title="La Bataille d'Uhud" data-category="Batailles Décisives">
+                        <div class="audio-header">
+                            <div class="audio-title">La Bataille d'Uhud (625 EC)</div>
+                            <div class="audio-duration">23:20</div>
+                        </div>
+                        <div class="audio-description">
+                            L'épreuve de la foi et de la résilience, les leçons sur l'obéissance et la martyrdom de Hamza ﷺ.
+                        </div>
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="toggleAudio('uhud')">▶️</button>
+                            <div class="progress-container" onclick="seekAudio(event, 'uhud')">
+                                <div class="progress-bar" id="progress-uhud"></div>
+                            </div>
+                            <div class="time-display" id="time-uhud">0:00 / 23:20</div>
+                        </div>
+                    </div>
+
+                    <div class="audio-item" data-audio="trench" data-title="La Bataille de la Tranchée" data-category="Batailles Décisives">
+                        <div class="audio-header">
+                            <div class="audio-title">La Bataille de la Tranchée (627 EC)</div>
+                            <div class="audio-duration">27:15</div>
+                        </div>
+                        <div class="audio-description">
+                            Al-Khandaq - Le grand siège où l'innovation stratégique et l'intervention divine sauvèrent Médine.
+                        </div>
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="toggleAudio('trench')">▶️</button>
+                            <div class="progress-container" onclick="seekAudio(event, 'trench')">
+                                <div class="progress-bar" id="progress-trench"></div>
+                            </div>
+                            <div class="time-display" id="time-trench">0:00 / 27:15</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🕊️</div>
+                    <h3 class="category-title">Diplomatie et Paix</h3>
+                </div>
+                <div class="audio-list">
+                    <div class="audio-item" data-audio="hudaybiya" data-title="Le Traité de Hudaybiya" data-category="Diplomatie et Paix">
+                        <div class="audio-header">
+                            <div class="audio-title">Le Traité de Hudaybiya (628 EC)</div>
+                            <div class="audio-duration">21:30</div>
+                        </div>
+                        <div class="audio-description">
+                            Le chef-d'œuvre diplomatique qui ouvrit la voie à l'expansion pacifique de l'Islam en Arabie.
+                        </div>
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="toggleAudio('hudaybiya')">▶️</button>
+                            <div class="progress-container" onclick="seekAudio(event, 'hudaybiya')">
+                                <div class="progress-bar" id="progress-hudaybiya"></div>
+                            </div>
+                            <div class="time-display" id="time-hudaybiya">0:00 / 21:30</div>
+                        </div>
+                    </div>
+
+                    <div class="audio-item" data-audio="mecca" data-title="La Conquête de La Mecque" data-category="Diplomatie et Paix">
+                        <div class="audio-header">
+                            <div class="audio-title">La Conquête de La Mecque (630 EC)</div>
+                            <div class="audio-duration">24:50</div>
+                        </div>
+                        <div class="audio-description">
+                            La victoire pacifique qui accomplit la vision prophétique et transforma l'Arabie pour toujours.
+                        </div>
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="toggleAudio('mecca')">▶️</button>
+                            <div class="progress-container" onclick="seekAudio(event, 'mecca')">
+                                <div class="progress-bar" id="progress-mecca"></div>
+                            </div>
+                            <div class="time-display" id="time-mecca">0:00 / 24:50</div>
+                        </div>
+                    </div>
+
+                    <div class="audio-item" data-audio="farewell" data-title="Le Pèlerinage d'Adieu" data-category="Diplomatie et Paix">
+                        <div class="audio-header">
+                            <div class="audio-title">Le Pèlerinage d'Adieu (632 EC)</div>
+                            <div class="audio-duration">18:25</div>
+                        </div>
+                        <div class="audio-description">
+                            Le dernier Hajj du Prophète ﷺ et son sermon historique sur l'égalité et la fraternité universelle.
+                        </div>
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="toggleAudio('farewell')">▶️</button>
+                            <div class="progress-container" onclick="seekAudio(event, 'farewell')">
+                                <div class="progress-bar" id="progress-farewell"></div>
+                            </div>
+                            <div class="time-display" id="time-farewell">0:00 / 18:25</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="featured-section">
+            <h3>🎙️ Fonctionnalités Prochaines</h3>
+            <p>Nous travaillons sur des récitations complètes avec des récitateurs renommés, des podcasts éducatifs et des versions multilingues pour enrichir votre expérience d'apprentissage.</p>
+            <div class="coming-soon">🚀 Bientôt Disponible</div>
+        </div>
+    </div>
+
+    <!-- Global Audio Player -->
+    <div class="global-player" id="globalPlayer">
+        <div class="global-player-content">
+            <div class="global-player-info">
+                <div class="global-player-title" id="playerTitle">Titre du récit</div>
+                <div class="global-player-category" id="playerCategory">Catégorie</div>
+            </div>
+            <div class="global-player-controls">
+                <button class="play-btn" id="globalPlayBtn" onclick="toggleGlobalAudio()">▶️</button>
+                <div class="progress-container" style="width: 200px;" onclick="seekGlobalAudio(event)">
+                    <div class="progress-bar" id="globalProgress"></div>
+                </div>
+                <div class="time-display" id="globalTime">0:00 / 0:00</div>
+                <div class="volume-control">
                     <span>🔊</span>
-                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70" onchange="setVolume()">
-                    <span id="volumeValue">70%</span>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70" onchange="changeVolume()">
                 </div>
-            </div>
-        </div>
-
-        <div class="playlist-container">
-            <div class="playlist-header">
-                <h2 class="playlist-title">Liste de Lecture</h2>
-                <select class="playlist-filter" id="playlistFilter" onchange="filterPlaylist()">
-                    <option value="all">Tout</option>
-                    <option value="coran">Récitations du Coran</option>
-                    <option value="hadith">Hadiths</option>
-                    <option value="dua">Invocations</option>
-                    <option value="sirah">Biographie</option>
-                </select>
-            </div>
-
-            <div class="track-list" id="trackList">
-                <!-- Les pistes seront générées par JavaScript -->
-            </div>
-        </div>
-
-        <div class="lyrics-container" id="lyricsContainer">
-            <div class="lyrics-header">
-                <h3 class="lyrics-title">Texte et Traduction</h3>
-            </div>
-            <div class="lyrics-content" id="lyricsContent">
-                <!-- Le contenu sera généré par JavaScript -->
             </div>
         </div>
     </div>
 
-    <!-- Audio element (caché) -->
-    <audio id="audioPlayer" preload="metadata">
-        Votre navigateur ne supporte pas l'élément audio.
-    </audio>
-
     <script>
-        // Base de données des pistes audio (simulée)
-        const audioTracks = [
-            {
-                id: 1,
-                title: "Sourate Al-Fatiha",
-                reciter: "Cheikh Abdur Rahman As-Sudais",
-                type: "coran",
-                duration: "1:30",
-                audioUrl: "audio/al-fatiha.mp3", // URL simulée
-                lyrics: {
-                    arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾",
-                    translation: "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux. Louange à Allah, Seigneur de l'univers. Le Tout Miséricordieux, le Très Miséricordieux, Maître du Jour de la rétribution. C'est Toi [Seul] que nous adorons, et c'est Toi [Seul] dont nous implorons secours. Guide-nous dans le droit chemin, le chemin de ceux que Tu as comblés de faveurs, non pas de ceux qui ont encouru Ta colère, ni des égarés.",
-                    reference: "Coran, Sourate 1 : Al-Fatiha"
-                },
-                description: "L'ouverture du Coran, récitée dans chaque prière quotidienne."
-            },
-            {
-                id: 2,
-                title: "Hadith sur l'intention",
-                reciter: "Cheikh Nasser Al-Qatami",
-                type: "hadith",
-                duration: "2:15",
-                audioUrl: "audio/hadith-intention.mp3",
-                lyrics: {
-                    arabic: "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى",
-                    translation: "Les actions ne valent que par leurs intentions, et chacun n'obtient que ce qu'il a eu l'intention de faire.",
-                    reference: "Rapporté par al-Bukhari et Muslim"
-                },
-                description: "Premier hadith des 40 hadiths de An-Nawawi sur l'importance de l'intention."
-            },
-            {
-                id: 3,
-                title: "Invocation du matin",
-                reciter: "Cheikh Mishary Rashid",
-                type: "dua",
-                duration: "3:00",
-                audioUrl: "audio/dua-matin.mp3",
-                lyrics: {
-                    arabic: "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ",
-                    translation: "Ô Allah ! C'est par Toi que nous entrons dans la matinée, par Toi que nous entrons dans la soirée, par Toi que nous vivons, par Toi que nous mourons, et vers Toi est la résurrection.",
-                    reference: "Rapporté par at-Tirmidhi"
-                },
-                description: "Invocation à réciter le matin pour commencer la journée sous la protection d'Allah."
-            },
-            {
-                id: 4,
-                title: "La naissance du Prophète ﷺ",
-                reciter: "Cheikh Ali Jaber",
-                type: "sirah",
-                duration: "8:30",
-                audioUrl: "audio/naissance-prophete.mp3",
-                lyrics: {
-                    arabic: "وُلِدَ النَّبِيُّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ فِي عَامِ الْفِيلِ",
-                    translation: "Le Prophète (paix et bénédictions sur lui) est né dans l'année de l'Éléphant.",
-                    reference: "Ibn Hisham, As-Sirah an-Nabawiyyah"
-                },
-                description: "Récit de la naissance bénie du Prophète Muhammad ﷺ et des signes qui l'accompagnèrent."
-            },
-            {
-                id: 5,
-                title: "Sourate Al-Ikhlas",
-                reciter: "Cheikh Saad Al-Ghamidi",
-                type: "coran",
-                duration: "0:45",
-                audioUrl: "audio/al-ikhlas.mp3",
-                lyrics: {
-                    arabic: "قُلْ هُوَ اللَّهُ أَحَدٌ ﴿١﴾ اللَّهُ الصَّمَدُ ﴿٢﴾ لَمْ يَلِدْ وَلَمْ يُولَدْ ﴿٣﴾ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ ﴿٤﴾",
-                    translation: "Dis : Il est Allah, Unique ! Allah, Le Seul à être imploré pour ce que nous désirons. Il n'a jamais engendré, n'a pas été engendré non plus. Et nul n'est égal à Lui.",
-                    reference: "Coran, Sourate 112 : Al-Ikhlas"
-                },
-                description: "Sourate sur l'unicité d'Allah, équivalant au tiers du Coran selon le hadith."
-            },
-            {
-                id: 6,
-                title: "Hadith sur la foi",
-                reciter: "Cheikh Abdullah Basfar",
-                type: "hadith",
-                duration: "3:45",
-                audioUrl: "audio/hadith-foi.mp3",
-                lyrics: {
-                    arabic: "الْإِيمَانُ بِضْعٌ وَسَبْعُونَ شُعْبَةً، فَأَفْضَلُهَا قَوْلُ: لَا إِلَهَ إِلَّا اللَّهُ، وَأَدْنَاهَا إِمَاطَةُ الْأَذَى عَنِ الطَّرِيقِ",
-                    translation: "La foi comporte soixante-dix et quelques branches. La plus élevée consiste à dire : 'Il n'y a de divinité qu'Allah', et la plus modeste consiste à écarter ce qui nuit du chemin.",
-                    reference: "Rapporté par Muslim"
-                },
-                description: "Hadith expliquant les différents aspects et niveaux de la foi en Islam."
-            }
-        ];
-
-        let currentTrackIndex = -1;
+        // Audio management system
+        let currentAudio = null;
+        let currentAudioId = null;
         let isPlaying = false;
-        let currentFilter = 'all';
-        const audioPlayer = document.getElementById('audioPlayer');
 
-        // Initialisation
-        document.addEventListener('DOMContentLoaded', function() {
-            renderPlaylist();
-            setupAudioListeners();
-        });
+        // Simulated audio durations (in seconds)
+        const audioDurations = {
+            'birth': 930,      // 15:30
+            'orphan': 1125,    // 18:45
+            'trustworthy': 740, // 12:20
+            'revelation': 1335, // 22:15
+            'secret': 990,     // 16:30
+            'public': 1185,    // 19:45
+            'badr': 1540,      // 25:40
+            'uhud': 1400,      // 23:20
+            'trench': 1635,    // 27:15
+            'hudaybiya': 1290, // 21:30
+            'mecca': 1490,     // 24:50
+            'farewell': 1105   // 18:25
+        };
 
-        function renderPlaylist() {
-            const trackList = document.getElementById('trackList');
-            const filteredTracks = currentFilter === 'all' ? 
-                audioTracks : 
-                audioTracks.filter(track => track.type === currentFilter);
+        let currentTime = 0;
+        let duration = 0;
+        let progressInterval = null;
 
-            trackList.innerHTML = filteredTracks.map((track, index) => `
-                <div class="track-item ${currentTrackIndex === audioTracks.indexOf(track) ? 'active' : ''}" 
-                     onclick="selectTrack(${audioTracks.indexOf(track)})">
-                    <div class="track-info">
-                        <div class="track-main">
-                            <h3 class="track-item-title">
-                                ${track.title}
-                                ${currentTrackIndex === audioTracks.indexOf(track) && isPlaying ? '<span class="playing-indicator"></span>' : ''}
-                            </h3>
-                            <p class="track-item-reciter">${track.reciter}</p>
-                            <span class="track-item-type">${getTypeLabel(track.type)}</span>
-                        </div>
-                        <div class="track-duration">${track.duration}</div>
-                    </div>
-                </div>
-            `).join('');
-        }
+        function toggleAudio(audioId) {
+            const audioItem = document.querySelector(`[data-audio="${audioId}"]`);
+            const playBtn = audioItem.querySelector('.play-btn');
+            const title = audioItem.getAttribute('data-title');
+            const category = audioItem.getAttribute('data-category');
 
-        function getTypeLabel(type) {
-            const labels = {
-                'coran': 'Coran',
-                'hadith': 'Hadith',
-                'dua': 'Invocation',
-                'sirah': 'Biographie'
-            };
-            return labels[type] || type;
-        }
-
-        function selectTrack(index) {
-            currentTrackIndex = index;
-            const track = audioTracks[index];
-            
-            // Mettre à jour l'affichage de la piste courante
-            updateCurrentTrackDisplay(track);
-            
-            // Simuler le chargement de l'audio (car nous n'avons pas de vrais fichiers audio)
-            simulateAudioLoading(track);
-            
-            // Mettre à jour la playlist
-            renderPlaylist();
-            
-            // Afficher les paroles
-            showLyrics(track);
-        }
-
-        function updateCurrentTrackDisplay(track) {
-            document.querySelector('.track-title').textContent = track.title;
-            document.querySelector('.track-reciter').textContent = track.reciter;
-            document.querySelector('.track-description').textContent = track.description;
-        }
-
-        function simulateAudioLoading(track) {
-            // Simuler le chargement et la durée de l'audio
-            const [minutes, seconds] = track.duration.split(':').map(Number);
-            const totalSeconds = minutes * 60 + seconds;
-            
-            // Simuler les métadonnées
-            document.getElementById('totalTime').textContent = track.duration;
-            document.getElementById('currentTime').textContent = '0:00';
-            document.getElementById('progressFill').style.width = '0%';
-            
-            // Arrêter la lecture actuelle
-            isPlaying = false;
-            document.getElementById('playPauseBtn').textContent = '▶';
-        }
-
-        function togglePlayPause() {
-            if (currentTrackIndex === -1) {
-                alert('Veuillez sélectionner une piste audio');
-                return;
+            // Stop current audio if different
+            if (currentAudioId && currentAudioId !== audioId) {
+                stopAudio(currentAudioId);
             }
 
-            isPlaying = !isPlaying;
-            const playPauseBtn = document.getElementById('playPauseBtn');
-            
-            if (isPlaying) {
-                playPauseBtn.textContent = '⏸';
-                startPlaybackSimulation();
+            if (currentAudioId === audioId && isPlaying) {
+                // Pause current audio
+                pauseAudio(audioId);
             } else {
-                playPauseBtn.textContent = '▶';
-                stopPlaybackSimulation();
+                // Play audio
+                playAudio(audioId, title, category);
             }
-            
-            renderPlaylist(); // Mettre à jour l'indicateur de lecture
         }
 
-        let playbackInterval;
-        let currentSeconds = 0;
-
-        function startPlaybackSimulation() {
-            const track = audioTracks[currentTrackIndex];
-            const [minutes, seconds] = track.duration.split(':').map(Number);
-            const totalSeconds = minutes * 60 + seconds;
+        function playAudio(audioId, title, category) {
+            currentAudioId = audioId;
+            isPlaying = true;
+            duration = audioDurations[audioId];
             
-            playbackInterval = setInterval(() => {
-                if (currentSeconds >= totalSeconds) {
-                    nextTrack();
-                    return;
+            // Update UI
+            const audioItem = document.querySelector(`[data-audio="${audioId}"]`);
+            const playBtn = audioItem.querySelector('.play-btn');
+            
+            playBtn.textContent = '⏸️';
+            playBtn.classList.add('playing');
+            audioItem.classList.add('playing');
+
+            // Show global player
+            const globalPlayer = document.getElementById('globalPlayer');
+            globalPlayer.classList.add('active');
+            
+            document.getElementById('playerTitle').textContent = title;
+            document.getElementById('playerCategory').textContent = category;
+            document.getElementById('globalPlayBtn').textContent = '⏸️';
+
+            // Start progress simulation
+            startProgress(audioId);
+        }
+
+        function pauseAudio(audioId) {
+            isPlaying = false;
+            
+            // Update UI
+            const audioItem = document.querySelector(`[data-audio="${audioId}"]`);
+            const playBtn = audioItem.querySelector('.play-btn');
+            
+            playBtn.textContent = '▶️';
+            playBtn.classList.remove('playing');
+            audioItem.classList.remove('playing');
+            
+            document.getElementById('globalPlayBtn').textContent = '▶️';
+
+            // Stop progress
+            if (progressInterval) {
+                clearInterval(progressInterval);
+            }
+        }
+
+        function stopAudio(audioId) {
+            isPlaying = false;
+            currentTime = 0;
+            
+            // Update UI
+            const audioItem = document.querySelector(`[data-audio="${audioId}"]`);
+            const playBtn = audioItem.querySelector('.play-btn');
+            
+            playBtn.textContent = '▶️';
+            playBtn.classList.remove('playing');
+            audioItem.classList.remove('playing');
+
+            // Reset progress
+            updateProgress(audioId, 0);
+            updateTimeDisplay(audioId, 0, audioDurations[audioId]);
+
+            // Stop progress
+            if (progressInterval) {
+                clearInterval(progressInterval);
+            }
+        }
+
+        function startProgress(audioId) {
+            if (progressInterval) {
+                clearInterval(progressInterval);
+            }
+
+            progressInterval = setInterval(() => {
+                if (isPlaying && currentTime < duration) {
+                    currentTime += 1;
+                    updateProgress(audioId, (currentTime / duration) * 100);
+                    updateTimeDisplay(audioId, currentTime, duration);
+                    updateGlobalProgress();
+                } else if (currentTime >= duration) {
+                    // Audio finished
+                    stopAudio(audioId);
+                    currentAudioId = null;
+                    hideGlobalPlayer();
                 }
-                
-                currentSeconds++;
-                updateProgress(currentSeconds, totalSeconds);
             }, 1000);
         }
 
-        function stopPlaybackSimulation() {
-            if (playbackInterval) {
-                clearInterval(playbackInterval);
+        function updateProgress(audioId, percentage) {
+            const progressBar = document.getElementById(`progress-${audioId}`);
+            if (progressBar) {
+                progressBar.style.width = percentage + '%';
             }
         }
 
-        function updateProgress(current, total) {
-            const percentage = (current / total) * 100;
-            document.getElementById('progressFill').style.width = percentage + '%';
+        function updateTimeDisplay(audioId, current, total) {
+            const timeDisplay = document.getElementById(`time-${audioId}`);
+            if (timeDisplay) {
+                timeDisplay.textContent = `${formatTime(current)} / ${formatTime(total)}`;
+            }
+        }
+
+        function updateGlobalProgress() {
+            const globalProgress = document.getElementById('globalProgress');
+            const globalTime = document.getElementById('globalTime');
             
-            const minutes = Math.floor(current / 60);
-            const seconds = current % 60;
-            document.getElementById('currentTime').textContent = 
-                `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            if (globalProgress && currentAudioId) {
+                const percentage = (currentTime / duration) * 100;
+                globalProgress.style.width = percentage + '%';
+                globalTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+            }
         }
 
-        function setProgress(event) {
-            if (currentTrackIndex === -1) return;
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${minutes}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function seekAudio(event, audioId) {
+            if (!isPlaying || currentAudioId !== audioId) return;
+
+            const rect = event.currentTarget.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const percentage = clickX / rect.width;
             
-            const progressBar = event.currentTarget;
-            const rect = progressBar.getBoundingClientRect();
-            const percentage = (event.clientX - rect.left) / rect.width;
+            currentTime = Math.floor(percentage * duration);
+            updateProgress(audioId, percentage * 100);
+            updateTimeDisplay(audioId, currentTime, duration);
+            updateGlobalProgress();
+        }
+
+        function seekGlobalAudio(event) {
+            if (!isPlaying || !currentAudioId) return;
+
+            const rect = event.currentTarget.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const percentage = clickX / rect.width;
             
-            const track = audioTracks[currentTrackIndex];
-            const [minutes, seconds] = track.duration.split(':').map(Number);
-            const totalSeconds = minutes * 60 + seconds;
-            
-            currentSeconds = Math.floor(totalSeconds * percentage);
-            updateProgress(currentSeconds, totalSeconds);
+            currentTime = Math.floor(percentage * duration);
+            updateProgress(currentAudioId, percentage * 100);
+            updateTimeDisplay(currentAudioId, currentTime, duration);
+            updateGlobalProgress();
         }
 
-        function setVolume() {
-            const volumeSlider = document.getElementById('volumeSlider');
-            const volumeValue = document.getElementById('volumeValue');
-            volumeValue.textContent = volumeSlider.value + '%';
-        }
-
-        function previousTrack() {
-            if (currentTrackIndex > 0) {
-                selectTrack(currentTrackIndex - 1);
+        function toggleGlobalAudio() {
+            if (currentAudioId) {
+                toggleAudio(currentAudioId);
             }
         }
 
-        function nextTrack() {
-            if (currentTrackIndex < audioTracks.length - 1) {
-                selectTrack(currentTrackIndex + 1);
-            } else {
-                // Arrêter la lecture à la fin
-                isPlaying = false;
-                document.getElementById('playPauseBtn').textContent = '▶';
-                stopPlaybackSimulation();
-                currentSeconds = 0;
-                renderPlaylist();
-            }
+        function hideGlobalPlayer() {
+            const globalPlayer = document.getElementById('globalPlayer');
+            globalPlayer.classList.remove('active');
         }
 
-        function rewind() {
-            currentSeconds = Math.max(0, currentSeconds - 10);
-            if (currentTrackIndex !== -1) {
-                const track = audioTracks[currentTrackIndex];
-                const [minutes, seconds] = track.duration.split(':').map(Number);
-                const totalSeconds = minutes * 60 + seconds;
-                updateProgress(currentSeconds, totalSeconds);
-            }
+        function changeVolume() {
+            const volume = document.getElementById('volumeSlider').value;
+            // In a real implementation, this would control actual audio volume
+            console.log('Volume set to:', volume);
         }
 
-        function fastForward() {
-            if (currentTrackIndex !== -1) {
-                const track = audioTracks[currentTrackIndex];
-                const [minutes, seconds] = track.duration.split(':').map(Number);
-                const totalSeconds = minutes * 60 + seconds;
-                currentSeconds = Math.min(totalSeconds, currentSeconds + 10);
-                updateProgress(currentSeconds, totalSeconds);
-            }
-        }
-
-        function filterPlaylist() {
-            const filter = document.getElementById('playlistFilter').value;
-            currentFilter = filter;
-            renderPlaylist();
-        }
-
-        function showLyrics(track) {
-            const lyricsContainer = document.getElementById('lyricsContainer');
-            const lyricsContent = document.getElementById('lyricsContent');
-            
-            if (track.lyrics) {
-                lyricsContent.innerHTML = `
-                    <div class="arabic-text">${track.lyrics.arabic}</div>
-                    <div class="translation">${track.lyrics.translation}</div>
-                    <div class="reference">${track.lyrics.reference}</div>
-                `;
-                lyricsContainer.style.display = 'block';
-            } else {
-                lyricsContainer.style.display = 'none';
-            }
-        }
-
-        function setupAudioListeners() {
-            // Listeners pour les raccourcis clavier
-            document.addEventListener('keydown', function(e) {
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (currentAudioId) {
                 switch(e.code) {
                     case 'Space':
                         e.preventDefault();
-                        togglePlayPause();
+                        toggleAudio(currentAudioId);
                         break;
-                    case 'ArrowLeft':
-                        e.preventDefault();
-                        rewind();
-                        break;
-                    case 'ArrowRight':
-                        e.preventDefault();
-                        fastForward();
-                        break;
-                    case 'ArrowUp':
-                        e.preventDefault();
-                        previousTrack();
-                        break;
-                    case 'ArrowDown':
-                        e.preventDefault();
-                        nextTrack();
+                    case 'Escape':
+                        if (currentAudioId) {
+                            stopAudio(currentAudioId);
+                            currentAudioId = null;
+                            hideGlobalPlayer();
+                        }
                         break;
                 }
-            });
-        }
+            }
+        });
+
+        // Initialize
+        console.log('🎵 Audio System Initialized');
+        console.log('📱 Use SPACE to play/pause, ESC to stop');
     </script>
 </body>
 </html>

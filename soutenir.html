@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soutenir le Projet - Biographie du Prophète Muhammad ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #0F4C3A;
+            --soft-cream: #F8F6F0;
+            --warm-brown: #8B4513;
+            --text-dark: #2C1810;
+            --success-green: #27AE60;
+            --light-blue: #3498DB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #2E8B57 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,20 Q60,10 70,20 Q80,30 70,40 Q60,50 50,40 Q40,30 50,20 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 80px 80px;
+            animation: float 15s ease-in-out infinite;
+            opacity: 0.2;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-bottom: 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .nav-link {
+            color: var(--deep-green);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .donation-hero {
+            background: linear-gradient(135deg, white, var(--soft-cream));
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 3px solid var(--primary-gold);
+        }
+
+        .donation-hero h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .donation-hero p {
+            font-size: 1.2rem;
+            color: var(--warm-brown);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .sadaqah-verse {
+            background: linear-gradient(135deg, #E8F5E8, #D4EFDF);
+            border: 3px solid var(--success-green);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .sadaqah-verse .verse-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            color: var(--deep-green);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .sadaqah-verse .verse-source {
+            color: var(--success-green);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .donation-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 6px solid var(--primary-gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .donation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .donation-card h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .amount-btn {
+            background: var(--soft-cream);
+            color: var(--deep-green);
+            border: 2px solid var(--primary-gold);
+            padding: 1rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .amount-btn:hover, .amount-btn.selected {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .custom-amount {
+            margin: 1rem 0;
+        }
+
+        .custom-amount input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--primary-gold);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            text-align: center;
+            background: var(--soft-cream);
+            color: var(--deep-green);
+            font-weight: 600;
+        }
+
+        .custom-amount input:focus {
+            outline: none;
+            border-color: var(--deep-green);
+            background: white;
+        }
+
+        .paypal-button {
+            background: #0070ba;
+            color: white;
+            border: none;
+            padding: 1.2rem 2rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .paypal-button:hover {
+            background: #005ea6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 112, 186, 0.3);
+        }
+
+        .transparency-section {
+            background: linear-gradient(135deg, var(--deep-green), #2E8B57);
+            color: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin-top: 3rem;
+        }
+
+        .transparency-section h3 {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .usage-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .usage-item .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .usage-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .usage-item p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .donation-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .donation-hero {
+                padding: 2rem;
+            }
+            
+            .donation-amounts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🤲 Soutenir le Projet</h1>
+        <p>Votre Sadaqah aide à préserver et partager l'histoire du Prophète ﷺ</p>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="fr/index_v2.html" class="nav-link">🏠 Accueil</a>
+            <a href="carte_interactive.html" class="nav-link">🗺️ Carte Interactive</a>
+            <a href="quiz.html" class="nav-link">🧠 Quiz</a>
+            <a href="audio.html" class="nav-link">🎵 Audio</a>
+            <a href="galerie.html" class="nav-link">🖼️ Galerie</a>
+            <a href="boutique.html" class="nav-link">📚 Boutique</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="donation-hero">
+            <h2>🌟 Sadaqah Jariyah</h2>
+            <p>Contribuez à un projet éducatif qui continuera à bénéficier aux générations futures en préservant et partageant la biographie authentique du Prophète Muhammad ﷺ.</p>
+        </div>
+
+        <div class="sadaqah-verse">
+            <div class="verse-text">
+                "مَثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنْبَتَتْ سَبْعَ سَنَابِلَ فِي كُلِّ سُنْبُلَةٍ مِائَةُ حَبَّةٍ"
+            </div>
+            <div class="verse-text" style="font-size: 1.1rem; margin-top: 1rem;">
+                "L'exemple de ceux qui dépensent leurs biens dans le sentier d'Allah est semblable à une graine qui produit sept épis, à cent grains l'épi."
+            </div>
+            <div class="verse-source">Coran 2:261</div>
+        </div>
+
+        <div class="donation-options">
+            <div class="donation-card">
+                <h3>💳 Donation Unique</h3>
+                <p>Faites une contribution ponctuelle pour soutenir le développement du projet.</p>
+                
+                <div class="donation-amounts">
+                    <div class="amount-btn" onclick="selectAmount(5)">5€</div>
+                    <div class="amount-btn" onclick="selectAmount(10)">10€</div>
+                    <div class="amount-btn" onclick="selectAmount(25)">25€</div>
+                    <div class="amount-btn" onclick="selectAmount(50)">50€</div>
+                    <div class="amount-btn" onclick="selectAmount(100)">100€</div>
+                    <div class="amount-btn" onclick="selectAmount(0)">Autre</div>
+                </div>
+
+                <div class="custom-amount" id="customAmount" style="display: none;">
+                    <input type="number" id="customAmountInput" placeholder="Montant personnalisé (€)" min="1">
+                </div>
+
+                <form action="https://www.paypal.com/donate" method="post" target="_top">
+                    <input type="hidden" name="business" value="elbachirmohamedba@gmail.com" />
+                    <input type="hidden" name="no_recurring" value="0" />
+                    <input type="hidden" name="currency_code" value="EUR" />
+                    <input type="hidden" name="amount" id="donationAmount" value="10" />
+                    <button class="paypal-button" type="submit">
+                        💝 Faire un Don via PayPal
+                    </button>
+                </form>
+            </div>
+
+            <div class="donation-card">
+                <h3>🔄 Don Mensuel</h3>
+                <p>Soutenez régulièrement le projet avec un don mensuel automatique.</p>
+                
+                <div class="donation-amounts">
+                    <div class="amount-btn" onclick="selectMonthlyAmount(3)">3€/mois</div>
+                    <div class="amount-btn" onclick="selectMonthlyAmount(5)">5€/mois</div>
+                    <div class="amount-btn" onclick="selectMonthlyAmount(10)">10€/mois</div>
+                    <div class="amount-btn" onclick="selectMonthlyAmount(20)">20€/mois</div>
+                </div>
+
+                <form action="https://www.paypal.com/donate" method="post" target="_top">
+                    <input type="hidden" name="business" value="elbachirmohamedba@gmail.com" />
+                    <input type="hidden" name="no_recurring" value="1" />
+                    <input type="hidden" name="currency_code" value="EUR" />
+                    <input type="hidden" name="amount" id="monthlyAmount" value="5" />
+                    <button class="paypal-button" type="submit">
+                        🔄 Don Mensuel via PayPal
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="transparency-section">
+            <h3>📊 Transparence Totale</h3>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">
+                Chaque contribution est utilisée de manière responsable pour améliorer l'expérience éducative
+            </p>
+
+            <div class="usage-grid">
+                <div class="usage-item">
+                    <div class="icon">🖥️</div>
+                    <h4>Hébergement & Serveurs</h4>
+                    <p>Maintenir le site accessible 24h/24 avec des performances optimales</p>
+                </div>
+                <div class="usage-item">
+                    <div class="icon">🎨</div>
+                    <h4>Contenu & Design</h4>
+                    <p>Création de nouvelles illustrations, cartes et contenus éducatifs</p>
+                </div>
+                <div class="usage-item">
+                    <div class="icon">🌍</div>
+                    <h4>Traductions</h4>
+                    <p>Extension vers de nouvelles langues pour toucher plus de communautés</p>
+                </div>
+                <div class="usage-item">
+                    <div class="icon">🎵</div>
+                    <h4>Audio Professionnel</h4>
+                    <p>Enregistrements de qualité avec des récitateurs expérimentés</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: var(--soft-cream); border-radius: 20px; padding: 2rem; margin-top: 3rem; text-align: center; border: 2px solid var(--primary-gold);">
+            <h3 style="color: var(--deep-green); margin-bottom: 1rem; font-family: 'Amiri', serif;">🤲 Qu'Allah vous récompense</h3>
+            <p style="color: var(--warm-brown); font-size: 1.1rem; line-height: 1.6;">
+                Chaque contribution, petite ou grande, est une Sadaqah Jariyah qui continuera à porter ses fruits tant que les gens bénéficieront de ce savoir. Qu'Allah accepte vos bonnes actions et vous récompense dans cette vie et dans l'au-delà.
+            </p>
+            <div style="margin-top: 1.5rem; font-size: 1.3rem; color: var(--primary-gold); font-weight: 600;">
+                بارك الله فيكم
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedAmount = 10;
+        let selectedMonthlyAmount = 5;
+
+        function selectAmount(amount) {
+            // Reset all buttons
+            document.querySelectorAll('.donation-card:first-child .amount-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // Select clicked button
+            event.target.classList.add('selected');
+            
+            if (amount === 0) {
+                // Show custom amount input
+                document.getElementById('customAmount').style.display = 'block';
+                document.getElementById('customAmountInput').focus();
+            } else {
+                // Hide custom amount input
+                document.getElementById('customAmount').style.display = 'none';
+                selectedAmount = amount;
+                document.getElementById('donationAmount').value = amount;
+            }
+        }
+
+        function selectMonthlyAmount(amount) {
+            // Reset all monthly buttons
+            document.querySelectorAll('.donation-card:last-child .amount-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // Select clicked button
+            event.target.classList.add('selected');
+            selectedMonthlyAmount = amount;
+            document.getElementById('monthlyAmount').value = amount;
+        }
+
+        // Handle custom amount input
+        document.getElementById('customAmountInput').addEventListener('input', function(e) {
+            const customAmount = parseFloat(e.target.value);
+            if (customAmount && customAmount > 0) {
+                selectedAmount = customAmount;
+                document.getElementById('donationAmount').value = customAmount;
+            }
+        });
+
+        // Initialize default selections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select 10€ as default
+            document.querySelectorAll('.donation-card:first-child .amount-btn')[1].classList.add('selected');
+            // Select 5€/month as default
+            document.querySelectorAll('.donation-card:last-child .amount-btn')[1].classList.add('selected');
+        });
+
+        console.log('💰 Donation System Initialized');
+        console.log('🔗 PayPal Integration Ready');
+    </script>
+</body>
+</html>

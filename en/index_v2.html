@@ -5,264 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life of Prophet Muhammad ﷺ - Complete Biography</title>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style_optimized.css">
     <style>
-        :root {
-            --primary-gold: #D4AF37;
-            --deep-green: #0F4C3A;
-            --soft-cream: #F8F6F0;
-            --warm-brown: #8B4513;
-            --text-dark: #2C1810;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
-            color: var(--text-dark);
-            line-height: 1.7;
-        }
-
-        .hero-section {
-            background: linear-gradient(rgba(15, 76, 58, 0.9), rgba(139, 69, 19, 0.8)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><defs><pattern id="islamic" patternUnits="userSpaceOnUse" width="50" height="50"><path d="M25,25 L35,15 L25,5 L15,15 Z" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/></pattern></defs><rect width="1000" height="300" fill="url(%23islamic)"/></svg>');
-            color: white;
-            text-align: center;
-            padding: 100px 0;
-            margin-top: 80px;
-        }
-
-        .hero-title {
-            font-family: 'Crimson Pro', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .navigation {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212,175,55,0.2);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .nav-logo {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--deep-green);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-gold);
-        }
-
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: -50px auto 50px;
-            padding: 0 2rem;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-gold);
-            display: block;
-        }
-
-        .stat-label {
-            color: var(--deep-green);
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-
         .periods-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            padding: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            margin-top: 3rem;
         }
-
+        
         .period-card {
             background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            border-left: 5px solid var(--primary-gold);
+            border-top: 4px solid var(--primary-gold);
         }
-
+        
         .period-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
-
-        .period-header {
-            background: linear-gradient(135deg, var(--deep-green), var(--warm-brown));
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
+        
         .period-title {
             font-family: 'Crimson Pro', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--deep-green);
             margin-bottom: 0.5rem;
         }
-
-        .period-dates {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .period-content {
-            padding: 1.5rem;
-        }
-
-        .period-description {
-            color: var(--text-dark);
+        
+        .period-date {
+            color: var(--primary-gold);
+            font-weight: 600;
             margin-bottom: 1rem;
         }
-
+        
+        .period-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
         .period-link {
-            display: inline-flex;
-            align-items: center;
-            background: var(--primary-gold);
+            background: var(--deep-green);
             color: white;
             padding: 0.8rem 1.5rem;
             border-radius: 25px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-weight: 500;
+            transition: background 0.3s ease;
         }
-
+        
         .period-link:hover {
             background: var(--warm-brown);
-            transform: scale(1.05);
         }
-
-        .section-title {
+        
+        .intro-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
             text-align: center;
+        }
+        
+        .intro-title {
             font-family: 'Crimson Pro', serif;
             font-size: 2.5rem;
             color: var(--deep-green);
-            margin: 4rem 0 2rem;
-            position: relative;
+            margin-bottom: 1.5rem;
         }
-
-        .section-title::before {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--primary-gold);
-        }
-
-        .interactive-features {
-            background: white;
-            margin: 4rem 0;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 2rem auto 0;
-        }
-
-        .feature-card {
-            padding: 2rem;
-            border-radius: 15px;
-            background: linear-gradient(135deg, var(--soft-cream), #F0EDE6);
-            border: 2px solid var(--primary-gold);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: scale(1.05);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .periods-grid {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
         }
     </style>
 </head>
@@ -271,8 +89,7 @@
         <div class="nav-container">
             <div class="nav-logo">Prophet's Biography ﷺ</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#periods">Periods</a></li>
+                <li><a href="../index_v2.html">Main Home</a></li>
                 <li><a href="../carte_interactive.html">Interactive Map</a></li>
                 <li><a href="../fr/index_v2.html">Français</a></li>
                 <li><a href="../ar/index_v2.html">العربية</a></li>
@@ -280,218 +97,141 @@
         </div>
     </nav>
 
-    <header class="hero-section" id="home">
-        <h1 class="hero-title">Life of Prophet Muhammad ﷺ</h1>
-        <p class="hero-subtitle">Complete Biography of the Last Messenger</p>
-        <p class="hero-subtitle">Peace and Blessings Upon Him</p>
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Life of Prophet Muhammad ﷺ</h1>
+            <p class="hero-subtitle">The Final Messenger of Allah</p>
+            <p class="hero-subtitle">Peace and Blessings Upon Him</p>
+        </div>
     </header>
 
-    <div class="stats-container">
-        <div class="stat-card">
-            <span class="stat-number">63</span>
-            <div class="stat-label">Years of Blessed Life</div>
-        </div>
-        <div class="stat-card">
-            <span class="stat-number">23</span>
-            <div class="stat-label">Years of Prophethood</div>
-        </div>
-        <div class="stat-card">
-            <span class="stat-number">15</span>
-            <div class="stat-label">Detailed Historical Periods</div>
-        </div>
-        <div class="stat-card">
-            <span class="stat-number">1400+</span>
-            <div class="stat-label">Years of Continuing Impact</div>
-        </div>
-    </div>
-
-    <section class="interactive-features">
-        <h2 class="section-title">Interactive Features</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🗺️</div>
-                <h3>Interactive Map</h3>
-                <p>Explore the Prophet's journey through an interactive map with timeline</p>
-                <a href="../carte_interactive.html" class="period-link" style="margin-top: 1rem;">Explore Map</a>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📚</div>
-                <h3>Authentic Sources</h3>
-                <p>All information derived from primary sources: Bukhari, Muslim, Ibn Hisham, Tabari</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🌍</div>
-                <h3>Multilingual</h3>
-                <p>Available in Arabic, French, and English for a global audience</p>
-            </div>
-        </div>
-    </section>
-
-    <h2 class="section-title">Historical Periods</h2>
-    
-    <div class="periods-grid">
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Before Prophethood</h3>
-                <div class="period-dates">570 - 610 CE</div>
-            </div>
-            <div class="period-content">
-                <p class="period-description">Birth of the Prophet ﷺ, his childhood, youth, and marriage to Khadijah. The period of divine preparation for the final messenger.</p>
-                <a href="periode1.html" class="period-link">Read More →</a>
-            </div>
+    <div class="container">
+        <div class="intro-section">
+            <h2 class="intro-title">Journey with the Best of Mankind ﷺ</h2>
+            <p class="hero-subtitle">
+                Embark on a blessed journey to learn about the life of the Master of Messengers and Seal of Prophets, Muhammad ﷺ, 
+                from his blessed birth in Makkah to his passing in Madinah. This noble biography includes the most important 
+                stations and events in the life of the noble Prophet, based on the most authentic Islamic sources.
+            </p>
         </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Beginning of Revelation</h3>
-                <div class="period-dates">610 - 613 CE</div>
+        <div class="periods-grid">
+            <div class="period-card">
+                <h3 class="period-title">1. Birth and Early Life</h3>
+                <p class="period-date">570 - 610 CE</p>
+                <p class="period-description">Birth of the Prophet ﷺ in Makkah, his orphaned upbringing, marriage to Khadijah the Great, and his life before prophethood.</p>
+                <a href="periode1_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">The descent of revelation in Cave Hira, first verses of Quran, and secret preaching. Beginning of the final message.</p>
-                <a href="periode2.html" class="period-link">Read More →</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Public Preaching</h3>
-                <div class="period-dates">613 - 616 CE</div>
+            <div class="period-card">
+                <h3 class="period-title">2. Beginning of Revelation</h3>
+                <p class="period-date">610 - 613 CE</p>
+                <p class="period-description">Descent of revelation in Cave Hira, secret preaching, conversion of Khadijah, Ali, and Abu Bakr, forming the first core of believers.</p>
+                <a href="periode2_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">Public declaration of the call, confronting Quraysh, and beginning of opposition. Steadfastness of the Prophet ﷺ and early believers.</p>
-                <a href="periode3.html" class="period-link">Read More →</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Migration to Abyssinia</h3>
-                <div class="period-dates">615 - 619 CE</div>
+            <div class="period-card">
+                <h3 class="period-title">3. Public Preaching</h3>
+                <p class="period-date">613 - 616 CE</p>
+                <p class="period-description">Ascent of Mount Safa, public declaration of the message, more people embracing Islam, and beginning of Quraysh resistance.</p>
+                <a href="periode3_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">First Muslim migration, protection by the Negus, and increasing persecution in Mecca. Strategy for preserving the call.</p>
-                <a href="periode4.html" class="period-link">Read More →</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">The Boycott</h3>
-                <div class="period-dates">617 - 620 CE</div>
+            <div class="period-card">
+                <h3 class="period-title">4. Persecution and Torture</h3>
+                <p class="period-date">616 - 619 CE</p>
+                <p class="period-description">Torture of Muslims, martyrdom of Sumayyah and Yasir, first migration to Abyssinia, and believers' patience through suffering.</p>
+                <a href="periode4_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">Economic boycott by Quraysh, Year of Sorrow, deaths of Khadijah and Abu Talib. Period of trials and tribulations.</p>
-                <a href="periode5.html" class="period-link">Read More →</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Night Journey</h3>
-                <div class="period-dates">621 CE</div>
+            <div class="period-card">
+                <h3 class="period-title">5. Economic Boycott</h3>
+                <p class="period-date">617 - 619 CE</p>
+                <p class="period-description">The boycott document, siege of Banu Hashim in the valley of Abu Talib, and severe suffering of Muslims.</p>
+                <a href="periode5_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">The miraculous journey to Al-Aqsa Mosque and the heavens, establishment of prayer, and strengthening the Prophet ﷺ before migration.</p>
-                <a href="periode6.html" class="period-link">Read More →</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Migration to Medina</h3>
-                <div class="period-dates">622 CE</div>
+            <div class="period-card">
+                <h3 class="period-title">6. Year of Sorrow</h3>
+                <p class="period-date">619 - 620 CE</p>
+                <p class="period-description">Death of Khadijah the Great and Abu Talib, loss of protection and support, increased harm from Quraysh to the Prophet ﷺ.</p>
+                <a href="periode6_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">The historic migration, beginning of Islamic calendar, and establishment of the first Islamic state in Medina.</p>
-                <a href="periode8.html" class="period-link">Read More →</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Building Islamic Society</h3>
-                <div class="period-dates">622 - 624 CE</div>
+            <div class="period-card">
+                <h3 class="period-title">7. Journey to Taif</h3>
+                <p class="period-date">620 CE</p>
+                <p class="period-description">The Prophet's ﷺ journey to Taif seeking support, rejection by Thaqif, severe harm, and the Prophet's moving supplication.</p>
+                <a href="periode7_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">Building the Prophet's Mosque, the Constitution, brotherhood between Muhajirun and Ansar. Laying foundations of the state.</p>
-                <a href="periode9.html" class="period-link">Read More →</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Major Battles</h3>
-                <div class="period-dates">624 - 627 CE</div>
+            <div class="period-card">
+                <h3 class="period-title">8. Night Journey and Ascension</h3>
+                <p class="period-date">621 CE</p>
+                <p class="period-description">The blessed journey from the Sacred Mosque to Al-Aqsa Mosque then to the highest heavens, and the prescription of prayer.</p>
+                <a href="periode8_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">Badr, Uhud, Trench. Establishing Islamic power and setting principles of jihad and warfare in Islam.</p>
-                <a href="periode10.html" class="period-link">Read More →</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Treaty of Hudaybiyyah</h3>
-                <div class="period-dates">628 CE</div>
+            <div class="period-card">
+                <h3 class="period-title">9. First Pledge of Aqaba</h3>
+                <p class="period-date">621 CE</p>
+                <p class="period-description">The Prophet's ﷺ meeting with delegates from Khazraj, first Ansar accepting Islam, and beginning of Islam's spread in Yathrib.</p>
+                <a href="periode9_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">The historic treaty, prophetic wisdom in negotiation, and peaceful spread of Islam. A clear victory.</p>
-                <a href="periode11.html" class="period-link">Read More →</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Conquest of Mecca</h3>
-                <div class="period-dates">630 CE</div>
+            <div class="period-card">
+                <h3 class="period-title">10. Second Pledge of Aqaba</h3>
+                <p class="period-date">622 CE</p>
+                <p class="period-description">The great pledge with 73 men and 2 women from the Ansar, and agreement on migration to Madinah.</p>
+                <a href="periode10_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">The great conquest, the Prophet's forgiveness, purification of the Kaaba, and people entering Islam in multitudes.</p>
-                <a href="periode12.html" class="period-link">Read More →</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Unification of Arabia</h3>
-                <div class="period-dates">630 - 632 CE</div>
+            <div class="period-card">
+                <h3 class="period-title">11. Migration to Madinah</h3>
+                <p class="period-date">622 CE</p>
+                <p class="period-description">The blessed migration with Abu Bakr As-Siddiq, staying in Thawr Cave, and arrival in the Illuminated City.</p>
+                <a href="periode11_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">Tribal delegations, Islamization of Arabian Peninsula, and laying foundations for the great Islamic state.</p>
-                <a href="periode13.html" class="period-link">Read More →</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Farewell Pilgrimage</h3>
-                <div class="period-dates">632 CE</div>
+            <div class="period-card">
+                <h3 class="period-title">12. Building Islamic Society</h3>
+                <p class="period-date">622 - 624 CE</p>
+                <p class="period-description">Building the Prophet's Mosque, brotherhood between Muhajirun and Ansar, and establishing the Constitution of Madinah.</p>
+                <a href="periode12_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">The Prophet's only pilgrimage, Farewell Sermon, completion of religion, and farewell to the Ummah. The message completed.</p>
-                <a href="periode14.html" class="period-link">Read More →</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">Eternal Legacy</h3>
-                <div class="period-dates">632 CE - Eternity</div>
+            <div class="period-card">
+                <h3 class="period-title">13. Beginning of Jihad</h3>
+                <p class="period-date">624 - 625 CE</p>
+                <p class="period-description">The Great Battle of Badr, clear victory, and establishment of military power for the Islamic state.</p>
+                <a href="periode13_complete.html" class="period-link">Read More</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">Death of the Prophet ﷺ, the great legacy, spread of Islam, and continuing impact on all humanity.</p>
-                <a href="periode15.html" class="period-link">Read More →</a>
+
+            <div class="period-card">
+                <h3 class="period-title">14. Challenges and Victories</h3>
+                <p class="period-date">625 - 629 CE</p>
+                <p class="period-description">Battles of Uhud, Trench, Banu Qurayza, and Hudaybiyah, with important lessons in patience and wisdom.</p>
+                <a href="periode14_complete.html" class="period-link">Read More</a>
+            </div>
+
+            <div class="period-card">
+                <h3 class="period-title">15. Conquest and Farewell</h3>
+                <p class="period-date">629 - 632 CE</p>
+                <p class="period-description">Conquest of Makkah, Farewell Pilgrimage, completion of religion, Prophet's ﷺ passing and transition to the Highest Companion.</p>
+                <a href="periode15_complete.html" class="period-link">Read More</a>
             </div>
         </div>
     </div>
 
-    <footer style="background: var(--deep-green); color: white; text-align: center; padding: 2rem; margin-top: 4rem;">
+    <footer>
         <p>Life of Prophet Muhammad ﷺ - Peace and Blessings Upon Him</p>
-        <p style="margin-top: 1rem; opacity: 0.8;">All information derived from authentic Islamic sources</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">
+            All information derived from the most authentic Islamic sources: Sahih Bukhari, Sahih Muslim, Ibn Hisham's Biography, At-Tabari's History
+        </p>
     </footer>
 
     <script>
-        // Scroll animations
+        // Card animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -506,24 +246,22 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.period-card, .stat-card, .feature-card').forEach(card => {
+        // Initialize cards
+        document.querySelectorAll('.period-card').forEach((card, index) => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            card.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
             observer.observe(card);
         });
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        // Navigation scroll
+        window.addEventListener('scroll', () => {
+            const navigation = document.querySelector('.navigation');
+            if (window.pageYOffset > 100) {
+                navigation.classList.add('scrolled');
+            } else {
+                navigation.classList.remove('scrolled');
+            }
         });
     </script>
 </body>

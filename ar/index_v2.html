@@ -3,269 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>السيرة النبوية الشريفة - سيرة سيد المرسلين محمد ﷺ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <title>السيرة النبوية الشريفة - محمد رسول الله ﷺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style_optimized.css">
     <style>
-        :root {
-            --primary-gold: #D4AF37;
-            --deep-green: #0F4C3A;
-            --soft-cream: #F8F6F0;
-            --warm-brown: #8B4513;
-            --text-dark: #2C1810;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Noto Sans Arabic', 'Amiri', serif;
-            background: linear-gradient(135deg, var(--soft-cream) 0%, #E8E2D4 100%);
-            color: var(--text-dark);
-            line-height: 1.7;
-            direction: rtl;
-        }
-
-        .hero-section {
-            background: linear-gradient(rgba(15, 76, 58, 0.9), rgba(139, 69, 19, 0.8)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><defs><pattern id="islamic" patternUnits="userSpaceOnUse" width="50" height="50"><path d="M25,25 L35,15 L25,5 L15,15 Z" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/></pattern></defs><rect width="1000" height="300" fill="url(%23islamic)"/></svg>');
-            color: white;
-            text-align: center;
-            padding: 100px 0;
-            position: relative;
-            margin-top: 80px;
-        }
-
-        .hero-title {
-            font-family: 'Amiri', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: -50px auto 50px;
-            padding: 0 2rem;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-gold);
-            display: block;
-        }
-
-        .stat-label {
-            color: var(--deep-green);
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-
         .periods-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            padding: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            margin-top: 3rem;
         }
-
+        
         .period-card {
             background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            border-right: 5px solid var(--primary-gold);
+            border-top: 4px solid var(--primary-gold);
         }
-
+        
         .period-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
-
-        .period-header {
-            background: linear-gradient(135deg, var(--deep-green), var(--warm-brown));
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
+        
         .period-title {
             font-family: 'Amiri', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--deep-green);
             margin-bottom: 0.5rem;
         }
-
-        .period-dates {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .period-content {
-            padding: 1.5rem;
-        }
-
-        .period-description {
-            color: var(--text-dark);
+        
+        .period-date {
+            color: var(--primary-gold);
+            font-weight: 600;
             margin-bottom: 1rem;
         }
-
+        
+        .period-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
         .period-link {
-            display: inline-flex;
-            align-items: center;
-            background: var(--primary-gold);
+            background: var(--deep-green);
             color: white;
             padding: 0.8rem 1.5rem;
             border-radius: 25px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-weight: 500;
+            transition: background 0.3s ease;
         }
-
+        
         .period-link:hover {
             background: var(--warm-brown);
-            transform: scale(1.05);
         }
-
-        .section-title {
+        
+        .intro-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
             text-align: center;
+        }
+        
+        .intro-title {
             font-family: 'Amiri', serif;
             font-size: 2.5rem;
             color: var(--deep-green);
-            margin: 4rem 0 2rem;
-            position: relative;
+            margin-bottom: 1.5rem;
         }
-
-        .section-title::before {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 50%;
-            transform: translateX(50%);
-            width: 100px;
-            height: 3px;
-            background: var(--primary-gold);
-        }
-
-        .navigation {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212,175,55,0.2);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .nav-logo {
-            font-family: 'Amiri', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--deep-green);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-gold);
-        }
-
-        .interactive-features {
-            background: white;
-            margin: 4rem 0;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 2rem auto 0;
-        }
-
-        .feature-card {
-            padding: 2rem;
-            border-radius: 15px;
-            background: linear-gradient(135deg, var(--soft-cream), #F0EDE6);
-            border: 2px solid var(--primary-gold);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: scale(1.05);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .periods-grid {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
         }
     </style>
 </head>
@@ -274,227 +89,148 @@
         <div class="nav-container">
             <div class="nav-logo">السيرة النبوية ﷺ</div>
             <ul class="nav-links">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#periods">الفترات</a></li>
-                <li><a href="../carte_interactive.html">الخريطة التفاعلية</a></li>
+                <li><a href="../index_v2.html">الرئيسية العامة</a></li>
+                <li><a href="../carte_interactive.html">خريطة تفاعلية</a></li>
                 <li><a href="../fr/index_v2.html">Français</a></li>
                 <li><a href="../en/index_v2.html">English</a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="hero-section" id="home">
-        <h1 class="hero-title">السيرة النبوية الشريفة</h1>
-        <p class="hero-subtitle">سيرة خير البشر وخاتم المرسلين محمد ﷺ</p>
-        <p class="hero-subtitle">صلى الله عليه وسلم</p>
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title arabic-text">السيرة النبوية الشريفة</h1>
+            <p class="hero-subtitle">محمد رسول الله ﷺ</p>
+            <p class="hero-subtitle">صلى الله عليه وآله وسلم</p>
+        </div>
     </header>
 
-    <div class="stats-container">
-        <div class="stat-card">
-            <span class="stat-number">٦٣</span>
-            <div class="stat-label">سنة من الحياة المباركة</div>
-        </div>
-        <div class="stat-card">
-            <span class="stat-number">٢٣</span>
-            <div class="stat-label">سنة من الرسالة</div>
-        </div>
-        <div class="stat-card">
-            <span class="stat-number">١٥</span>
-            <div class="stat-label">فترة تاريخية مفصلة</div>
-        </div>
-        <div class="stat-card">
-            <span class="stat-number">١٤٠٠+</span>
-            <div class="stat-label">سنة من التأثير المستمر</div>
-        </div>
-    </div>
-
-    <section class="interactive-features">
-        <h2 class="section-title">الميزات التفاعلية</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🗺️</div>
-                <h3>الخريطة التفاعلية</h3>
-                <p>استكشف رحلة النبي ﷺ عبر الخريطة التفاعلية مع الخط الزمني</p>
-                <a href="../carte_interactive.html" class="period-link" style="margin-top: 1rem;">اكتشف الخريطة</a>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📚</div>
-                <h3>مصادر موثقة</h3>
-                <p>جميع المعلومات مستمدة من المصادر الأساسية: البخاري، مسلم، ابن هشام، الطبري</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🌍</div>
-                <h3>متعدد اللغات</h3>
-                <p>متاح بالعربية والفرنسية والإنجليزية لجمهور عالمي</p>
-            </div>
-        </div>
-    </section>
-
-    <h2 class="section-title">الفترات التاريخية</h2>
-    
-    <div class="periods-grid">
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">قبل البعثة</h3>
-                <div class="period-dates">٥٧٠ - ٦١٠ م</div>
-            </div>
-            <div class="period-content">
-                <p class="period-description">ولادة النبي ﷺ، طفولته، شبابه، وزواجه من خديجة رضي الله عنها. فترة التحضير الإلهي لخاتم المرسلين.</p>
-                <a href="periode1.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
+    <div class="container">
+        <div class="intro-section">
+            <h2 class="intro-title arabic-text">رحلة مع خير البشر ﷺ</h2>
+            <p class="hero-subtitle arabic-text">
+                ادخل في رحلة مباركة لتتعرف على حياة سيد المرسلين وخاتم النبيين محمد ﷺ، من ولادته المباركة في مكة المكرمة إلى وفاته في المدينة المنورة. 
+                تتضمن هذه السيرة الشريفة أهم المحطات والأحداث في حياة النبي الكريم مع الاستناد إلى أوثق المصادر الإسلامية.
+            </p>
         </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">بداية الوحي</h3>
-                <div class="period-dates">٦١٠ - ٦١٣ م</div>
+        <div class="periods-grid">
+            <div class="period-card">
+                <h3 class="period-title arabic-text">١. الولادة والنشأة</h3>
+                <p class="period-date">570 - 610 م</p>
+                <p class="period-description arabic-text">ولادة النبي ﷺ في مكة المكرمة، نشأته اليتيمة، زواجه من خديجة الكبرى، وحياته قبل البعثة.</p>
+                <a href="periode1_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">نزول الوحي في غار حراء، أول آيات القرآن، والدعوة السرية. بداية الرسالة الخاتمة.</p>
-                <a href="periode2.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">الدعوة الجهرية</h3>
-                <div class="period-dates">٦١٣ - ٦١٦ م</div>
+            <div class="period-card">
+                <h3 class="period-title arabic-text">٢. بداية الوحي</h3>
+                <p class="period-date">610 - 613 م</p>
+                <p class="period-description arabic-text">نزول الوحي في غار حراء، الدعوة السرية، إسلام خديجة وعلي وأبي بكر، وتكوين النواة الأولى للمؤمنين.</p>
+                <a href="periode2_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">إعلان الدعوة علناً، مواجهة قريش، وبداية المعارضة. صمود الرسول ﷺ والمؤمنين الأوائل.</p>
-                <a href="periode3.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">الهجرة إلى الحبشة</h3>
-                <div class="period-dates">٦١٥ - ٦١٩ م</div>
+            <div class="period-card">
+                <h3 class="period-title arabic-text">٣. الدعوة الجهرية</h3>
+                <p class="period-date">613 - 616 م</p>
+                <p class="period-description arabic-text">الصعود على الصفا، إعلان الدعوة علناً، دخول المزيد من الناس في الإسلام، وبداية مقاومة قريش.</p>
+                <a href="periode3_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">هجرة المسلمين الأولى، حماية النجاشي، وازدياد الاضطهاد في مكة. استراتيجية الحفاظ على الدعوة.</p>
-                <a href="periode4.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">المقاطعة والحصار</h3>
-                <div class="period-dates">٦١٧ - ٦٢٠ م</div>
+            <div class="period-card">
+                <h3 class="period-title arabic-text">٤. الاضطهاد والتعذيب</h3>
+                <p class="period-date">616 - 619 م</p>
+                <p class="period-description arabic-text">تعذيب المسلمين، استشهاد سمية وياسر، الهجرة الأولى إلى الحبشة، وصبر المؤمنين على الأذى.</p>
+                <a href="periode4_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">الحصار الاقتصادي من قريش، عام الحزن، وفاة خديجة وأبي طالب. فترة المحن والابتلاء.</p>
-                <a href="periode5.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">الإسراء والمعراج</h3>
-                <div class="period-dates">٦٢١ م</div>
+            <div class="period-card">
+                <h3 class="period-title arabic-text">٥. المقاطعة الاقتصادية</h3>
+                <p class="period-date">617 - 619 م</p>
+                <p class="period-description arabic-text">صحيفة المقاطعة، حصار بني هاشم في شعب أبي طالب، والمعاناة الشديدة للمسلمين.</p>
+                <a href="periode5_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">الرحلة المعجزة إلى المسجد الأقصى والسماء، فرض الصلاة، وتثبيت النبي ﷺ قبل الهجرة.</p>
-                <a href="periode6.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">الهجرة إلى المدينة</h3>
-                <div class="period-dates">٦٢٢ م</div>
+            <div class="period-card">
+                <h3 class="period-title arabic-text">٦. عام الحزن</h3>
+                <p class="period-date">619 - 620 م</p>
+                <p class="period-description arabic-text">وفاة خديجة الكبرى وأبي طالب، فقدان الحماية والسند، وازدياد أذى قريش للنبي ﷺ.</p>
+                <a href="periode6_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">الهجرة التاريخية، بداية التاريخ الإسلامي، وإقامة أول دولة إسلامية في المدينة المنورة.</p>
-                <a href="periode8.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">بناء المجتمع الإسلامي</h3>
-                <div class="period-dates">٦٢٢ - ٦٢٤ م</div>
+            <div class="period-card">
+                <h3 class="period-title arabic-text">٧. رحلة الطائف</h3>
+                <p class="period-date">620 م</p>
+                <p class="period-description arabic-text">سفر النبي ﷺ إلى الطائف طلباً للنصرة، رفض ثقيف، الأذى الشديد، ودعاء النبي المؤثر.</p>
+                <a href="periode7_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">بناء المسجد النبوي، الصحيفة، المؤاخاة بين المهاجرين والأنصار. إرساء أسس الدولة.</p>
-                <a href="periode9.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">الغزوات الكبرى</h3>
-                <div class="period-dates">٦٢٤ - ٦٢٧ م</div>
+            <div class="period-card">
+                <h3 class="period-title arabic-text">٨. الإسراء والمعراج</h3>
+                <p class="period-date">621 م</p>
+                <p class="period-description arabic-text">الرحلة المباركة من المسجد الحرام إلى المسجد الأقصى ثم إلى السماوات العلا، وفرض الصلاة.</p>
+                <a href="periode8_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">بدر، أحد، الأحزاب. تأسيس القوة الإسلامية وإرساء مبادئ الجهاد والحرب في الإسلام.</p>
-                <a href="periode10.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">صلح الحديبية</h3>
-                <div class="period-dates">٦٢٨ م</div>
+            <div class="period-card">
+                <h3 class="period-title arabic-text">٩. بيعة العقبة الأولى</h3>
+                <p class="period-date">621 م</p>
+                <p class="period-description arabic-text">لقاء النبي ﷺ بوفد من الخزرج، إسلام أول الأنصار، وبداية انتشار الإسلام في يثرب.</p>
+                <a href="periode9_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">الصلح التاريخي، الحكمة النبوية في التفاوض، وانتشار الإسلام السلمي. فتح مبين.</p>
-                <a href="periode11.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">فتح مكة</h3>
-                <div class="period-dates">٦٣٠ م</div>
+            <div class="period-card">
+                <h3 class="period-title arabic-text">١٠. بيعة العقبة الثانية</h3>
+                <p class="period-date">622 م</p>
+                <p class="period-description arabic-text">البيعة الكبرى مع 73 رجلاً وامرأتين من الأنصار، والاتفاق على الهجرة إلى المدينة.</p>
+                <a href="periode10_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">الفتح الأعظم، عفو النبي ﷺ، تطهير الكعبة، ودخول الناس في دين الله أفواجاً.</p>
-                <a href="periode12.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">توحيد الجزيرة</h3>
-                <div class="period-dates">٦٣٠ - ٦٣٢ م</div>
+            <div class="period-card">
+                <h3 class="period-title arabic-text">١١. الهجرة إلى المدينة</h3>
+                <p class="period-date">622 م</p>
+                <p class="period-description arabic-text">الهجرة المباركة مع أبي بكر الصديق، المكوث في غار ثور، والوصول إلى المدينة المنورة.</p>
+                <a href="periode11_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">وفود القبائل، إسلام الجزيرة العربية، وإرساء الأسس للدولة الإسلامية الكبرى.</p>
-                <a href="periode13.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">حجة الوداع</h3>
-                <div class="period-dates">٦٣٢ م</div>
+            <div class="period-card">
+                <h3 class="period-title arabic-text">١٢. بناء المجتمع الإسلامي</h3>
+                <p class="period-date">622 - 624 م</p>
+                <p class="period-description arabic-text">بناء المسجد النبوي، المؤاخاة بين المهاجرين والأنصار، ووضع دستور المدينة.</p>
+                <a href="periode12_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">الحج الوحيد للنبي ﷺ، خطبة الوداع، إتمام الدين، وتوديع الأمة. الرسالة مكتملة.</p>
-                <a href="periode14.html" class="period-link">اقرأ المزيد ←</a>
-            </div>
-        </div>
 
-        <div class="period-card">
-            <div class="period-header">
-                <h3 class="period-title">الإرث الخالد</h3>
-                <div class="period-dates">٦٣٢ م - الأبد</div>
+            <div class="period-card">
+                <h3 class="period-title arabic-text">١٣. بداية الجهاد</h3>
+                <p class="period-date">624 - 625 م</p>
+                <p class="period-description arabic-text">غزوة بدر الكبرى، النصر المبين، وتأسيس القوة العسكرية للدولة الإسلامية.</p>
+                <a href="periode13_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
-            <div class="period-content">
-                <p class="period-description">وفاة النبي ﷺ، الإرث العظيم، انتشار الإسلام، والتأثير المستمر على البشرية جمعاء.</p>
-                <a href="periode15.html" class="period-link">اقرأ المزيد ←</a>
+
+            <div class="period-card">
+                <h3 class="period-title arabic-text">١٤. التحديات والانتصارات</h3>
+                <p class="period-date">625 - 629 م</p>
+                <p class="period-description arabic-text">غزوة أحد، الخندق، بني قريظة، والحديبية، مع دروس مهمة في الصبر والحكمة.</p>
+                <a href="periode14_complete.html" class="period-link">اقرأ المزيد</a>
+            </div>
+
+            <div class="period-card">
+                <h3 class="period-title arabic-text">١٥. الفتح والوداع</h3>
+                <p class="period-date">629 - 632 م</p>
+                <p class="period-description arabic-text">فتح مكة، حجة الوداع، اكتمال الدين، ووفاة النبي ﷺ والانتقال إلى الرفيق الأعلى.</p>
+                <a href="periode15_complete.html" class="period-link">اقرأ المزيد</a>
             </div>
         </div>
     </div>
 
-    <footer style="background: var(--deep-green); color: white; text-align: center; padding: 2rem; margin-top: 4rem;">
-        <p>السيرة النبوية الشريفة - صلى الله عليه وسلم</p>
-        <p style="margin-top: 1rem; opacity: 0.8;">جميع المعلومات مستمدة من المصادر الإسلامية الموثقة</p>
+    <footer>
+        <p class="arabic-text">السيرة النبوية الشريفة - صلى الله عليه وآله وسلم</p>
+        <p style="margin-top: 1rem; opacity: 0.8;" class="arabic-text">
+            جميع المعلومات مستقاة من أوثق المصادر الإسلامية: صحيح البخاري، صحيح مسلم، سيرة ابن هشام، تاريخ الطبري
+        </p>
     </footer>
 
     <script>
-        // Animation sur scroll
+        // Animation des cartes
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -509,24 +245,22 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.period-card, .stat-card, .feature-card').forEach(card => {
+        // Initialiser les cartes
+        document.querySelectorAll('.period-card').forEach((card, index) => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            card.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
             observer.observe(card);
         });
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        // Navigation scroll
+        window.addEventListener('scroll', () => {
+            const navigation = document.querySelector('.navigation');
+            if (window.pageYOffset > 100) {
+                navigation.classList.add('scrolled');
+            } else {
+                navigation.classList.remove('scrolled');
+            }
         });
     </script>
 </body>

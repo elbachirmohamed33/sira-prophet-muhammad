@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Page d'accueil principale -->
+  <url>
+    <loc>https://votre-username.github.io/sira-prophete-muhammad/</loc>
+    <lastmod>2024-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Application PWA principale -->
+  <url>
+    <loc>https://votre-username.github.io/sira-prophete-muhammad/app-sira-quran.html</loc>
+    <lastmod>2024-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Outils éducatifs -->
+  <url>
+    <loc>https://votre-username.github.io/sira-prophete-muhammad/quiz.html</loc>
+    <lastmod>2024-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://votre-username.github.io/sira-prophete-muhammad/carte_interactive.html</loc>
+    <lastmod>2024-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://votre-username.github.io/sira-prophete-muhammad/audio.html</loc>
+    <lastmod>2024-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://votre-username.github.io/sira-prophete-muhammad/galerie.html</loc>
+    <lastmod>2024-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Versions linguistiques -->
+  <url>
+    <loc>https://votre-username.github.io/sira-prophete-muhammad/fr/index_v2.html</loc>
+    <lastmod>2024-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://votre-username.github.io/sira-prophete-muhammad/en/index_v2.html</loc>
+    <lastmod>2024-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://votre-username.github.io/sira-prophete-muhammad/ar/index_v2.html</loc>
+    <lastmod>2024-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Pages de support -->
+  <url>
+    <loc>https://votre-username.github.io/sira-prophete-muhammad/soutenir.html</loc>
+    <lastmod>2024-07-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Quelques périodes principales (exemple) -->
+  <url>
+    <loc>https://votre-username.github.io/sira-prophete-muhammad/fr/periode1_v2.html</loc>
+    <lastmod>2024-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://votre-username.github.io/sira-prophete-muhammad/fr/periode15_complete.html</loc>
+    <lastmod>2024-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+</urlset>
